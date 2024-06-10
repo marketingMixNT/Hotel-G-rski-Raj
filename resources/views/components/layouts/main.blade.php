@@ -36,7 +36,9 @@
         {{ $header }}
     </header>
 
-    {{ $slot }}
+    <main>
+        {{ $slot }}
+    </main>
 
     @filamentScripts
     @vite('resources/js/app.js')

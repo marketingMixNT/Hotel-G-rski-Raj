@@ -6,7 +6,8 @@
 
     </x-slot>
 
-<p>test</p>
+
+    @include('pages.home.sections.About')
 
 
 </x-layouts.Main>
