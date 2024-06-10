@@ -21,14 +21,8 @@ class AdvantagesFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => json_encode([
-                'pl' => $this->faker->words(2, true),
-                'en' => $this->faker->words(2, true),
-            ]),
-            'description' => json_encode([
-                'pl' => $this->faker->words(15, true),
-                'en' => $this->faker->words(15, true),
-            ]),
+            'title' => null,
+            'description' => null,
             'thumbnail' => $this->faker->imageUrl(),
             'sort' => $this->faker->numberBetween(1, 20),
         ];
