@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Advantages;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Slides;
@@ -23,6 +24,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Slides::factory(10)->create();
+
+        Advantages::factory(10)->create();
 
 
     }

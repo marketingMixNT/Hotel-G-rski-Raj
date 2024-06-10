@@ -1,7 +1,11 @@
 created:
     - database/factories/SlidesFactory.php
-    - database/migrations/2024_06_10_052135_create_slides_table.php
+    - database/factories/AdvantagesFactory.php
+    - database/migrations/2024_06_10_055617_create_slides_table.php
+    - database/migrations/2024_06_10_055618_create_advantages_table.php
     - app/Models/Slides.php
+    - app/Models/Advantages.php
 models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
     Slides: { image: string, alt: string, sort: integer }
+    Advantages: { title: json, description: json, thumbnail: string, sort: integer }

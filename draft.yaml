@@ -3,3 +3,9 @@ models:
     image: string
     alt: string
     sort: integer
+
+  Advantages:
+    title: json
+    description: json
+    thumbnail: string
+    sort: integer
