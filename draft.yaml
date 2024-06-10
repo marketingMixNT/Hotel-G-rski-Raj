@@ -1,11 +1,22 @@
 models:
-  Slides:
+  Slide:
     image: string
     alt: string
     sort: integer
 
-  Advantages:
+  Advantage:
     title: json
     description: json
     thumbnail: string
+    sort: integer
+
+  Offer:
+    title: json
+    description: json
+    thumbnail: string
+    price: integer
+    nights: integer
+    food: string
+    start_date: dateTime
+    end_date: dateTime
     sort: integer

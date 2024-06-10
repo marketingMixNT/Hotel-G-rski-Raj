@@ -6,6 +6,7 @@ use App\Models\Advantages;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Slides;
+use App\Models\Offer;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,7 +26,9 @@ class DatabaseSeeder extends Seeder
 
         Slides::factory(10)->create();
 
-        Advantages::factory(10)->create();
+        // Advantages::factory(1)->create();
+
+        // Offer::factory(5)->create();
 
 
     }

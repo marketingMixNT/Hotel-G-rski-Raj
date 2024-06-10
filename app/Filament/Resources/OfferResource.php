@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AdvantagesResource\Pages;
-use App\Filament\Resources\AdvantagesResource\RelationManagers;
-use App\Models\Advantages;
+use App\Filament\Resources\OfferResource\Pages;
+use App\Filament\Resources\OfferResource\RelationManagers;
+use App\Models\Offer;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\Concerns\Translatable;
 
 
-class AdvantagesResource extends Resource
+class OfferResource extends Resource
 {
     use Translatable;
 
@@ -24,10 +24,11 @@ class AdvantagesResource extends Resource
     {
         return ['pl', 'en'];
     }
-    protected static ?string $model = Advantages::class;
+    protected static ?string $model = Offer::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';
-
+    
+    
+    protected static ?string $navigationIcon = 'heroicon-o-star';
     protected static ?string $navigationGroup = 'Strona Główna';
 
     public static function form(Form $form): Form
@@ -38,7 +39,12 @@ class AdvantagesResource extends Resource
                     ->label('Tytuł')
                     ->minLength(3)
                     ->maxLength(255)
-                    ->required(),
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('description')
+                    ->label('Opis')
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\FileUpload::make('thumbnail')
                     ->label('Miniaturka')
                     ->image()
@@ -52,28 +58,57 @@ class AdvantagesResource extends Resource
                         '1:1',
                     ])
                     ->required(),
-                    Forms\Components\Textarea::make('description')
-                    ->label('Opis')
+                Forms\Components\TextInput::make('price')
+                ->label('Cena')
                     ->required()
-                    ->autosize()
-                    ->columnSpanFull(),
-
+                    ->helperText('Najnizsza cena za ofertę')
+                    ->numeric()
+                    ->suffix(' zł'),
+                Forms\Components\TextInput::make('nights')
+                ->label('Minimalna ilość nocy')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('food')
+                ->label('Wyżywienie')
+                    ->required()
+                    ->minLength(3)
+                    ->maxLength(255),
+                Forms\Components\DateTimePicker::make('start_date')
+                ->label('Data rozpoczęcia wyświetlania')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('end_date')
+                ->label('Data zakończenia wyświetlania')
+                    ->required(),
+               
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->reorderable('sort')
-            ->defaultSort('sort', 'asc')
+        ->reorderable('sort')
+        ->defaultSort('sort', 'asc')
             ->columns([
                 Tables\Columns\TextColumn::make('sort')
-                    ->label('#')
-                    ->numeric()
-                    ->sortable(),
+                ->label('#')
+                ->numeric()
+                ->sortable(),
                 Tables\Columns\ImageColumn::make('thumbnail'),
+                Tables\Columns\TextColumn::make('price')
+                    ->money()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
+
+                    ->searchable()
+                    ->sortable(),
+                
+                Tables\Columns\TextColumn::make('start_date')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('end_date')
+                    ->dateTime()
+                    ->sortable(),
+               
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -88,7 +123,6 @@ class AdvantagesResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -107,23 +141,23 @@ class AdvantagesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAdvantages::route('/'),
-            'create' => Pages\CreateAdvantages::route('/create'),
-            'edit' => Pages\EditAdvantages::route('/{record}/edit'),
+            'index' => Pages\ListOffers::route('/'),
+            'create' => Pages\CreateOffer::route('/create'),
+            'edit' => Pages\EditOffer::route('/{record}/edit'),
         ];
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('Zalety');
+        return __('Oferty');
     }
     public static function getPluralLabel(): string
     {
-        return __('Zaleta');
+        return __('Oferta');
     }
 
     public static function getLabel(): string
     {
-        return __('Zalety');
+        return __('Oferty');
     }
 }

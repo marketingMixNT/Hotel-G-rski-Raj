@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Advantages extends Model
+class Offer extends Model
 {
     use HasFactory;
-    use HasTranslations;
-  
+ use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +20,11 @@ class Advantages extends Model
         'title',
         'description',
         'thumbnail',
+        'price',
+        'nights',
+        'food',
+        'start_date',
+        'end_date',
         'sort',
     ];
 
@@ -33,9 +37,11 @@ class Advantages extends Model
         'id' => 'integer',
         'title' => 'array',
         'description' => 'array',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
     ];
-
     public $translatable = ['title', 'description'];
 
+    
 
 }
