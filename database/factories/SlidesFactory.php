@@ -21,9 +21,9 @@ class SlidesFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => $this->faker->word(),
-            'alt' => $this->faker->word(),
-            'sort' => $this->faker->numberBetween(-10000, 10000),
+            'image' => $this->faker->imageUrl(),
+            'alt' => $this->faker->sentence(),
+            'sort' => $this->faker->numberBetween(1, 20),
         ];
     }
 }

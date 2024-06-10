@@ -1,4 +1,5 @@
 import './bootstrap';
+import './partials/swiper'
 
 
 const hamburgerBtn = document.querySelector('.hamburger')

@@ -22,10 +22,14 @@
 
 <body class="antialiased">
 
-    
-        <x-nav.Navbar/>
-        <x-nav.Menu/>
-    
+    <header>
+
+        <x-nav.Navbar />
+        <x-nav.Menu />
+
+        {{ $header }}
+    </header>
+
     {{ $slot }}
 
     @filamentScripts
