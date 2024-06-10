@@ -1,7 +1,8 @@
 
 
-@use 'hamburger.scss';
-@use 'menu.scss';
+@use 'hovers';
+@use 'hamburger';
+@use 'menu';
 
 @tailwind base;
 @tailwind components;

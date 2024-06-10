@@ -1,0 +1,42 @@
+//links
+.link-hover {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: "";
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s;
+        @apply bg-gray-500;
+    }
+
+    // &:hover {
+    //   color: #95a5a6;
+    // }
+
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
+//btn
+.close:hover,
+.close:focus {
+  box-shadow: 
+    inset -8.5em 0 0 0  #333,
+    inset 8.5em 0 0 0 #333;  
+}
+.close--white:hover,
+.close--white:focus {
+  box-shadow: 
+    inset -8.5em 0 0 0  white,
+    inset 8.5em 0 0 0 white;  
+    
+}
