@@ -1,0 +1,5 @@
+models:
+  Slides:
+    image: string
+    alt: string
+    sort: integer

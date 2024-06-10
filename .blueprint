@@ -1,0 +1,7 @@
+created:
+    - database/factories/SlidesFactory.php
+    - database/migrations/2024_06_10_052135_create_slides_table.php
+    - app/Models/Slides.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
+    Slides: { image: string, alt: string, sort: integer }
