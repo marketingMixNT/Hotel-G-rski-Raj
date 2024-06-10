@@ -20,6 +20,8 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Filament\Navigation\NavigationItem;
+
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -29,9 +31,23 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            
             ->login()
+            ->brandLogo(asset('assets/logo/logo.png'))
+            ->darkModeBrandLogo(asset('assets/logo/logo--white.png'))
+            // ->brandLogoHeight('100px')
+            ->brandLogoHeight(fn()=>auth()->check() ?'40px':'100px')
+
+            ->brandName('Hotel Górski Raj')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
+                'gray' =>Color::Slate
+            ])
+            
+            ->navigationItems([
+                NavigationItem::make('Strona Główna')
+                    ->url('http://localhost:8000', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-globe-alt')
             ])
             // ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->resources([
