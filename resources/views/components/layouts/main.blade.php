@@ -21,6 +21,11 @@
 </head>
 
 <body class="antialiased">
+
+    
+        <x-nav.Navbar/>
+        <x-nav.Menu/>
+    
     {{ $slot }}
 
     @filamentScripts
