@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Advantage;
 use App\Models\User;
+use App\Models\Offer;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Slide;
-use App\Models\Offer;
+use App\Models\Advantage;
+use App\Models\Attraction;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
 
@@ -32,6 +33,8 @@ class DatabaseSeeder extends Seeder
         Offer::factory(10)->create();
 
         Testimonial::factory(10)->create();
+
+        Attraction::factory(5)->create();
 
     }
 }

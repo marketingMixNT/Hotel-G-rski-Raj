@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\AttractionResource;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -14,6 +15,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\SpatieLaravelTranslatablePlugin;
 use App\Filament\Resources\AdvantagesResource;
 use App\Filament\Resources\TestimonialResource;
+
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
@@ -33,19 +35,19 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            
+
             ->login()
             ->brandLogo(asset('assets/logo/logo.png'))
             ->darkModeBrandLogo(asset('assets/logo/logo--white.png'))
             // ->brandLogoHeight('100px')
-            ->brandLogoHeight(fn()=>auth()->check() ?'40px':'100px')
+            ->brandLogoHeight(fn () => auth()->check() ? '40px' : '100px')
 
             ->brandName('Hotel Górski Raj')
             ->colors([
                 'primary' => Color::Blue,
-                'gray' =>Color::Slate
+                'gray' => Color::Slate
             ])
-            
+
             ->navigationItems([
                 NavigationItem::make('Strona Główna')
                     ->url('http://localhost:8000', shouldOpenInNewTab: true)
@@ -56,7 +58,8 @@ class AdminPanelProvider extends PanelProvider
                 SlidesResource::class,
                 AdvantagesResource::class,
                 OfferResource::class,
-                TestimonialResource::class
+                TestimonialResource::class,
+                AttractionResource::class,
             ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -81,8 +84,6 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(SpatieLaravelTranslatablePlugin::make() ->defaultLocales(['pl', 'en']),)
-            ;
-            
+            ->plugin(SpatieLaravelTranslatablePlugin::make()->defaultLocales(['pl', 'en']),);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Testimonial extends Model
+class Attraction extends Model
 {
     use HasFactory;
 
@@ -15,9 +15,9 @@ class Testimonial extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'source',
-        'content',
+        'title',
+        'description',
+        'images',
         'sort',
     ];
 
@@ -28,8 +28,10 @@ class Testimonial extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'array',
-        'source' => 'array',
-        'content' => 'array',
+        'title' => 'array',
+        'description' => 'array',
+        'images' => 'array'
     ];
+
+
 }

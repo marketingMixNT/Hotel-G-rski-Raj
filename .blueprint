@@ -3,19 +3,23 @@ created:
     - database/factories/AdvantageFactory.php
     - database/factories/OfferFactory.php
     - database/factories/TestimonialFactory.php
-    - database/migrations/2024_06_14_103908_create_slides_table.php
-    - database/migrations/2024_06_14_103909_create_advantages_table.php
-    - database/migrations/2024_06_14_103910_create_offers_table.php
-    - database/migrations/2024_06_14_103911_create_testimonials_table.php
+    - database/factories/AttractionFactory.php
+    - database/migrations/2024_06_14_114043_create_slides_table.php
+    - database/migrations/2024_06_14_114044_create_advantages_table.php
+    - database/migrations/2024_06_14_114045_create_offers_table.php
+    - database/migrations/2024_06_14_114046_create_testimonials_table.php
+    - database/migrations/2024_06_14_114047_create_attractions_table.php
     - app/Models/Slide.php
     - app/Models/Advantage.php
     - app/Models/Offer.php
     - app/Models/Testimonial.php
+    - app/Models/Attraction.php
 models:
-    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
+    Advantages: { title: longtext, description: longtext, thumbnail: string, sort: integer }
     Slides: { image: string, alt: string, sort: integer }
-    Advantages: { title: json, description: json, thumbnail: string, sort: integer }
-    Offer: { title: json, description: json, thumbnail: string, price: integer, nights: integer, food: string, start_date: dateTime, end_date: dateTime, sort: integer }
-    Slide: { image: string, alt: string, sort: integer }
-    Advantage: { title: json, description: json, thumbnail: string, sort: integer }
-    Testimonial: { name: json, source: json, content: json }
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
+    Slide: { image: string, alt: string, sort: 'integer nullable' }
+    Advantage: { title: json, description: json, thumbnail: string, sort: 'integer nullable' }
+    Offer: { title: json, description: json, thumbnail: string, price: integer, nights: integer, food: string, start_date: dateTime, end_date: dateTime, sort: 'integer nullable' }
+    Testimonial: { name: json, source: json, content: json, sort: 'integer nullable' }
+    Attraction: { title: json, description: json, images: text, sort: 'integer nullable' }

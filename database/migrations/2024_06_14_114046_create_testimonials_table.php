@@ -16,6 +16,7 @@ return new class extends Migration
             $table->json('name');
             $table->json('source');
             $table->json('content');
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }
