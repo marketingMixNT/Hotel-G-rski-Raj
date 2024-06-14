@@ -40,6 +40,7 @@
         {{ $slot }}
     </main>
 
+    <x-Footer/>
     @filamentScripts
     @vite('resources/js/app.js')
     <script src="https://wis.upperbooking.com/owcedwie/be-panel?locale=pl" async></script>

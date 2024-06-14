@@ -10,6 +10,7 @@
     @include('pages.home.sections.About')
     @include('pages.home.sections.RecomendedPages')
     @include('pages.home.sections.Offers')
+    @include('pages.home.sections.Contact')
 
 
 </x-layouts.Main>
