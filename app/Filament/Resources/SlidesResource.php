@@ -58,18 +58,12 @@ class SlidesResource extends Resource
                 ->label('#')
                 ->numeric()
                 ->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                ->label('Miniaturka'),
                 Tables\Columns\TextColumn::make('alt')
+                ->label('Tekst alternatywny')
                     ->searchable(),
-               
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            
             ])
             ->filters([
                 //

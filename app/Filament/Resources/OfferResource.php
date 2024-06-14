@@ -2,20 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OfferResource\Pages;
-use App\Filament\Resources\OfferResource\RelationManagers;
-use App\Models\Offer;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-
 use Carbon\Carbon;
-
+use Filament\Forms;
+use Filament\Tables;
+use App\Models\Offer;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
+
+use App\Filament\Resources\OfferResource\Pages;
+
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\OfferResource\RelationManagers;
 
 
 class OfferResource extends Resource
@@ -96,18 +97,26 @@ class OfferResource extends Resource
                     ->numeric()
                     ->sortable(),
 
-                Tables\Columns\ImageColumn::make('thumbnail'),
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->label('Miniaturka'),
 
                 Tables\Columns\TextColumn::make('title')
+                    ->label('Tytuł')
+                    ->description(function (Offer $record) {
+                        return Str::limit(strip_tags($record->description), 40);
+                    })
                     ->searchable()
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('price')
-                    ->toggleable(isToggledHiddenByDefault: true)
-                    ->money()
+                ->label('cena')
+                ->toggleable(isToggledHiddenByDefault: true)
+                    // ->money()
+                    ->suffix(' zł')
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('start_date')
+                ->label('Data rozpoczęcia')
                     ->dateTime()
                     ->formatStateUsing(function ($state) {
                         return Carbon::parse($state)->format('d-m-Y H:i');
@@ -115,21 +124,14 @@ class OfferResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('end_date')
+                ->label('Data zakończenia')
                     ->dateTime()
                     ->formatStateUsing(function ($state) {
                         return Carbon::parse($state)->format('d-m-Y H:i');
                     })
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                
 
             ])
             ->filters([

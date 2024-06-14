@@ -2,18 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AdvantagesResource\Pages;
-use App\Filament\Resources\AdvantagesResource\RelationManagers;
-use App\Models\Advantages;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Advantages;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-use Filament\Resources\Concerns\Translatable;
+use App\Filament\Resources\AdvantagesResource\Pages;
+use App\Filament\Resources\AdvantagesResource\RelationManagers;
 
 
 class AdvantagesResource extends Resource
@@ -34,11 +35,13 @@ class AdvantagesResource extends Resource
     {
         return $form
             ->schema([
+
                 Forms\Components\TextInput::make('title')
                     ->label('Tytuł')
                     ->minLength(3)
                     ->maxLength(255)
                     ->required(),
+
                 Forms\Components\FileUpload::make('thumbnail')
                     ->label('Miniaturka')
                     ->image()
@@ -52,10 +55,12 @@ class AdvantagesResource extends Resource
                         '1:1',
                     ])
                     ->required(),
-                    Forms\Components\Textarea::make('description')
+
+                    Forms\Components\RichEditor::make('description')
                     ->label('Opis')
                     ->required()
-                    ->autosize()
+                    ->toolbarButtons(['bold', 'italic',
+                    ])
                     ->columnSpanFull(),
 
             ]);
@@ -71,17 +76,16 @@ class AdvantagesResource extends Resource
                     ->label('#')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('thumbnail'),
+                Tables\Columns\ImageColumn::make('thumbnail')
+                ->label('Miniaturka'),
+                
                 Tables\Columns\TextColumn::make('title')
+                ->label('Tytuł')
+                ->description(function (Advantages $record) {
+                    return Str::limit(strip_tags($record->description), 40);
+              })
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+              
             ])
             ->filters([
                 //

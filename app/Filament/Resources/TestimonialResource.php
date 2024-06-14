@@ -59,15 +59,9 @@ class TestimonialResource extends Resource
                  })
                 ->sortable()
                 ->searchable(),
-                Tables\Columns\TextColumn::make('source'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('source')
+                ->label('Źródło opini'),
+              
             ])
             ->filters([
                 //
