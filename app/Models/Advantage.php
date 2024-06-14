@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class Advantage extends Model
 {
     use HasFactory;
 
@@ -18,11 +18,6 @@ class Offer extends Model
         'title',
         'description',
         'thumbnail',
-        'price',
-        'nights',
-        'food',
-        'start_date',
-        'end_date',
         'sort',
     ];
 
@@ -35,7 +30,5 @@ class Offer extends Model
         'id' => 'integer',
         'title' => 'array',
         'description' => 'array',
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
     ];
 }

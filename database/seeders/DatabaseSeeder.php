@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Advantages;
+use App\Models\Advantage;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Slides;
+use App\Models\Slide;
 use App\Models\Offer;
+use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,12 +25,13 @@ class DatabaseSeeder extends Seeder
             'password'=>'admin123'
         ]);
 
-        Slides::factory(10)->create();
+        Slide::factory(10)->create();
 
-        Advantages::factory(10)->create();
+        Advantage::factory(10)->create();
 
         Offer::factory(10)->create();
 
+        Testimonial::factory(10)->create();
 
     }
 }

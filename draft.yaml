@@ -20,3 +20,9 @@ models:
     start_date: dateTime
     end_date: dateTime
     sort: integer
+
+  Testimonial:
+    name: json
+    source: json
+    content: json
+    sort: integer

@@ -13,6 +13,7 @@ use App\Filament\Resources\SlidesResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\SpatieLaravelTranslatablePlugin;
 use App\Filament\Resources\AdvantagesResource;
+use App\Filament\Resources\TestimonialResource;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
@@ -54,7 +55,8 @@ class AdminPanelProvider extends PanelProvider
             ->resources([
                 SlidesResource::class,
                 AdvantagesResource::class,
-                OfferResource::class
+                OfferResource::class,
+                TestimonialResource::class
             ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

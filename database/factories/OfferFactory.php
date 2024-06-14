@@ -22,10 +22,10 @@ class OfferFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph,
             'thumbnail' => $this->faker->imageUrl(),
             'price' => $this->faker->numberBetween(100, 1000),
-            'nights' => $this->faker->numberBetween(1, 5),
+            'nights' => $this->faker->numberBetween(1, 7),
             'food' => $this->faker->sentence(),
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),

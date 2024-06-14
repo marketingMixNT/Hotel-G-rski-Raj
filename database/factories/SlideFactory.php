@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Slides;
+use App\Models\Slide;
 
-class SlidesFactory extends Factory
+class SlideFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Slides::class;
+    protected $model = Slide::class;
 
     /**
      * Define the model's default state.

@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Advantages;
+use App\Models\Advantage;
 
-class AdvantagesFactory extends Factory
+class AdvantageFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Advantages::class;
+    protected $model = Advantage::class;
 
     /**
      * Define the model's default state.

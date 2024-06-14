@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class Testimonial extends Model
 {
     use HasFactory;
 
@@ -15,15 +15,9 @@ class Offer extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'description',
-        'thumbnail',
-        'price',
-        'nights',
-        'food',
-        'start_date',
-        'end_date',
-        'sort',
+        'name',
+        'source',
+        'content',
     ];
 
     /**
@@ -33,9 +27,8 @@ class Offer extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'title' => 'array',
-        'description' => 'array',
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
+        'name' => 'array',
+        'source' => 'array',
+        'content' => 'array',
     ];
 }
