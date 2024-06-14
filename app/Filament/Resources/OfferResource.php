@@ -13,21 +13,23 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Carbon\Carbon;
+
 use Filament\Resources\Concerns\Translatable;
 
 
 class OfferResource extends Resource
 {
-    use Translatable;
+    // use Translatable;
 
-    public static function getTranslatableLocales(): array
-    {
-        return ['pl', 'en'];
-    }
+    // public static function getTranslatableLocales(): array
+    // {
+    //     return ['pl', 'en'];
+    // }
     protected static ?string $model = Offer::class;
 
-    
-    
+
+
     protected static ?string $navigationIcon = 'heroicon-o-star';
     protected static ?string $navigationGroup = 'Strona Główna';
 
@@ -59,70 +61,83 @@ class OfferResource extends Resource
                     ])
                     ->required(),
                 Forms\Components\TextInput::make('price')
-                ->label('Cena')
+                    ->label('Cena')
                     ->required()
                     ->helperText('Najnizsza cena za ofertę')
                     ->numeric()
                     ->suffix(' zł'),
                 Forms\Components\TextInput::make('nights')
-                ->label('Minimalna ilość nocy')
+                    ->label('Minimalna ilość nocy')
                     ->required()
                     ->numeric(),
                 Forms\Components\TextInput::make('food')
-                ->label('Wyżywienie')
+                    ->label('Wyżywienie')
                     ->required()
                     ->minLength(3)
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('start_date')
-                ->label('Data rozpoczęcia wyświetlania')
+                    ->label('Data rozpoczęcia wyświetlania')
                     ->required(),
                 Forms\Components\DateTimePicker::make('end_date')
-                ->label('Data zakończenia wyświetlania')
+                    ->label('Data zakończenia wyświetlania')
                     ->required(),
-               
+
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-        ->reorderable('sort')
-        ->defaultSort('sort', 'asc')
+            ->reorderable('sort')
+            ->defaultSort('sort', 'asc')
             ->columns([
                 Tables\Columns\TextColumn::make('sort')
-                ->label('#')
-                ->numeric()
-                ->sortable(),
-                Tables\Columns\ImageColumn::make('thumbnail'),
-                Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->label('#')
+                    ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('title')
 
+                Tables\Columns\ImageColumn::make('thumbnail'),
+
+                Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
-                
+
+                Tables\Columns\TextColumn::make('price')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->money()
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('start_date')
                     ->dateTime()
+                    ->formatStateUsing(function ($state) {
+                        return Carbon::parse($state)->format('d-m-Y H:i');
+                    })
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('end_date')
                     ->dateTime()
+                    ->formatStateUsing(function ($state) {
+                        return Carbon::parse($state)->format('d-m-Y H:i');
+                    })
                     ->sortable(),
-               
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

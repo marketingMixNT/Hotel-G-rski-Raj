@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
 
         Slides::factory(10)->create();
 
-        // Advantages::factory(1)->create();
+        Advantages::factory(10)->create();
 
-        // Offer::factory(5)->create();
+        Offer::factory(10)->create();
 
 
     }

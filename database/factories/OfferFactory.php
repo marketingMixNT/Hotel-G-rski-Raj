@@ -21,8 +21,8 @@ class OfferFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => '{}',
-            'description' => '{}',
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph(),
             'thumbnail' => $this->faker->imageUrl(),
             'price' => $this->faker->numberBetween(100, 1000),
             'nights' => $this->faker->numberBetween(1, 5),

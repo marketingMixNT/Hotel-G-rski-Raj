@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 class Offer extends Model
 {
     use HasFactory;
- use HasTranslations;
+//  use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -40,7 +40,7 @@ class Offer extends Model
         'start_date' => 'datetime',
         'end_date' => 'datetime',
     ];
-    public $translatable = ['title', 'description'];
+    // public $translatable = ['title', 'description'];
 
     
 

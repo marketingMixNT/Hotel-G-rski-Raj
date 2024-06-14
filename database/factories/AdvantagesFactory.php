@@ -21,8 +21,8 @@ class AdvantagesFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => '{}',
-            'description' => '{}',
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph(),
             'thumbnail' => $this->faker->imageUrl(),
             'sort' => $this->faker->numberBetween(1, 20),
         ];

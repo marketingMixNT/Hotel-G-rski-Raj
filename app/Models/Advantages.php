@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 class Advantages extends Model
 {
     use HasFactory;
-    use HasTranslations;
+    // use HasTranslations;
   
 
     /**
@@ -35,7 +35,7 @@ class Advantages extends Model
         'description' => 'array',
     ];
 
-    public $translatable = ['title', 'description'];
+    // public $translatable = ['title', 'description'];
 
 
 }

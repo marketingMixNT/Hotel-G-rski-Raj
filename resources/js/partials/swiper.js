@@ -41,10 +41,21 @@ new Swiper(".offer-carousel", {
     loop: true,
     effect: "fade",
     // grabCursor: true,
-    slidesPerView: 3,
+    slidesPerView: 1,
     
 
-    spaceBetween: 50,
+
+    breakpoints: {
+        
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        }},
+    
     autoplay: {
         delay: 3500,
         disableOnInteraction: true,

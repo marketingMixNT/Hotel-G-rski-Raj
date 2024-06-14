@@ -9,7 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 class ListAdvantages extends ListRecords
 {
 
-    use ListRecords\Concerns\Translatable;
+    // use ListRecords\Concerns\Translatable;
 
     protected static string $resource = AdvantagesResource::class;
 
@@ -17,7 +17,7 @@ class ListAdvantages extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
-            Actions\LocaleSwitcher::make(),
+            // Actions\LocaleSwitcher::make(),
         ];
     }
 }
