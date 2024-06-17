@@ -23,6 +23,7 @@ return new class extends Migration
             $table->json('short_desc');
             $table->json('description');
             $table->integer('sort')->nullable();
+            $table->unsignedInteger('amenity_id')->nullable();
             $table->timestamps();
         });
     }

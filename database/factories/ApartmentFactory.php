@@ -31,6 +31,7 @@ class ApartmentFactory extends Factory
             'short_desc' =>  $this->faker->paragraph(),
             'description' =>  $this->faker->paragraph(),
             'sort' => $this->faker->numberBetween(1,20),
+            'amenity_id' => $this->faker->randomNumber(1,20),
         ];
     }
 }

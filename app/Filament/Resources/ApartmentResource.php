@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Amenity;
 use Filament\Forms\Form;
 use App\Models\Apartment;
 use Filament\Tables\Table;
@@ -123,7 +124,24 @@ class ApartmentResource extends Resource
                     ->collapsible()
                     ->collapsed()
                     ->description('info')
-                    ->schema([]),
+                    ->schema([
+
+                        
+                        Forms\Components\Select::make('amenities')
+                        ->searchable()
+                        ->multiple()
+                        ->searchable()
+                        ->preload()
+                        
+                        ->editOptionForm(Amenity::getForm())
+                        ->createOptionForm(Amenity::getForm())
+                        ->relationship('amenities', 'id')
+                        ->options(
+                            Amenity::all()->pluck('name', 'id')
+                        )
+
+
+                    ]),
 
                 Forms\Components\Textarea::make('reservation_link')
                     ->label('Link do rezerwacji pokoju')
@@ -169,6 +187,7 @@ class ApartmentResource extends Resource
                 ->toggleable(isToggledHiddenByDefault: true)
                     ->numeric()
                     ->sortable(),
+                  
                 
 
 

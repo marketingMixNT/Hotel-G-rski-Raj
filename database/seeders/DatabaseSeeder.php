@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Offer;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Slide;
+use App\Models\Amenity;
 use App\Models\Advantage;
 use App\Models\Apartment;
 use App\Models\Attraction;
@@ -24,7 +25,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
-            'password'=>'admin123'
+            'password' => 'admin123'
         ]);
 
         Slide::factory(10)->create();
@@ -39,5 +40,6 @@ class DatabaseSeeder extends Seeder
 
         Apartment::factory(6)->create();
 
+        Amenity::factory(20)->create();
     }
 }

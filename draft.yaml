@@ -44,5 +44,17 @@ models:
     short_desc: json
     description: json
     sort: integer nullable
+    amenity_id: unsignedInteger nullable
+    relationships:
+      hasMany: Amenity
+
+  Amenity:
+   name: json
+   icons: text
+   apartment_id: unsignedInteger nullable
+   relationships:
+     belongsToMany: Apartment
+
+      
   
   

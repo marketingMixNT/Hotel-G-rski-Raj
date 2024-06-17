@@ -30,5 +30,6 @@ class Advantage extends Model
         'id' => 'integer',
         'title' => 'array',
         'description' => 'array',
+       
     ];
 }

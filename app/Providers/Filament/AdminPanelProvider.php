@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Resources\AttractionResource;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -12,11 +11,13 @@ use Filament\Navigation\NavigationItem;
 use App\Filament\Resources\OfferResource;
 use App\Filament\Resources\SlidesResource;
 use Filament\Http\Middleware\Authenticate;
+use App\Filament\Resources\AmenityResource;
+use App\Filament\Resources\ApartmentResource;
 use Filament\SpatieLaravelTranslatablePlugin;
 use App\Filament\Resources\AdvantagesResource;
-use App\Filament\Resources\ApartmentResource;
-use App\Filament\Resources\TestimonialResource;
+use App\Filament\Resources\AttractionResource;
 
+use App\Filament\Resources\TestimonialResource;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
@@ -62,6 +63,7 @@ class AdminPanelProvider extends PanelProvider
                 TestimonialResource::class,
                 AttractionResource::class,
                 ApartmentResource::class,
+                AmenityResource::class
             ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
