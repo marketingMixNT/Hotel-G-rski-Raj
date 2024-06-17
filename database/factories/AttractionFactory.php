@@ -21,7 +21,7 @@ class AttractionFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
+            'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'images' => array_map(fn() => $this->faker->imageUrl(), range(1, 3)), // 
             'sort' => $this->faker->numberBetween(1, 20),

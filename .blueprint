@@ -4,16 +4,19 @@ created:
     - database/factories/OfferFactory.php
     - database/factories/TestimonialFactory.php
     - database/factories/AttractionFactory.php
-    - database/migrations/2024_06_14_114043_create_slides_table.php
-    - database/migrations/2024_06_14_114044_create_advantages_table.php
-    - database/migrations/2024_06_14_114045_create_offers_table.php
-    - database/migrations/2024_06_14_114046_create_testimonials_table.php
-    - database/migrations/2024_06_14_114047_create_attractions_table.php
+    - database/factories/ApartmentFactory.php
+    - database/migrations/2024_06_17_070709_create_slides_table.php
+    - database/migrations/2024_06_17_070710_create_advantages_table.php
+    - database/migrations/2024_06_17_070711_create_offers_table.php
+    - database/migrations/2024_06_17_070712_create_testimonials_table.php
+    - database/migrations/2024_06_17_070713_create_attractions_table.php
+    - database/migrations/2024_06_17_070714_create_apartments_table.php
     - app/Models/Slide.php
     - app/Models/Advantage.php
     - app/Models/Offer.php
     - app/Models/Testimonial.php
     - app/Models/Attraction.php
+    - app/Models/Apartment.php
 models:
     Advantages: { title: longtext, description: longtext, thumbnail: string, sort: integer }
     Slides: { image: string, alt: string, sort: integer }
@@ -23,3 +26,4 @@ models:
     Offer: { title: json, description: json, thumbnail: string, price: integer, nights: integer, food: string, start_date: dateTime, end_date: dateTime, sort: 'integer nullable' }
     Testimonial: { name: json, source: json, content: json, sort: 'integer nullable' }
     Attraction: { title: json, description: json, images: text, sort: 'integer nullable' }
+    Apartment: { name: json, surface: integer, person: integer, beds: json, banner_img: text, gallery: text, reservation_link: text, short_desc: json, description: json, sort: 'integer nullable' }

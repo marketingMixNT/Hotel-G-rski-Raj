@@ -14,6 +14,7 @@ use App\Filament\Resources\SlidesResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\SpatieLaravelTranslatablePlugin;
 use App\Filament\Resources\AdvantagesResource;
+use App\Filament\Resources\ApartmentResource;
 use App\Filament\Resources\TestimonialResource;
 
 use Illuminate\Session\Middleware\StartSession;
@@ -60,6 +61,7 @@ class AdminPanelProvider extends PanelProvider
                 OfferResource::class,
                 TestimonialResource::class,
                 AttractionResource::class,
+                ApartmentResource::class,
             ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

@@ -32,3 +32,17 @@ models:
     description: json
     images: text
     sort: integer nullable
+
+  Apartment:
+    name: json
+    surface: integer
+    person: integer
+    beds: json
+    banner_img: text
+    gallery: text
+    reservation_link: text
+    short_desc: json
+    description: json
+    sort: integer nullable
+  
+  

@@ -7,6 +7,7 @@ use App\Models\Offer;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Slide;
 use App\Models\Advantage;
+use App\Models\Apartment;
 use App\Models\Attraction;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
@@ -34,7 +35,9 @@ class DatabaseSeeder extends Seeder
 
         Testimonial::factory(10)->create();
 
-        Attraction::factory(5)->create();
+        // Attraction::factory(5)->create();
+
+        Apartment::factory(6)->create();
 
     }
 }

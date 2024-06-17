@@ -41,6 +41,7 @@ class AttractionResource extends Resource
                 Forms\Components\FileUpload::make('images')
                 ->reorderable()
                     ->multiple()
+                    ->appendFiles()
                     ->helperText('Wstaw 3 zdjęcia, pierwsze będzie miniaturką')
                     ->image()
                     ->maxSize(2048)

@@ -72,3 +72,31 @@ new Swiper(".offer-carousel", {
     },
     modules: [Autoplay, Navigation, Pagination],
 });
+
+
+new Swiper(".testimonial-carousel", {
+    loop: true,
+    // effect: "fade",
+    grabCursor: true,
+    slidesPerView: 1,
+    
+
+
+  
+    
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+        
+    },
+    // navigation: {
+    //     nextEl: ".testimonial-next",
+    //     prevEl: ".testimonial-prev",
+    // },
+    // pagination: {
+    //     el: ".swiper-pagination", 
+    //     clickable: true, 
+    // },
+    modules: [Autoplay, Navigation, Pagination],
+});
