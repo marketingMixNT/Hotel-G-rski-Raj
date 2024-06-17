@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
 
         Testimonial::factory(10)->create();
 
-        // Attraction::factory(5)->create();
+        Attraction::factory(5)->create();
 
         Apartment::factory(6)->create();
 

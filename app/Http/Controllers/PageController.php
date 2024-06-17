@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use App\Models\Slides;
 use App\Models\Apartment;
-use App\Models\Advantages;
+use App\Models\Advantage;
 use App\Models\Attraction;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class PageController extends Controller
     {
 
         $slides = Slides::orderBy('sort')->get();
-        $advantages = Advantages::orderBy('sort')->get();
+        $advantages = Advantage::orderBy('sort')->get();
         $offers = Offer::orderBy('sort')->get();
         $attractions = Attraction::orderBy('sort')->get();
         $testimonials = Testimonial::orderBy('sort')->get();

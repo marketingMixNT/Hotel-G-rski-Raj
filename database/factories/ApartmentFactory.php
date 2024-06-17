@@ -26,7 +26,7 @@ class ApartmentFactory extends Factory
             'person' => $this->faker->numberBetween(1, 6),
             'beds' => '1 łózko podwójne',
             'banner_img' => $this->faker->imageUrl(),
-            'gallery' => $this->faker->imageUrl(),
+            'gallery' => array_map(fn() => $this->faker->imageUrl(), range(1, 8)), 
             'reservation_link' => 'https://marketingmix.pl',
             'short_desc' =>  $this->faker->paragraph(),
             'description' =>  $this->faker->paragraph(),

@@ -100,3 +100,44 @@ new Swiper(".testimonial-carousel", {
     // },
     modules: [Autoplay, Navigation, Pagination],
 });
+
+
+
+new Swiper(".apartments-carousel", {
+    // loop: true,
+    effect: "fade",
+    grabCursor: true,
+    centeredSlides: true,
+
+    slidesPerView: 2,
+    spaceBetween: 150,
+    
+
+
+    // breakpoints: {
+        
+    //     768: {
+    //       slidesPerView: 2,
+    //       spaceBetween: 40,
+    //     },
+    //     1024: {
+    //       slidesPerView: 3,
+    //       spaceBetween: 50,
+    //     }},
+    
+    // autoplay: {
+    //     delay: 3500,
+    //     disableOnInteraction: true,
+    //     pauseOnMouseEnter: true,
+        
+    // },
+    // navigation: {
+    //     nextEl: ".offer-next",
+    //     prevEl: ".offer-prev",
+    // },
+    // pagination: {
+    //     el: ".swiper-pagination", 
+    //     clickable: true, 
+    // },
+    modules: [Autoplay, Navigation, Pagination],
+});

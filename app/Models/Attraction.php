@@ -30,5 +30,6 @@ class Attraction extends Model
         'id' => 'integer',
         'title' => 'array',
         'description' => 'array',
+        'images' => 'array'
     ];
 }

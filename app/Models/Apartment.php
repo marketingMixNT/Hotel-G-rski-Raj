@@ -38,5 +38,6 @@ class Apartment extends Model
         'beds' => 'array',
         'short_desc' => 'array',
         'description' => 'array',
+        'gallery'=>'array'
     ];
 }
