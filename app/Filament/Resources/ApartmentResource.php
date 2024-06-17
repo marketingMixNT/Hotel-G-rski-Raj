@@ -80,6 +80,7 @@ class ApartmentResource extends Resource
                             ->columnSpanFull(),
 
                         Forms\Components\FileUpload::make('gallery')
+                        
                             ->label('Galeria')
                             ->reorderable()
                             ->multiple()
@@ -97,6 +98,7 @@ class ApartmentResource extends Resource
                             ])
                             ->required()
                             ->columnSpanFull(),
+                            
                     ]),
 
                 Section::make('Informacje Dodatkowe')
@@ -132,7 +134,6 @@ class ApartmentResource extends Resource
                         ->multiple()
                         ->searchable()
                         ->preload()
-                        
                         ->editOptionForm(Amenity::getForm())
                         ->createOptionForm(Amenity::getForm())
                         ->relationship('amenities', 'id')
@@ -171,7 +172,7 @@ class ApartmentResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('Apartament')
                     ->description(function (Apartment $record) {
-                        return Str::limit(($record->short_desc), 40);
+                        return Str::limit(strip_tags($record->short_desc), 40);
                     })
                     ->searchable()
                     ->sortable(),

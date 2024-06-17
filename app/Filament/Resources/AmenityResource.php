@@ -13,11 +13,16 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use TomatoPHP\FilamentIcons\Components\IconPicker;
+
+
 class AmenityResource extends Resource
 {
     protected static ?string $model = Amenity::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-face-smile';
+
+    protected static ?string $navigationGroup = 'Strona Główna';
 
     public static function form(Form $form): Form
     {
@@ -28,9 +33,8 @@ class AmenityResource extends Resource
                 Forms\Components\Textarea::make('name')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('icon')
-                    ->required()
-                    ->maxLength(255),
+                    IconPicker::make('icon')
+                    ->required(),
                 Forms\Components\TextInput::make('apartment_id')
                     ->numeric()
                     ->default(null),
@@ -62,6 +66,7 @@ class AmenityResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -85,5 +90,19 @@ class AmenityResource extends Resource
             'create' => Pages\CreateAmenity::route('/create'),
             'edit' => Pages\EditAmenity::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Udogodnienia');
+    }
+    public static function getPluralLabel(): string
+    {
+        return __('Udogodnienie');
+    }
+
+    public static function getLabel(): string
+    {
+        return __('Udogodnienia');
     }
 }

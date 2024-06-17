@@ -55,6 +55,6 @@ models:
    relationships:
      belongsToMany: Apartment
 
-      
+ 
   
   

@@ -28,6 +28,9 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
+use Outerweb\FilamentImageLibrary\Filament\Plugins\FilamentImageLibraryPlugin;
+
+
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -88,6 +91,9 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(SpatieLaravelTranslatablePlugin::make()->defaultLocales(['pl', 'en']),);
+            ->plugin(SpatieLaravelTranslatablePlugin::make()->defaultLocales(['pl', 'en']),)
+            ->plugins([
+                FilamentImageLibraryPlugin::make(),
+            ]);
     }
 }

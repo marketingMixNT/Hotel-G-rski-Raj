@@ -39,7 +39,7 @@ class Amenity extends Model
 
     public function apartments(): BelongsToMany
     {
-        return $this->belongsToMany(Apartment::class);
+        return $this->belongsToMany(Apartment::class,'amenity_apartment');
     }
 
     public static function getForm() :array{
