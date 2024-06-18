@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
-use App\Models\Advantages;
+use App\Models\Advantage;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
@@ -25,7 +25,7 @@ class AdvantagesResource extends Resource
     // {
     //     return ['pl', 'en'];
     // }
-    protected static ?string $model = Advantages::class;
+    protected static ?string $model = Advantage::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';
 
@@ -81,7 +81,7 @@ class AdvantagesResource extends Resource
                 
                 Tables\Columns\TextColumn::make('title')
                 ->label('Tytuł')
-                ->description(function (Advantages $record) {
+                ->description(function (Advantage $record) {
                     return Str::limit(strip_tags($record->description), 40);
               })
                     ->searchable(),

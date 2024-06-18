@@ -14,7 +14,7 @@
             <div class="flex gap-20">
                 {{-- image --}}
                 <div class="{{ $index % 2 === 0 ? 'order-1' : '' }} w-1/2 flex justify-center items-center">
-                    <img src="{{ asset($attraction['images'][0]) }}" alt="{{ $attraction['title'] }}" class=" object-cover w-full h-[500px]">
+                    <img src="{{ asset('/storage' .$attraction['images'][0]) }}" alt="{{ $attraction['title'] }}" class=" object-cover w-full h-[500px]">
                 </div>
                 {{-- text --}}
                 <div class="w-1/2 flex flex-col justify-evenly items-start">

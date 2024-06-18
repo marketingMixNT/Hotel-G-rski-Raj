@@ -29,12 +29,12 @@
             <div class="  border-black flex justify-between items-center border-b py-16 gap-12">
                 <div class="w-[30%]">
 
-                    <img src="{{asset($apartment['gallery'][0])}}" alt="" class="w-full h-[400px]">
+                    <img src="{{asset('/storage'.$apartment['gallery'][0])}}" alt="" class="w-full h-[400px]">
                 </div>
                 <div class="w-1/2 flex flex-col justify-center items-start gap-6">
 
                     <h2 class="bold text-3xl">{{$apartment['name']}}</h2>
-                    <p>{{$apartment['short_desc']}}</p>
+                    <p>{!!$apartment['short_desc']!!}</p>
                     <div class="flex gap-12">
                         <div>
                             <img src="" alt=""> <span>{{$apartment['surface']}} m²</span>

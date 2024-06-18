@@ -9,7 +9,7 @@
             {
             <div class="swiper-slide w-full h-full relative">
                 {{-- <img src="{{ '/storage/' . $slide['image'] }}" alt="{{ $slide['alt'] }}" --}}
-                <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
+                <img src="{{'/storage' . $slide['image'] }}" alt="{{ $slide['alt'] }}"
                     class="absolute inset-0 w-full h-full object-cover" />
                 <div class="absolute inset-0 bg-black opacity-30"></div>
             </div>

@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    {{-- PIERWSZE MIEJSCE --}}
     <meta charset="utf-8">
 
     <meta name="application-name" content="{{ config('app.name') }}">
@@ -28,6 +29,7 @@
 </head>
 
 <body class="antialiased">
+    {{-- DRUGIE MIEJSCE --}}
 
     <header>
 
@@ -45,6 +47,8 @@
     @filamentScripts
     @vite('resources/js/app.js')
     <script src="https://wis.upperbooking.com/owcedwie/be-panel?locale=pl" async></script>
+        {{-- TRZECIE MIEJSCE --}}
+
 </body>
 
 </html>

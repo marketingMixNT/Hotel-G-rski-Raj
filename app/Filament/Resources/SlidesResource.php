@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SlidesResource\Pages;
-use App\Filament\Resources\SlidesResource\RelationManagers;
-use App\Models\Slides;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Slides;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\SlidesResource\Pages;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\SlidesResource\RelationManagers;
 
 class SlidesResource extends Resource
 {
@@ -25,6 +26,7 @@ class SlidesResource extends Resource
     {
         return $form
             ->schema([
+                // CuratorPicker::make('image'),
                 Forms\Components\FileUpload::make('image')
                 ->label('Zdjęcie')
                     ->image()

@@ -14,7 +14,7 @@
                     <div class="flex flex-col justify-between items-center swiper-slide group h-full">
                         <a href="#" class="flex flex-col relative group h-full">
                             <div class="bg-white h-[350px] shadow-2xl">
-                                <img src="{{ $offer['thumbnail'] }}" alt="{{ $offer['title'] }}"
+                                <img src="{{asset('/storage' . $offer['thumbnail']) }}" alt="{{ $offer['title'] }}"
                                     class="w-full h-full object-cover p-4">
                             </div>
                             <div class="flex flex-col justify-between items-center gap-4 py-8 flex-grow">
@@ -36,7 +36,7 @@
                                             class="text-3xl mx-2 text-fontPrimary font-bold">{{ $offer['price'] }}zł</span>
                                         za noc</span>
                                     <h2 class="font-semibold text-2xl font-heading">{{ $offer['title'] }}</h2>
-                                    <p>{{ $offer['description'] }}</p>
+                                    <p>{!! $offer['description'] !!}</p>
                                     <hr class="border border-gray-400 w-12 ">
                                     <div class="flex flex-col self-start gap-4">
 
