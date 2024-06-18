@@ -18,9 +18,11 @@ use TomatoPHP\FilamentIcons\Components\IconPicker;
 use Filament\Resources\Concerns\Translatable;
 
 
+
 class AmenityResource extends Resource
 {
-    
+    use Translatable;
+
 
     public static function getTranslatableLocales(): array
     {
