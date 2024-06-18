@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Apartment extends Model
@@ -15,8 +16,11 @@ class Apartment extends Model
      *
      * @var array
      */
+
+     
     protected $fillable = [
         'name',
+        'slug',
         'surface',
         'person',
         'beds',
@@ -26,7 +30,8 @@ class Apartment extends Model
         'short_desc',
         'description',
         'sort',
-        'amenity_id',
+        'meta_title',
+        'meta_desc',
     ];
 
     /**
@@ -37,15 +42,17 @@ class Apartment extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'array',
+        'slug' => 'array',
         'beds' => 'array',
         'short_desc' => 'array',
         'description' => 'array',
-        'amenity_id' => 'integer',
-        'gallery'=>'array'
+        'meta_title' => 'array',
+        'meta_desc' => 'array',
+        'gallery' =>'array'
     ];
 
     public function amenities(): BelongsToMany
     {
-        return $this->belongsToMany(Amenity::class,'amenity_apartment');
+        return $this->belongsToMany(Amenity::class);
     }
 }

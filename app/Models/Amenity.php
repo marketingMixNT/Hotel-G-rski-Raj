@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
+use TomatoPHP\FilamentIcons\Components\IconPicker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use TomatoPHP\FilamentIcons\Components\IconPicker;
 
 class Amenity extends Model
 {
@@ -36,7 +36,7 @@ class Amenity extends Model
 
     public function apartments(): BelongsToMany
     {
-        return $this->belongsToMany(Apartment::class, 'amenity_apartment');
+        return $this->belongsToMany(Apartment::class);
     }
 
     public static function getForm() :array{

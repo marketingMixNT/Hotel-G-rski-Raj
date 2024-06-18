@@ -21,15 +21,15 @@ class OfferFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
-            'description' => $this->faker->paragraph,
-            'thumbnail' => $this->faker->imageUrl(),
-            'price' => $this->faker->numberBetween(100, 1000),
-            'nights' => $this->faker->numberBetween(1, 7),
-            'food' => $this->faker->sentence(),
+            'title' => '{}',
+            'description' => '{}',
+            'thumbnail' => $this->faker->word(),
+            'price' => $this->faker->numberBetween(-10000, 10000),
+            'nights' => $this->faker->numberBetween(-10000, 10000),
+            'food' => $this->faker->word(),
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),
-            'sort' => $this->faker->numberBetween(0, 20),
+            'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }

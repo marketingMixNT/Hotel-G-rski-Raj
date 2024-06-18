@@ -21,9 +21,10 @@ class TestimonialFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->firstName() .' '. $this->faker->lastName() ,
-            'source' => $this->faker->word(),
-            'content' => $this->faker->paragraph(),
+            'name' => '{}',
+            'source' => '{}',
+            'content' => '{}',
+            'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }

@@ -29,20 +29,20 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin123'
         ]);
 
-        Slide::factory(10)->create();
+        // Slide::factory(10)->create();
 
-        Advantage::factory(10)->create();
+        // Advantage::factory(10)->create();
 
-        Offer::factory(10)->create();
+        // Offer::factory(10)->create();
 
-        Testimonial::factory(10)->create();
+        // Testimonial::factory(10)->create();
 
-        Attraction::factory(5)->create();
+        // Attraction::factory(5)->create();
 
-        Apartment::factory(6)->create();
+        // Apartment::factory(6)->create();
 
-        Amenity::factory(20)->create();
+        // Amenity::factory(20)->create();
 
-        Icon::factory(20)->create();
+        // Icon::factory(20)->create();
     }
 }

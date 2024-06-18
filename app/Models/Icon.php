@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Icon extends Model
@@ -41,18 +40,5 @@ class Icon extends Model
     public function mobileButtons(): BelongsToMany
     {
         return $this->belongsToMany(MobileButton::class);
-    }
-
-    public static function getForm() :array {
-        return [
-                
-            FileUpload::make('image')
-            ->reorderable()
-                ->image()
-                ->maxSize(2048)
-                ->required()
-                ->columnSpanFull(),
-           
-        ];
     }
 }

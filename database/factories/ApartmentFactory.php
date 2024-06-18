@@ -21,18 +21,19 @@ class ApartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence,
-            'surface' => $this->faker->numberBetween(20,80),
-            'person' => $this->faker->numberBetween(1, 6),
-            'beds' => '1 łózko podwójne',
-            'banner_img' => $this->faker->imageUrl(),
-            'gallery' => array_map(fn() => $this->faker->imageUrl(), range(1, 8)), 
-            'reservation_link' => 'https://marketingmix.pl',
-            'short_desc' =>  $this->faker->paragraph(),
-            'description' =>  $this->faker->paragraph(),
-            'sort' => $this->faker->numberBetween(1,20),
-            'amenity_id' => $this->faker->randomNumber(1,20),
-
+            'name' => '{}',
+            'slug' => '{}',
+            'surface' => $this->faker->numberBetween(-10000, 10000),
+            'person' => $this->faker->numberBetween(-10000, 10000),
+            'beds' => '{}',
+            'banner_img' => $this->faker->text(),
+            'gallery' => $this->faker->text(),
+            'reservation_link' => $this->faker->text(),
+            'short_desc' => '{}',
+            'description' => '{}',
+            'sort' => $this->faker->numberBetween(-10000, 10000),
+            'meta_title' => '{}',
+            'meta_desc' => '{}',
         ];
     }
 }

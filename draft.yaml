@@ -35,6 +35,7 @@ models:
 
   Apartment:
     name: json
+    slug: json
     surface: integer
     person: integer
     beds: json
@@ -44,7 +45,8 @@ models:
     short_desc: json
     description: json
     sort: integer nullable
-    amenity_id: unsignedInteger nullable
+    meta_title: json
+    meta_desc: json
     relationships:
       belongsToMany: Amenity
 

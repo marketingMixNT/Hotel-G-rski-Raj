@@ -69,6 +69,15 @@ class ApartmentResource extends Resource
                             ->required()
                             ->columnSpanFull(),
 
+                        Forms\Components\TextInput::make('slug')
+                            ->label('Slug')
+                            ->minLength(3)
+                            ->maxLength(255)
+                            ->required()
+                            ->columnSpanFull(),
+
+                        
+
                         Forms\Components\RichEditor::make('short_desc')
                             ->label('Krótki opis')
                             ->helperText('Pojawi się na stronie głównej oraz liście apartamentów')

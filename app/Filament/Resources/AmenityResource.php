@@ -27,11 +27,11 @@ class AmenityResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(
+            ->schema([
 
                 Amenity::getForm()
             
-                    
+            ]
             );
            
     }

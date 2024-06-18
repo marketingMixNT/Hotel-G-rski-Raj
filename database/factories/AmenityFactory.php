@@ -21,9 +21,9 @@ class AmenityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
-            'icons' => $this->faker->word(),
-            'apartment_id' => $this->faker->randomNumber(1,10),
+            'name' => '{}',
+            'icons' => $this->faker->text(),
+            'apartment_id' => $this->faker->randomNumber(),
         ];
     }
 }

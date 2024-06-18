@@ -38,6 +38,7 @@ class PageController extends Controller
     public function apartment($id){
 
         
+        
         return view('pages.apartment.index', ['apartments' => Apartment::all(),'apartment' => Apartment::find($id)]);
     }
 }

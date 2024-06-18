@@ -22,7 +22,7 @@ class MobileButtonFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(),
+            'title' => '{}',
             'image' => $this->faker->text(),
             'link' => $this->faker->text(),
             'amenity_id' => $this->faker->randomNumber(),

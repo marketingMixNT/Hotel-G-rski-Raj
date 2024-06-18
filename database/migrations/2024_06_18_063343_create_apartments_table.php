@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->json('slug');
             $table->integer('surface');
             $table->integer('person');
             $table->json('beds');
@@ -23,7 +24,8 @@ return new class extends Migration
             $table->json('short_desc');
             $table->json('description');
             $table->integer('sort')->nullable();
-            $table->unsignedInteger('amenity_id')->nullable();
+            $table->json('meta_title');
+            $table->json('meta_desc');
             $table->timestamps();
         });
     }

@@ -21,10 +21,10 @@ class AdvantageFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
-            'description' => $this->faker->paragraph(),
-            'thumbnail' => $this->faker->imageUrl(),
-            'sort' => $this->faker->numberBetween(1, 20),
+            'title' => '{}',
+            'description' => '{}',
+            'thumbnail' => $this->faker->word(),
+            'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }
