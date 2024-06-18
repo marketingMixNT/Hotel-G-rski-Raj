@@ -8,7 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditOffer extends EditRecord
 {
-    // use EditRecord\Concerns\Translatable;
+    use EditRecord\Concerns\Translatable;
 
     protected static string $resource = OfferResource::class;
 
@@ -16,7 +16,7 @@ class EditOffer extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
-            // Actions\LocaleSwitcher::make(),
+            Actions\LocaleSwitcher::make(),
 
         ];
     }

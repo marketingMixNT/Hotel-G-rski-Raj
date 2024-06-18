@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
+
 
 class Advantage extends Model
 {
     use HasFactory;
+    use HasTranslations;
+
 
     /**
      * The attributes that are mass assignable.
@@ -31,4 +35,7 @@ class Advantage extends Model
         'title' => 'array',
         'description' => 'array',
     ];
+
+    public $translatable = ['title', 'description'];
+
 }

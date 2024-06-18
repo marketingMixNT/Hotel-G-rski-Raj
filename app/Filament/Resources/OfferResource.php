@@ -21,12 +21,12 @@ use App\Filament\Resources\OfferResource\RelationManagers;
 
 class OfferResource extends Resource
 {
-    // use Translatable;
+    use Translatable;
 
-    // public static function getTranslatableLocales(): array
-    // {
-    //     return ['pl', 'en'];
-    // }
+    public static function getTranslatableLocales(): array
+    {
+        return ['pl', 'en'];
+    }
     protected static ?string $model = Offer::class;
 
 

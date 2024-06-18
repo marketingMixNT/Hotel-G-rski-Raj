@@ -19,12 +19,12 @@ use App\Filament\Resources\AdvantagesResource\RelationManagers;
 
 class AdvantagesResource extends Resource
 {
-    // use Translatable;
+    use Translatable;
 
-    // public static function getTranslatableLocales(): array
-    // {
-    //     return ['pl', 'en'];
-    // }
+    public static function getTranslatableLocales(): array
+    {
+        return ['pl', 'en'];
+    }
     protected static ?string $model = Advantage::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';

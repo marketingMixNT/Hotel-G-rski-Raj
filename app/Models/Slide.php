@@ -29,4 +29,7 @@ class Slide extends Model
         'id' => 'integer',
         'alt' => 'array',
     ];
+
+    public $translatable = ['title', 'description'];
+
 }

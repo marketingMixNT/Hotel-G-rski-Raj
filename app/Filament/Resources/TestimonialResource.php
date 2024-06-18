@@ -15,8 +15,17 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TestimonialResource\Pages;
 use App\Filament\Resources\TestimonialResource\RelationManagers;
 
+use Filament\Resources\Concerns\Translatable;
+
+
 class TestimonialResource extends Resource
 {
+    use Translatable;
+
+    public static function getTranslatableLocales(): array
+    {
+        return ['pl', 'en'];
+    }
     protected static ?string $model = Testimonial::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-oval-left';

@@ -8,7 +8,7 @@ use Filament\Resources\Pages\ListRecords;
 
 class ListOffers extends ListRecords
 {
-    // use ListRecords\Concerns\Translatable;
+    use ListRecords\Concerns\Translatable;
 
     protected static string $resource = OfferResource::class;
 
@@ -16,7 +16,7 @@ class ListOffers extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
-            // Actions\LocaleSwitcher::make(),
+            Actions\LocaleSwitcher::make(),
         ];
     }
 }

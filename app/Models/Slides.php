@@ -28,4 +28,7 @@ class Slides extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public $translatable = ['title', 'description'];
+
 }

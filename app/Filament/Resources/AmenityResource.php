@@ -15,9 +15,17 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use TomatoPHP\FilamentIcons\Components\IconPicker;
 
+use Filament\Resources\Concerns\Translatable;
+
 
 class AmenityResource extends Resource
 {
+    
+
+    public static function getTranslatableLocales(): array
+    {
+        return ['pl', 'en'];
+    }
     protected static ?string $model = Amenity::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-face-smile';
