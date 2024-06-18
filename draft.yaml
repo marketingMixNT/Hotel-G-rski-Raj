@@ -46,15 +46,30 @@ models:
     sort: integer nullable
     amenity_id: unsignedInteger nullable
     relationships:
-      hasMany: Amenity
+      belongsToMany: Amenity
 
   Amenity:
-   name: json
-   icons: text
-   apartment_id: unsignedInteger nullable
-   relationships:
-     belongsToMany: Apartment
+    name: json
+    icons: text
+    apartment_id: unsignedInteger nullable
+    relationships:
+      belongsToMany: Apartment
 
- 
-  
-  
+  Icon:
+    image: text
+    amenity_id: unsignedInteger nullable
+    mobile_button_id: unsignedInteger nullable
+    relationships:
+      belongsToMany: Amenity, Mobile_Button
+
+  Mobile_Button:
+    title: json
+    image: text
+    link: text
+    amenity_id: unsignedInteger nullable
+    relationships:
+      belongsTo: Icon
+
+  Custom_Script:
+    content: text
+    position: text

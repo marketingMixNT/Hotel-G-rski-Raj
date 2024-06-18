@@ -27,19 +27,12 @@ class AmenityResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
 
-                
-                Forms\Components\Textarea::make('name')
-                    ->required()
-                    ->columnSpanFull(),
-                    IconPicker::make('icon')
-                    ->required(),
-                Forms\Components\TextInput::make('apartment_id')
-                    ->numeric()
-                    ->default(null),
+                Amenity::getForm()
+            
                     
-            ]);
+            );
            
     }
 

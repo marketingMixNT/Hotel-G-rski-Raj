@@ -11,6 +11,7 @@ use App\Models\Advantage;
 use App\Models\Apartment;
 use App\Models\Attraction;
 use App\Models\Testimonial;
+use App\Models\Icon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -41,5 +42,7 @@ class DatabaseSeeder extends Seeder
         Apartment::factory(6)->create();
 
         Amenity::factory(20)->create();
+
+        Icon::factory(20)->create();
     }
 }

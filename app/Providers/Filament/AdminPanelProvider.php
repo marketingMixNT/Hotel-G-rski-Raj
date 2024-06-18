@@ -8,15 +8,18 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\NavigationItem;
+use App\Filament\Resources\IconResource;
 use App\Filament\Resources\OfferResource;
 use App\Filament\Resources\SlidesResource;
+use App\Filament\Resources\MobileButtonsResource;
+use App\Filament\Resources\CustomScriptResource;
 use Filament\Http\Middleware\Authenticate;
 use App\Filament\Resources\AmenityResource;
 use App\Filament\Resources\ApartmentResource;
 use Filament\SpatieLaravelTranslatablePlugin;
 use App\Filament\Resources\AdvantagesResource;
-use App\Filament\Resources\AttractionResource;
 
+use App\Filament\Resources\AttractionResource;
 use App\Filament\Resources\TestimonialResource;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -26,8 +29,8 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Outerweb\FilamentImageLibrary\Filament\Plugins\FilamentImageLibraryPlugin;
 
 
@@ -66,7 +69,10 @@ class AdminPanelProvider extends PanelProvider
                 TestimonialResource::class,
                 AttractionResource::class,
                 ApartmentResource::class,
-                AmenityResource::class
+                AmenityResource::class,
+               IconResource::class,
+               MobileButtonsResource::class,
+               CustomScriptResource::class
             ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

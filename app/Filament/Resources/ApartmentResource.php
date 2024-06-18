@@ -12,10 +12,14 @@ use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Repeater;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ApartmentResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ApartmentResource\RelationManagers;
+
+use Awcodes\Shout\Components\Shout;
+
 
 class ApartmentResource extends Resource
 {
@@ -29,6 +33,30 @@ class ApartmentResource extends Resource
     {
         return $form
             ->schema([
+                Section::make('SEO')
+                    ->collapsible()
+                    ->collapsed()
+                    ->description('info')
+                    ->schema([
+                        Forms\Components\TextInput::make('meta_title')
+                            ->label('Tytuł strony')
+                            ->minLength(3)
+                            ->maxLength(255)
+                            ->required()
+                            ->columnSpanFull(),
+
+                        Forms\Components\TextInput::make('meta_desc')
+                            ->label('Meta Desc')
+                            ->helperText('Pamiętaj o limicie 160 znaków')
+                            ->required()
+                           
+                            ->columnSpanFull(),
+                            Shout::make('so-important')
+                            ->content('Meta desc jest za długi')
+                            ->color('danger')
+
+                        
+                    ]),
                 Section::make('Opis')
                     ->collapsible()
                     ->collapsed()
@@ -80,7 +108,7 @@ class ApartmentResource extends Resource
                             ->columnSpanFull(),
 
                         Forms\Components\FileUpload::make('gallery')
-                        
+
                             ->label('Galeria')
                             ->reorderable()
                             ->multiple()
@@ -98,7 +126,7 @@ class ApartmentResource extends Resource
                             ])
                             ->required()
                             ->columnSpanFull(),
-                            
+
                     ]),
 
                 Section::make('Informacje Dodatkowe')
@@ -128,21 +156,20 @@ class ApartmentResource extends Resource
                     ->description('info')
                     ->schema([
 
-                        
-                        Forms\Components\Select::make('amenities')
-                        ->searchable()
-                        ->multiple()
-                        ->searchable()
-                        ->preload()
-                        ->editOptionForm(Amenity::getForm())
-                        ->createOptionForm(Amenity::getForm())
-                        ->relationship('amenities', 'id')
-                        ->options(
-                            Amenity::all()->pluck('name', 'id')
-                        )
+                       
+                                Forms\Components\Select::make('amenities')
+                                    ->searchable()
+                                    ->multiple()
+                                    ->preload()
+                                    ->editOptionForm(Amenity::getForm())
+                                    ->createOptionForm(Amenity::getForm())
+                                    ->relationship('amenities', 'id')
+                                    ->options(
+                                        Amenity::all()->pluck('name', 'id')
+                                    )
+                            ]),
 
-
-                    ]),
+                   
 
                 Forms\Components\Textarea::make('reservation_link')
                     ->label('Link do rezerwacji pokoju')
@@ -164,7 +191,7 @@ class ApartmentResource extends Resource
                     ->label('#')
                     ->numeric()
                     ->sortable(),
-                    Tables\Columns\ImageColumn::make('images')
+                Tables\Columns\ImageColumn::make('images')
                     ->label('Miniaturka')
                     ->getStateUsing(function (Apartment $record) {
                         return $record->images[0] ?? null;
@@ -178,18 +205,18 @@ class ApartmentResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('surface')
-                ->label('Powierzchnia')
-                ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Powierzchnia')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->numeric()
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('person')
-                ->label('Max. osób')
-                ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Max. osób')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->numeric()
                     ->sortable(),
-                  
-                
+
+
 
 
             ])

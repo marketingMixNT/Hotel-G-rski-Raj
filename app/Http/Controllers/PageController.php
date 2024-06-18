@@ -27,4 +27,17 @@ class PageController extends Controller
 
         return view('pages.home.index', ['slides' => $slides, 'advantages' => $advantages, 'offers' => $offers, 'attractions' => $attractions, 'testimonials' => $testimonials,'apartments'=>$apartments]);
     }
+
+    public function apartments(){
+
+        $apartments = Apartment::orderBy('sort')->get();
+     
+        return view('pages.apartments.index', ['apartments'=>$apartments]);
+    }
+
+    public function apartment($id){
+
+        
+        return view('pages.apartment.index', ['apartments' => Apartment::all(),'apartment' => Apartment::find($id)]);
+    }
 }

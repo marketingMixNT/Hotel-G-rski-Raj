@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Advantage extends Model
+class CustomScript extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,8 @@ class Advantage extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'description',
-        'thumbnail',
-        'sort',
+        'content',
+        'position',
     ];
 
     /**
@@ -28,7 +26,5 @@ class Advantage extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'title' => 'array',
-        'description' => 'array',
     ];
 }

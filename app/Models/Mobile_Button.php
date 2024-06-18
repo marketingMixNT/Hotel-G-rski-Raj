@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Advantage extends Model
+class MobileButton extends Model
 {
     use HasFactory;
 
@@ -16,9 +17,10 @@ class Advantage extends Model
      */
     protected $fillable = [
         'title',
-        'description',
-        'thumbnail',
-        'sort',
+        'image',
+        'link',
+        'amenity_id',
+        'icon_id',
     ];
 
     /**
@@ -29,6 +31,12 @@ class Advantage extends Model
     protected $casts = [
         'id' => 'integer',
         'title' => 'array',
-        'description' => 'array',
+        'amenity_id' => 'integer',
+        'icon_id' => 'integer',
     ];
+
+    public function icon(): BelongsTo
+    {
+        return $this->belongsTo(Icon::class);
+    }
 }
