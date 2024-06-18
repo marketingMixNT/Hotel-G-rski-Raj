@@ -35,6 +35,8 @@ use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 use Outerweb\FilamentImageLibrary\Filament\Plugins\FilamentImageLibraryPlugin;
 
+use Awcodes\LightSwitch\LightSwitchPlugin;
+use Awcodes\LightSwitch\Enums\Alignment;
 
 
 class AdminPanelProvider extends PanelProvider
@@ -116,7 +118,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugin(
                 \Hasnayeen\Themes\ThemesPlugin::make()
-            );
-            
+            )
+            ->plugins([
+                LightSwitchPlugin::make()
+                   
+            ]);
     }
 }
