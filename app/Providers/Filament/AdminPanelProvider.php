@@ -61,19 +61,19 @@ class AdminPanelProvider extends PanelProvider
                     ->url('http://localhost:8000', shouldOpenInNewTab: true)
                     ->icon('heroicon-o-globe-alt')
             ])
-            // ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
-            ->resources([
-                SlidesResource::class,
-                AdvantagesResource::class,
-                OfferResource::class,
-                TestimonialResource::class,
-                AttractionResource::class,
-                ApartmentResource::class,
-                AmenityResource::class,
-               IconResource::class,
-               MobileButtonsResource::class,
-               CustomScriptResource::class
-            ])
+            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            // ->resources([
+            //     SlidesResource::class,
+            //     AdvantagesResource::class,
+            //     OfferResource::class,
+            //     TestimonialResource::class,
+            //     AttractionResource::class,
+            //     ApartmentResource::class,
+            //     AmenityResource::class,
+            //    IconResource::class,
+            //    MobileButtonsResource::class,
+            //    CustomScriptResource::class
+            // ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
@@ -99,7 +99,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugin(SpatieLaravelTranslatablePlugin::make()->defaultLocales(['pl', 'en']),)
             ->plugins([
-                FilamentImageLibraryPlugin::make(),
+                \Awcodes\Curator\CuratorPlugin::make()
+                ->defaultListView('grid' )
+               
             ]);
     }
 }
