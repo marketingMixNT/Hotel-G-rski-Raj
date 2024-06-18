@@ -36,9 +36,12 @@ class PageController extends Controller
     }
 
     public function apartment($id){
-
-        
-        
-        return view('pages.apartment.index', ['apartments' => Apartment::all(),'apartment' => Apartment::find($id)]);
+        $apartment = Apartment::where('id', $id)->first();
+    
+        if (!$apartment) {
+            abort(404); // Możesz obsłużyć sytuację, gdy apartament o podanej nazwie nie istnieje
+        }
+    
+        return view('pages.apartment.index', ['apartment' => $apartment]);
     }
 }
