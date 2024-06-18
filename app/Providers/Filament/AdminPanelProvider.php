@@ -95,6 +95,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \Hasnayeen\Themes\Http\Middleware\SetTheme::class
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->authMiddleware([
@@ -112,6 +113,10 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 FilamentGeneralSettingsPlugin::make()
                 ->setIcon('heroicon-o-wrench-screwdriver')
-            ]);
+            ])
+            ->plugin(
+                \Hasnayeen\Themes\ThemesPlugin::make()
+            );
+            
     }
 }
