@@ -32,6 +32,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
+use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 use Outerweb\FilamentImageLibrary\Filament\Plugins\FilamentImageLibraryPlugin;
 
 
@@ -105,6 +106,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentEditProfilePlugin::make()
+                ->setIcon('heroicon-o-user')
+            ])
+            ->plugins([
+                FilamentGeneralSettingsPlugin::make()
             ]);
     }
 }
