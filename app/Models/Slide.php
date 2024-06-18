@@ -27,5 +27,6 @@ class Slide extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'alt' => 'array',
     ];
 }

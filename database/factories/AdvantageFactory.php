@@ -23,7 +23,7 @@ class AdvantageFactory extends Factory
         return [
             'title' => '{}',
             'description' => '{}',
-            'thumbnail' => $this->faker->word(),
+            'thumbnail' => $this->faker->text(),
             'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }

@@ -23,7 +23,7 @@ class OfferFactory extends Factory
         return [
             'title' => '{}',
             'description' => '{}',
-            'thumbnail' => $this->faker->word(),
+            'thumbnail' => $this->faker->text(),
             'price' => $this->faker->numberBetween(-10000, 10000),
             'nights' => $this->faker->numberBetween(-10000, 10000),
             'food' => $this->faker->word(),

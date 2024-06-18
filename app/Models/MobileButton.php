@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MobileButton extends Model
 {
@@ -19,8 +18,6 @@ class MobileButton extends Model
         'title',
         'image',
         'link',
-        'amenity_id',
-        'icon_id',
     ];
 
     /**
@@ -31,12 +28,5 @@ class MobileButton extends Model
     protected $casts = [
         'id' => 'integer',
         'title' => 'array',
-        'amenity_id' => 'integer',
-        'icon_id' => 'integer',
     ];
-
-    public function icon(): BelongsTo
-    {
-        return $this->belongsTo(Icon::class);
-    }
 }

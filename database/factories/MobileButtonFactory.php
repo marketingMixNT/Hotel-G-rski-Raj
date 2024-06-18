@@ -4,8 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Icon;
-use App\Models\Mobile_Button;
+use App\Models\MobileButton;
 
 class MobileButtonFactory extends Factory
 {
@@ -25,8 +24,6 @@ class MobileButtonFactory extends Factory
             'title' => '{}',
             'image' => $this->faker->text(),
             'link' => $this->faker->text(),
-            'amenity_id' => $this->faker->randomNumber(),
-            'icon_id' => Icon::factory(),
         ];
     }
 }

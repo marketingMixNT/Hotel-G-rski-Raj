@@ -27,7 +27,7 @@ class ApartmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
-    protected static ?string $navigationGroup = 'Strona Główna';
+    protected static ?string $navigationGroup = 'Apartamenty';
 
     public static function form(Form $form): Form
     {

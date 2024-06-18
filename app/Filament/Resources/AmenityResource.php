@@ -22,7 +22,7 @@ class AmenityResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-face-smile';
 
-    protected static ?string $navigationGroup = 'Strona Główna';
+    protected static ?string $navigationGroup = 'Apartamenty';
 
     public static function form(Form $form): Form
     {

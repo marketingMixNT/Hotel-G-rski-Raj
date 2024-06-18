@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('icon_mobile__button', function (Blueprint $table) {
-            $table->foreignId('icon_id');
+        Schema::create('custom_scripts', function (Blueprint $table) {
+            $table->id();
+            $table->text('content');
+            $table->text('position');
+            $table->timestamps();
         });
     }
 
@@ -21,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('icon_mobile__button');
+        Schema::dropIfExists('custom_scripts');
     }
 };

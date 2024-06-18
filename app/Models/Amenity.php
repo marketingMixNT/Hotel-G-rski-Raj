@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\TextInput;
-use TomatoPHP\FilamentIcons\Components\IconPicker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Amenity extends Model
@@ -37,15 +35,5 @@ class Amenity extends Model
     public function apartments(): BelongsToMany
     {
         return $this->belongsToMany(Apartment::class);
-    }
-
-    public static function getForm() :array{
-        return [
-          TextInput::make('name')
-            ->required(),
-            IconPicker::make('icons')
-            ->required(),
-     
-        ];
     }
 }

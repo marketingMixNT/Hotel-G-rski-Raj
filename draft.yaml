@@ -1,19 +1,19 @@
 models:
   Slide:
-    image: string
-    alt: string
+    image: text
+    alt: json
     sort: integer nullable
 
   Advantage:
     title: json
     description: json
-    thumbnail: string
+    thumbnail: text
     sort: integer nullable
 
   Offer:
     title: json
     description: json
-    thumbnail: string
+    thumbnail: text
     price: integer
     nights: integer
     food: string
@@ -57,21 +57,11 @@ models:
     relationships:
       belongsToMany: Apartment
 
-  Icon:
-    image: text
-    amenity_id: unsignedInteger nullable
-    mobile_button_id: unsignedInteger nullable
-    relationships:
-      belongsToMany: Amenity, Mobile_Button
-
-  Mobile_Button:
+  MobileButton:
     title: json
     image: text
     link: text
-    amenity_id: unsignedInteger nullable
-    relationships:
-      belongsTo: Icon
 
-  Custom_Script:
+  CustomScript:
     content: text
     position: text

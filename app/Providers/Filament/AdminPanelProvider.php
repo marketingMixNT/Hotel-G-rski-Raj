@@ -111,6 +111,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentGeneralSettingsPlugin::make()
+                ->setIcon('heroicon-o-wrench-screwdriver')
             ]);
     }
 }

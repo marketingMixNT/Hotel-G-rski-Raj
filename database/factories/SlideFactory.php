@@ -21,8 +21,8 @@ class SlideFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => $this->faker->word(),
-            'alt' => $this->faker->word(),
+            'image' => $this->faker->text(),
+            'alt' => '{}',
             'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
