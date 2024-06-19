@@ -38,10 +38,16 @@ class PageController extends Controller
     }
 
     public function apartment($slug){
+
+       
         $apartment = Apartment::where('slug->pl', $slug)->first();
     
+        $otherApartments = Apartment::select('id', 'name', 'short_desc', 'surface', 'beds', 'person')
+                                ->selectRaw("JSON_UNQUOTE(JSON_EXTRACT(gallery, '$[0]')) as thumbnail")
+                                ->where('id', '!=', $apartment->id)
+                                ->orderBy('sort')
+                                ->get();
     
-    
-        return view('pages.apartment.index', ['apartment' => $apartment]);
+        return view('pages.apartment.index', ['apartment' => $apartment,'apartments'=>$otherApartments]);
     }
 }

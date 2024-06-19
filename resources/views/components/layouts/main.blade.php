@@ -43,9 +43,9 @@
       
     </header>
 
-    
+    <main>
         {{ $slot }}
-   
+    </main>
 
     <x-Footer/>
 

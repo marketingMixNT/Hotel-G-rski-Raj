@@ -18,3 +18,17 @@ h6 {
 .text {
     @apply font-thin leading-7;
 }
+
+
+.section{
+    @apply first-of-type:py-16 md:first-of-type:py-24 py-8 md:py-12 last-of-type:pb-8 md:last-of-type:pb-24 mx-auto
+}
+
+
+.description h3{
+    @apply text-2xl font-bold mt-8 mb-2
+}
+
+.description p{
+    @apply text
+}

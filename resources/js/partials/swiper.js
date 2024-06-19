@@ -2,6 +2,7 @@ import Swiper from "swiper";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 
+//HERO CAROUSEL
 new Swiper(".hero-carousel", {
     loop: true,
     effect: "fade",
@@ -17,6 +18,7 @@ new Swiper(".hero-carousel", {
     modules: [Autoplay, EffectFade],
 });
 
+//ADVANTAGES CAROUSEL
 new Swiper(".advantages-carousel", {
     loop: true,
     effect: "fade",
@@ -37,14 +39,13 @@ new Swiper(".advantages-carousel", {
     modules: [Autoplay, Navigation, Pagination,EffectFade],
 });
 
+//OFFER CAROUSEL
 new Swiper(".offer-carousel", {
     loop: true,
     effect: "fade",
     // grabCursor: true,
     slidesPerView: 1,
     
-
-
     breakpoints: {
         
         768: {
@@ -73,17 +74,13 @@ new Swiper(".offer-carousel", {
     modules: [Autoplay, Navigation, Pagination],
 });
 
-
+//TESTIMONIALS CAROUSEL
 new Swiper(".testimonial-carousel", {
     loop: true,
     // effect: "fade",
     grabCursor: true,
     slidesPerView: 1,
-    
 
-
-  
-    
     autoplay: {
         delay: 3500,
         disableOnInteraction: true,
@@ -102,7 +99,7 @@ new Swiper(".testimonial-carousel", {
 });
 
 
-
+//ALL APARTMENTS CAROUSEL
 new Swiper(".apartments-carousel", {
     // loop: true,
     effect: "fade",
@@ -140,4 +137,56 @@ new Swiper(".apartments-carousel", {
     //     clickable: true, 
     // },
     modules: [Autoplay, Navigation, Pagination],
+});
+
+//APARTMENT GALLERY CAROUSEL
+new Swiper(".apartment-gallery-carousel", {
+    loop: true,
+    grabCursor: true,
+    slidesPerView: 1,
+    breakpoints: {
+        
+        1024: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        1400: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        }},
+    
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+        
+    },
+   
+   
+    modules: [Autoplay, ],
+});
+
+//OFFER CAROUSEL
+new Swiper(".other-rooms-carousel", {
+    loop: true,
+    effect: "fade",
+    
+    slidesPerView: 1,
+    
+    breakpoints: {
+        
+       
+        880: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        }},
+    
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+        
+    },
+  
+    modules: [Autoplay, ],
 });
