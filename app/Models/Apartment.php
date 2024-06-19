@@ -2,17 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class Apartment extends Model
 {
     use HasFactory;
     use HasTranslations;
+    
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::saving(function ($apartment) {
+            if (!empty($apartment->name)) {
+                $apartment->slug = Str::slug($apartment->name);
+            }
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +60,7 @@ class Apartment extends Model
         'description' => 'array',
         'meta_title' => 'array',
         'meta_desc' => 'array',
+        'gallery' =>'array'
     ];
 
     public function amenities(): BelongsToMany
@@ -56,6 +68,6 @@ class Apartment extends Model
         return $this->belongsToMany(Amenity::class);
     }
 
-    public $translatable = ['title', 'description'];
+    public $translatable = ['meta_title', 'meta_desc','name','slug','short_desc','description','beds'];
 
 }

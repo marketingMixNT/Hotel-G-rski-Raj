@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slide;
+
+
 use App\Models\Offer;
-use App\Models\Slides;
 use App\Models\Apartment;
 use App\Models\Advantage;
 use App\Models\Attraction;
@@ -15,7 +17,7 @@ class PageController extends Controller
     public function home()
     {
 
-        $slides = Slides::orderBy('sort')->get();
+        $slides = Slide::orderBy('sort')->get();
         $advantages = Advantage::orderBy('sort')->get();
         $offers = Offer::orderBy('sort')->get();
         $attractions = Attraction::orderBy('sort')->get();
@@ -35,12 +37,10 @@ class PageController extends Controller
         return view('pages.apartments.index', ['apartments'=>$apartments]);
     }
 
-    public function apartment($id){
-        $apartment = Apartment::where('id', $id)->first();
+    public function apartment($slug){
+        $apartment = Apartment::where('slug->pl', $slug)->first();
     
-        if (!$apartment) {
-            abort(404); // Możesz obsłużyć sytuację, gdy apartament o podanej nazwie nie istnieje
-        }
+    
     
         return view('pages.apartment.index', ['apartment' => $apartment]);
     }

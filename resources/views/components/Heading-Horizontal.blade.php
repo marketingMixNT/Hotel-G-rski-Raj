@@ -6,7 +6,7 @@
         <h2 class="text-4xl xs:text-5xl sm:text-6xl md:text-7xl 2xl:text-8xl tracking-wider font-heading font-bold ">
             {{ $heading }}
         </h2>
-        <h3 class="font-handwriting text-right text-2xl mt-2  decorText-animation">
+        <h3 class="font-handwritting text-right text-2xl mt-2  decorText-animation">
             {{ $decor }}
         </h3>
     </div>

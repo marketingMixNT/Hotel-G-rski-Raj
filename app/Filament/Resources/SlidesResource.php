@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Slides;
+use App\Models\Slide;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
@@ -14,9 +14,18 @@ use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SlidesResource\RelationManagers;
 
+use Filament\Resources\Concerns\Translatable;
+
+
 class SlidesResource extends Resource
 {
-    protected static ?string $model = Slides::class;
+    use Translatable;
+
+    public static function getTranslatableLocales(): array
+    {
+        return ['pl', 'en'];
+    }
+    protected static ?string $model = Slide::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-photo';
 

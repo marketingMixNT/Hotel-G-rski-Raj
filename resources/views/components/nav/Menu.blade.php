@@ -5,7 +5,7 @@
         <!--NAV ITEMS-->
         <ul class="text-heading text-fontLight-400 flex justify-center items-center flex-col gap-4 xs:gap-8">
 
-            <x-nav.MenuItem href="#">Pokoje</x-nav.MenuItem>
+            <x-nav.MenuItem href="{{route('apartments')}}">Apartamenty</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Restauracja</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Menu</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Galeria</x-nav.MenuItem>

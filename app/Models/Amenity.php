@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-
+use Filament\Forms\Components\TextInput;
+use TomatoPHP\FilamentIcons\Components\IconPicker;
 class Amenity extends Model
 {
     use HasFactory;
@@ -39,6 +41,14 @@ class Amenity extends Model
     public function apartments(): BelongsToMany
     {
         return $this->belongsToMany(Apartment::class);
+    }
+
+    public static function getForm():array{
+        return [
+            TextInput::make('name')
+            ->required(),
+            IconPicker::make('icons')
+            ->required(),];
     }
 
     public $translatable = ['title', 'description'];

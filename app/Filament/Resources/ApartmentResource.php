@@ -57,13 +57,34 @@ class ApartmentResource extends Resource
                             ->label('Meta Desc')
                             ->helperText('Pamiętaj o limicie 160 znaków')
                             ->required()
-                           
-                            ->columnSpanFull(),
-                            Shout::make('so-important')
-                            ->content('Meta desc jest za długi')
-                            ->color('danger')
 
-                        
+                            ->columnSpanFull(),
+                            Shout::make('meta-danger')
+                            ->columnSpanFull()
+                            ->type(function ($get) {
+                                $length = mb_strlen($get('meta_desc'));
+
+                                if ($length < 50) {
+                                    return 'warning';
+                                } else if ($length > 160) {
+                                    return 'danger';
+                                } else {
+                                    return 'success';
+                                }
+                            })
+                            ->content(function ($get) {
+                                $length = mb_strlen($get('meta_desc'));
+
+                                if ($length < 50) {
+                                    return 'Meta description jest za krótki. Spróbuj rozwinąć go do maksymalnie 160 znaków.';
+                                } else if ($length > 160) {
+                                    return 'Meta description jest za długi. Skróć go do maksymalnie 160 znaków.';
+                                } else {
+                                    return 'Meta description jest idealny!';
+                                }
+                            }),
+
+
                     ]),
                 Section::make('Opis')
                     ->collapsible()
@@ -81,10 +102,13 @@ class ApartmentResource extends Resource
                             ->label('Slug')
                             ->minLength(3)
                             ->maxLength(255)
-                            ->required()
+                            // ->required()
+                            ->disabled()
                             ->columnSpanFull(),
+                          
+                            
 
-                        
+
 
                         Forms\Components\RichEditor::make('short_desc')
                             ->label('Krótki opis')
@@ -127,6 +151,7 @@ class ApartmentResource extends Resource
                         Forms\Components\FileUpload::make('gallery')
 
                             ->label('Galeria')
+                            
                             ->reorderable()
                             ->multiple()
                             ->appendFiles()
@@ -173,20 +198,20 @@ class ApartmentResource extends Resource
                     ->description('info')
                     ->schema([
 
-                       
-                                Forms\Components\Select::make('amenities')
-                                    ->searchable()
-                                    ->multiple()
-                                    ->preload()
-                                    ->editOptionForm(Amenity::getForm())
-                                    ->createOptionForm(Amenity::getForm())
-                                    ->relationship('amenities', 'id')
-                                    ->options(
-                                        Amenity::all()->pluck('name', 'id')
-                                    )
-                            ]),
 
-                   
+                        Forms\Components\Select::make('amenities')
+                            ->searchable()
+                            ->multiple()
+                            ->preload()
+                            ->editOptionForm(Amenity::getForm())
+                            ->createOptionForm(Amenity::getForm())
+                            ->relationship('amenities', 'id')
+                            ->options(
+                                Amenity::all()->pluck('name', 'id')
+                            )
+                    ]),
+
+
 
                 Forms\Components\Textarea::make('reservation_link')
                     ->label('Link do rezerwacji pokoju')
@@ -195,7 +220,8 @@ class ApartmentResource extends Resource
 
 
 
-            ]);
+            ])
+            ;
     }
 
     public static function table(Table $table): Table
@@ -211,7 +237,7 @@ class ApartmentResource extends Resource
                 Tables\Columns\ImageColumn::make('images')
                     ->label('Miniaturka')
                     ->getStateUsing(function (Apartment $record) {
-                        return $record->images[0] ?? null;
+                        return $record->gallery[0] ?? null;
                     }),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Apartament')

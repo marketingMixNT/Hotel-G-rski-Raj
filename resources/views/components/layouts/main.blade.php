@@ -83,7 +83,7 @@
   
 </head>
 
-<body class="antialiased">
+<body class="antialiased bg-bgPrimary">
      {{-- Pobranie skryptów do drugiego miejsca --}}
      @foreach(\App\Models\CustomScript::where('position', 'second_place')->get() as $script)
      {!! $script->content !!}
@@ -97,9 +97,9 @@
       
     </header>
 
-    <main>
+    
         {{ $slot }}
-    </main>
+   
 
     <x-Footer/>
 

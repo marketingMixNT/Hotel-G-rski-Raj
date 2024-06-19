@@ -8,6 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateSlides extends CreateRecord
 {
+    
     use CreateRecord\Concerns\Translatable;
 
     protected static string $resource = SlidesResource::class;
