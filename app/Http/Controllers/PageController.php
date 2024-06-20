@@ -27,27 +27,36 @@ class PageController extends Controller
 
 
 
-        return view('pages.home.index', ['slides' => $slides, 'advantages' => $advantages, 'offers' => $offers, 'attractions' => $attractions, 'testimonials' => $testimonials,'apartments'=>$apartments]);
+        return view('pages.home.index', ['slides' => $slides, 'advantages' => $advantages, 'offers' => $offers, 'attractions' => $attractions, 'testimonials' => $testimonials, 'apartments' => $apartments]);
     }
 
-    public function apartments(){
+    public function apartments()
+    {
 
         $apartments = Apartment::orderBy('sort')->get();
-     
-        return view('pages.apartments.index', ['apartments'=>$apartments]);
+
+        return view('pages.apartments.index', ['apartments' => $apartments]);
     }
 
-    public function apartment($slug){
+    public function apartment($slug)
+    {
 
-       
+
         $apartment = Apartment::where('slug->pl', $slug)->first();
-    
-        $otherApartments = Apartment::select('id', 'name','slug' ,'short_desc', 'surface', 'beds', 'person')
-                                ->selectRaw("JSON_UNQUOTE(JSON_EXTRACT(gallery, '$[0]')) as thumbnail")
-                                ->where('id', '!=', $apartment->id)
-                                ->orderBy('sort')
-                                ->get();
-    
-        return view('pages.apartment.index', ['apartment' => $apartment,'otherApartments'=>$otherApartments]);
+
+        $otherApartments = Apartment::select('id', 'name', 'slug', 'short_desc', 'surface', 'beds', 'person')
+            ->selectRaw("JSON_UNQUOTE(JSON_EXTRACT(gallery, '$[0]')) as thumbnail")
+            ->where('id', '!=', $apartment->id)
+            ->orderBy('sort')
+            ->get();
+
+        return view('pages.apartment.index', ['apartment' => $apartment, 'otherApartments' => $otherApartments]);
+    }
+
+    public function localAttractions()
+    {
+        $attractions = Attraction::orderBy('sort')->get();
+
+        return view('pages.localAttractions.index', ['attractions' => $attractions]);
     }
 }
