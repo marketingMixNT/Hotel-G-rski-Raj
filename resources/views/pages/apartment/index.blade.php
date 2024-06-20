@@ -175,68 +175,17 @@
        
             <div class="swiper other-rooms-carousel">
                 <div class="swiper-wrapper ">
-                    @foreach ($apartments as $offer)
+                    @foreach ($otherApartments as $apartment)
 
-                        <div class="flex flex-col justify-between items-center swiper-slide group h-full">
-                            <a href="{{ route('apartment', $apartment['slug']) }}" class="flex flex-col relative group h-full">
-                                <div class="bg-white h-[400px] shadow-2xl">
-                                    <img src="{{ asset('/storage' . $offer['thumbnail']) }}"
-                                        alt="{{ $offer['title'] }}" class="w-full h-full object-cover p-4">
-                                </div>
-                                <div class="flex flex-col justify-between items-center gap-4 py-8 flex-grow">
-                                  
-                                    <div class="min-h-[100px] flex justify-center items-center">
-
-                                        <h2 class="font-semibold text-4xl font-heading text-center">
-                                            {{ $offer['name'] }}
-                                        </h2>
-                                    </div>
-                                </div>
-
-                                {{-- info-card --}}
-                                <div
-                                    class="bg-white absolute left-0 right-0 top-0 bottom-4 p-4 shadow-xl opacity-0 group-hover:opacity-100 duration-500">
-                                    <div
-                                        class="flex flex-col justify-between items-center text-center bg-gray-200 h-full px-6 py-12">
-                                       
-                                        <h2 class="font-semibold text-4xl font-heading">{{ $offer['name'] }}</h2>
-                                        <div class="text">{!! $offer['short_desc'] !!}</div>
-                                        <hr class="border border-gray-400 w-12 ">
-                                        <div class="flex flex-col items-center gap-4">
-
-                                           <div class="flex gap-6">
-
-                                           
-                                            <div class="flex flex-col justify-center items-center gap-3 ">
-                                                <img src="{{ asset('assets/icons/surface.svg') }}" alt=""
-                                                    class="w-6">
-                                                <span class="font-medium">
-                                                    {{ $offer['surface'] }} m²</span>
-                                            </div>
-                                            <div class="flex flex-col justify-center items-center gap-3">
-                                                <img src="{{ asset('assets/icons/users.svg') }}" alt=""
-                                                    class="w-6">
-                                                <span class="font-medium">max
-                                                    {{ $offer['person'] }} </span>
-                                            </div>
-                                        </div>
-                                            <div class="flex flex-col justify-center items-center gap-3 ">
-                                                <img src="{{ asset('assets/icons/bed.svg') }}" alt=""
-                                                    class="w-6">
-                                                <span class="font-medium">
-                                                    {{ $offer['beds'] }}</span>
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="flex justify-center items-center mt-2 mb-6 w-full">
-                                <a href="{{ route('apartment', $apartment['slug']) }}"
-                                    class="px-16 py-4 shadow-xl group-hover:bg-black group-hover:text-white duration-500">Zobacz
-                                    szczegóły</a>
-                            </div>
-                        </div>
+                      <x-OtherApartmentCard
+                      link="{{ route('apartment', $apartment['slug']) }}"
+                      thumbnail="{{ asset('/storage' . $apartment['thumbnail']) }}"
+                      name=" {{ $apartment['name'] }}"
+                      shortDesc="{!! $apartment['short_desc'] !!}"
+                      surface="  {{ $apartment['surface'] }}"
+                      person=" {{ $apartment['person'] }}"
+                      beds=" {{ $apartment['beds'] }}"
+                      />
                     @endforeach
                 </div>
             </div>
