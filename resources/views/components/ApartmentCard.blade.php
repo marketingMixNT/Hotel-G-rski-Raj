@@ -1,6 +1,6 @@
     {{-- container --}}
     <div
-        class="  border-gray-400 flex flex-col lg:flex-row justify-between  border-b py-16 gap-4 lg:gap-12 last-of-type:mb-24 last-of-type:border-none group">
+        class="  border-gray-400 flex flex-col lg:flex-row justify-between  border-b py-16 gap-4 lg:gap-12  last-of-type:border-none group">
         {{-- image --}}
         <div class="w-full lg:w-[30%]">
             <div class="overflow-hidden">

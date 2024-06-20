@@ -12,6 +12,8 @@ models:
 
   Offer:
     title: json
+    slug: json
+    short_desc: json
     description: json
     thumbnail: text
     price: integer
@@ -19,6 +21,8 @@ models:
     food: string
     start_date: dateTime
     end_date: dateTime
+    meta_title: json
+    meta_desc: json
     sort: integer nullable
 
   Testimonial:
@@ -27,7 +31,7 @@ models:
     content: json
     sort: integer nullable
 
-  Attraction:
+  LocalAttraction:
     title: json
     description: json
     images: text
@@ -59,9 +63,9 @@ models:
 
   MobileButton:
     title: json
-    image: text
+    icon: text
     link: text
-     sort: integer nullable
+    sort: integer nullable
 
   CustomScript:
     content: text

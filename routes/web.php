@@ -9,7 +9,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/', [PageController::class, 'home'])->name('home');
 
     Route::get('/apartamenty', [PageController::class, 'apartments'])->name('apartments');
-    Route::get('/apartment/{id}', [PageController::class, 'apartment'])->name('apartment');
+    Route::get('/apartment/{slug}', [PageController::class, 'apartment'])->name('apartment');
+
+    Route::get('/oferty-specjalne', [PageController::class, 'offers'])->name('apartments');
+    Route::get('/oferta-specjalna/{slug}', [PageController::class, 'offert'])->name('apartment');
+
+
 
 
     Route::get('/lokalne-atrakcje', [PageController::class, 'localAttractions'])->name('localAttractions');

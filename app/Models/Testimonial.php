@@ -37,6 +37,6 @@ class Testimonial extends Model
         'content' => 'array',
     ];
 
-    public $translatable = ['title', 'description'];
+    public $translatable = ['content', ];
 
 }

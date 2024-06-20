@@ -2,18 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MobileButtonResource\Pages;
-use App\Filament\Resources\MobileButtonResource\RelationManagers;
-use App\Models\MobileButton;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\MobileButton;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use Filament\Resources\Concerns\Translatable;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\MobileButtonResource\Pages;
+use App\Filament\Resources\MobileButtonResource\RelationManagers;
 
 
 class MobileButtonResource extends Resource
@@ -33,43 +36,67 @@ class MobileButtonResource extends Resource
 
     protected static ?string $navigationGroup = 'Elementy Dodatkowe';
 
+   
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                TextInput::make('title')
                     ->label('Tytuł')
                     ->minLength(3)
                     ->maxLength(255)
                     ->required(),
-                Forms\Components\TextInput::make('link')
-                    ->prefix('https://')
+
+                Select::make('link_type')
+                    ->options([
+                        'external' => 'Link zewnętrzny',
+                        'internal' => 'Link lokalny',
+                        'phone' => 'Numer telefonu',
+                        'email' => 'Adres e-mail',
+                    ])
+                    ->label('Typ linku')
+                    ->live()
                     ->required(),
-                Forms\Components\FileUpload::make('image')
+
+                Forms\Components\TextInput::make('link')
+                
+                    ->prefix(function ($get) {
+                        return match ($get('link_type')) {
+                            'external' => 'https://',
+                            'internal' => 'https://localhost:8000/',
+                            'phone' => 'tel:',
+                            'email' => 'mailto:',
+                            default => null
+                        };
+                    }),
+
+                FileUpload::make('image')
                     ->label('Ikonka')
+
                     ->image()
-                    ->maxSize(1024)
+                    ->maxSize(1024),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-        // ->reorderable('sort')
-        // ->defaultSort('sort', 'asc')
+            // ->reorderable('sort')
+            // ->defaultSort('sort', 'asc')
             ->columns([
                 // Tables\Columns\TextColumn::make('sort')
                 // ->label('#')
                 // ->numeric()
                 // ->sortable(),
                 Tables\Columns\ImageColumn::make('image')
-                ->label('Ikonka'),
+                    ->label('Ikonka'),
                 Tables\Columns\TextColumn::make('title')
-                ->label('Tytuł'),
+                    ->label('Tytuł'),
                 Tables\Columns\TextColumn::make('link')
-                ->label('link')
+                    ->label('link')
             ])
-            
+
             ->filters([
                 //
             ])
@@ -113,4 +140,6 @@ class MobileButtonResource extends Resource
     {
         return __('Przyciski mobilne');
     }
+
+   
 }

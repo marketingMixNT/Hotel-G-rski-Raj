@@ -7,7 +7,7 @@
 
 
 <div class="text-center inline-block">
-    <span class="font-text text-sm 2xl:text-base font-base tracking-widest uppercase  heading-animation ">
+    <span class="text-sm 2xl:text-2xl font-light tracking-widest   heading-animation font-handwritting ">
         {{-- {{ $subheading }} --}}
         {{ $subtitle }}
     </span>

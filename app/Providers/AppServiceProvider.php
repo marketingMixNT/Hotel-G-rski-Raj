@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Apartment;
 use App\Observers\ApartmentObserver;
 
+use Illuminate\Support\Facades\Blade;
+use App\View\Components\Shared\MobileButtons;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -22,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Apartment::observe(ApartmentObserver::class);
+        Blade::component('shared.MobileButtons', MobileButtons::class);
     }
 }

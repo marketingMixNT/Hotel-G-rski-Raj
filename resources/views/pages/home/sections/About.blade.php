@@ -1,4 +1,4 @@
-<section id="o-nas" class="pt-36 py-36">
+<section id="o-nas" class="section px-6 md:px-12">
 
     <div class="text-center pb-24">
         

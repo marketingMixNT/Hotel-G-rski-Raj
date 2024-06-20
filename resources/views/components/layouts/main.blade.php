@@ -29,7 +29,7 @@
     @vite('resources/scss/app.scss')
 </head>
 
-<body class="antialiased bg-bgPrimary">
+<body class="overflow-x-hidden bg-bgPrimary">
      {{-- CUSTOM SCRPITS FROM ADMIN PANEL --}}
      @foreach(\App\Models\CustomScript::where('position', 'second_place')->get() as $script)
      {!! $script->content !!}
@@ -48,7 +48,7 @@
     </main>
 
     <x-Footer/>
-
+    <x-shared.MobileButtons/>
     
 
     @filamentScripts

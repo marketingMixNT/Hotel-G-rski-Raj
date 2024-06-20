@@ -53,6 +53,31 @@ class PageController extends Controller
         return view('pages.apartment.index', ['apartment' => $apartment, 'otherApartments' => $otherApartments]);
     }
 
+    public function offers()
+    {
+
+        $offers = Offer::orderBy('sort')->get();
+
+        return view('pages.offers.index', ['offers' => $offers]);
+    }
+
+    public function offert($slug)
+    {
+
+
+        $offer = Offer::where('slug->pl', $slug)->first();
+
+        $otherOffers = Offer::select('id')
+            ->selectRaw("JSON_UNQUOTE(JSON_EXTRACT(gallery, '$[0]')) as thumbnail")
+            ->where('id', '!=', $offer->id)
+            ->orderBy('sort')
+            ->get();
+
+        return view('pages.offer.index', ['offer' => $offer, 'otherOffers' => $otherOffers]);
+    }
+
+
+
     public function localAttractions()
     {
         $attractions = Attraction::orderBy('sort')->get();

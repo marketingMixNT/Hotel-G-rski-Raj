@@ -8,8 +8,8 @@
     @include('pages.home.sections.RecomendedPages')
     @include('pages.home.sections.Offers')
     @include('pages.home.sections.Apartments')
-    @include('pages.home.sections.Gallery')
     @include('pages.home.sections.Testimonials')
+    @include('pages.home.sections.Gallery')
     @include('pages.home.sections.Attractions')
    
     <x-Map/>

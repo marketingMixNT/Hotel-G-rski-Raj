@@ -1,6 +1,6 @@
 <nav class="bg-primary-400 fixed left-0 top-0 right-0 z-50">
     <!--CONTAINER -->
-    <div class="flex justify-between items-center max-w-screen-xl mx-auto py-4 sm:py-10 px-4 md:px-12 2xl:px-0">
+    <div class="flex justify-between items-center max-w-screen-xl mx-auto py-4 sm:py-6 px-4 md:px-12 2xl:px-0">
         <!--left side-->
         <div class="flex justify-center items-center gap-12 ">
             <div>
