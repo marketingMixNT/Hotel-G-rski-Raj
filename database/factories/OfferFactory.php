@@ -22,6 +22,8 @@ class OfferFactory extends Factory
     {
         return [
             'title' => '{}',
+            'slug' => '{}',
+            'short_desc' => '{}',
             'description' => '{}',
             'thumbnail' => $this->faker->text(),
             'price' => $this->faker->numberBetween(-10000, 10000),
@@ -29,6 +31,8 @@ class OfferFactory extends Factory
             'food' => $this->faker->word(),
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),
+            'meta_title' => '{}',
+            'meta_desc' => '{}',
             'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }

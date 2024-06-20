@@ -4,14 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 
-
-class MobileButton extends Model
+class LocalAttraction extends Model
 {
     use HasFactory;
-    use HasTranslations;
-
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +16,9 @@ class MobileButton extends Model
      */
     protected $fillable = [
         'title',
-        'image',
-        'link',
+        'description',
+        'images',
+        'sort',
     ];
 
     /**
@@ -32,8 +29,6 @@ class MobileButton extends Model
     protected $casts = [
         'id' => 'integer',
         'title' => 'array',
+        'description' => 'array',
     ];
-
-    public $translatable = ['title', 'description'];
-
 }

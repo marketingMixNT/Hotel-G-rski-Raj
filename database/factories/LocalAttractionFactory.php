@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\MobileButton;
+use App\Models\LocalAttraction;
 
-class MobileButtonFactory extends Factory
+class LocalAttractionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = MobileButton::class;
+    protected $model = LocalAttraction::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,8 @@ class MobileButtonFactory extends Factory
     {
         return [
             'title' => '{}',
-            'icon' => $this->faker->text(),
-            'link' => $this->faker->text(),
+            'description' => '{}',
+            'images' => $this->faker->text(),
             'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }

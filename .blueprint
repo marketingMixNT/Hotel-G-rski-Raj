@@ -3,26 +3,26 @@ created:
     - database/factories/AdvantageFactory.php
     - database/factories/OfferFactory.php
     - database/factories/TestimonialFactory.php
-    - database/factories/AttractionFactory.php
+    - database/factories/LocalAttractionFactory.php
     - database/factories/ApartmentFactory.php
     - database/factories/AmenityFactory.php
     - database/factories/MobileButtonFactory.php
     - database/factories/CustomScriptFactory.php
-    - database/migrations/2024_06_18_100012_create_slides_table.php
-    - database/migrations/2024_06_18_100013_create_advantages_table.php
-    - database/migrations/2024_06_18_100014_create_offers_table.php
-    - database/migrations/2024_06_18_100015_create_testimonials_table.php
-    - database/migrations/2024_06_18_100016_create_attractions_table.php
-    - database/migrations/2024_06_18_100017_create_apartments_table.php
-    - database/migrations/2024_06_18_100018_create_amenities_table.php
-    - database/migrations/2024_06_18_100019_create_mobile_buttons_table.php
-    - database/migrations/2024_06_18_100020_create_custom_scripts_table.php
-    - database/migrations/2024_06_18_100021_create_amenity_apartment_table.php
+    - database/migrations/2024_06_20_112944_create_slides_table.php
+    - database/migrations/2024_06_20_112945_create_advantages_table.php
+    - database/migrations/2024_06_20_112946_create_offers_table.php
+    - database/migrations/2024_06_20_112947_create_testimonials_table.php
+    - database/migrations/2024_06_20_112948_create_local_attractions_table.php
+    - database/migrations/2024_06_20_112949_create_apartments_table.php
+    - database/migrations/2024_06_20_112950_create_amenities_table.php
+    - database/migrations/2024_06_20_112951_create_mobile_buttons_table.php
+    - database/migrations/2024_06_20_112952_create_custom_scripts_table.php
+    - database/migrations/2024_06_20_112953_create_amenity_apartment_table.php
     - app/Models/Slide.php
     - app/Models/Advantage.php
     - app/Models/Offer.php
     - app/Models/Testimonial.php
-    - app/Models/Attraction.php
+    - app/Models/LocalAttraction.php
     - app/Models/Apartment.php
     - app/Models/Amenity.php
     - app/Models/MobileButton.php
@@ -33,9 +33,10 @@ models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
     Slide: { image: text, alt: json, sort: 'integer nullable' }
     Advantage: { title: json, description: json, thumbnail: text, sort: 'integer nullable' }
-    Offer: { title: json, description: json, thumbnail: text, price: integer, nights: integer, food: string, start_date: dateTime, end_date: dateTime, sort: 'integer nullable' }
+    Offer: { title: json, slug: json, short_desc: json, description: json, thumbnail: text, price: integer, nights: integer, food: string, start_date: dateTime, end_date: dateTime, meta_title: json, meta_desc: json, sort: 'integer nullable' }
     Testimonial: { name: json, source: json, content: json, sort: 'integer nullable' }
     Attraction: { title: json, description: json, images: text, sort: 'integer nullable' }
     Apartment: { name: json, slug: json, surface: integer, person: integer, beds: json, banner_img: text, gallery: text, reservation_link: text, short_desc: json, description: json, sort: 'integer nullable', meta_title: json, meta_desc: json, relationships: { belongsToMany: Amenity } }
     Amenity: { name: json, icons: text, apartment_id: 'unsignedInteger nullable', relationships: { belongsToMany: Apartment } }
-    MobileButton: { title: json, image: text, link: text }
+    MobileButton: { title: json, icon: text, link: text, sort: 'integer nullable' }
+    LocalAttraction: { title: json, description: json, images: text, sort: 'integer nullable' }

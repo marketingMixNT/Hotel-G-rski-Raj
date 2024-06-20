@@ -11,8 +11,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/apartamenty', [PageController::class, 'apartments'])->name('apartments');
     Route::get('/apartment/{slug}', [PageController::class, 'apartment'])->name('apartment');
 
-    Route::get('/oferty-specjalne', [PageController::class, 'offers'])->name('apartments');
-    Route::get('/oferta-specjalna/{slug}', [PageController::class, 'offert'])->name('apartment');
+    Route::get('/oferty-specjalne', [PageController::class, 'offers'])->name('offers');
+    Route::get('/oferta-specjalna/{slug}', [PageController::class, 'offert'])->name('offer');
 
 
 

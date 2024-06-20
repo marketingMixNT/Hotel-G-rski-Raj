@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Apartment;
 
+use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\TextInput;
 use Spatie\Translatable\HasTranslations;
+
+use TomatoPHP\FilamentIcons\Components\IconPicker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-use Filament\Forms\Components\TextInput;
-use TomatoPHP\FilamentIcons\Components\IconPicker;
 class Amenity extends Model
 {
     use HasFactory;

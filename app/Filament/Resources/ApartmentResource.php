@@ -21,6 +21,10 @@ use App\Filament\Resources\ApartmentResource\RelationManagers;
 use Awcodes\Shout\Components\Shout;
 use Filament\Resources\Concerns\Translatable;
 
+use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
+use Schmeits\FilamentCharacterCounter\Forms\Components\Textarea;
+
+use Filament\Forms\Set;
 
 class ApartmentResource extends Resource
 {
@@ -44,65 +48,49 @@ class ApartmentResource extends Resource
                 Section::make('SEO')
                     ->collapsible()
                     ->collapsed()
-                    ->description('info')
+                    ->description('Wprowadź meta title (krótki, opisowy tytuł strony) oraz meta description (krótki opis strony widoczny w wynikach wyszukiwarek), które informują użytkowników o treści strony.')
                     ->schema([
-                        Forms\Components\TextInput::make('meta_title')
-                            ->label('Tytuł strony')
-                            ->minLength(3)
-                            ->maxLength(255)
+                        TextInput::make('meta_title')
+                            ->label('Tytuł Meta')
+                            ->helperText('Meta title to tytuł strony internetowej wyświetlany w wynikach wyszukiwarek i na kartach przeglądarki.')
+                            ->characterLimit(60)
+                            ->minLength(10)
+                            ->maxLength(60)
                             ->required()
                             ->columnSpanFull(),
 
-                        Forms\Components\TextInput::make('meta_desc')
-                            ->label('Meta Desc')
-                            ->helperText('Pamiętaj o limicie 160 znaków')
+                        TextInput::make('meta_desc')
+                            ->label('Opis Meta')
+                            ->helperText('Meta description to krótki opis strony internetowej wyświetlany w wynikach wyszukiwarek, który informuje użytkowników o jej treści.')
+                            ->characterLimit(160)
+                            ->minLength(10)
+                            ->maxLength(160)
                             ->required()
-
                             ->columnSpanFull(),
-                            Shout::make('meta-danger')
-                            ->columnSpanFull()
-                            ->type(function ($get) {
-                                $length = mb_strlen($get('meta_desc'));
-
-                                if ($length < 50) {
-                                    return 'warning';
-                                } else if ($length > 160) {
-                                    return 'danger';
-                                } else {
-                                    return 'success';
-                                }
-                            })
-                            ->content(function ($get) {
-                                $length = mb_strlen($get('meta_desc'));
-
-                                if ($length < 50) {
-                                    return 'Meta description jest za krótki. Spróbuj rozwinąć go do maksymalnie 160 znaków.';
-                                } else if ($length > 160) {
-                                    return 'Meta description jest za długi. Skróć go do maksymalnie 160 znaków.';
-                                } else {
-                                    return 'Meta description jest idealny!';
-                                }
-                            }),
+                            
 
 
                     ]),
-                Section::make('Opis')
+                Section::make('Opis Apartamentu')
                     ->collapsible()
                     ->collapsed()
-                    ->description('info')
+                    ->description('Opisz tutaj apartament, podając jego nazwę, krótki opis oraz długi opis, aby potencjalni goście mogli poznać wszystkie jego zalety i szczegóły.')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('Nazwa apartamentu')
                             ->minLength(3)
                             ->maxLength(255)
                             ->required()
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->live(onBlur: true)
+
+
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
                         Forms\Components\TextInput::make('slug')
                             ->label('Slug')
                             ->minLength(3)
                             ->maxLength(255)
-                            // ->required()
                             ->disabled()
                             ->columnSpanFull(),
                           

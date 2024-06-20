@@ -21,10 +21,12 @@
         "mcamara/laravel-localization": "^2.0",
         "outerweb/filament-image-library": "^2.6",
         "outerweb/image-library": "^2.5",
+        "schmeits/filament-character-counter": "^1.2",
         "tomatophp/filament-icons": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "laravel-lang/common": "^6.3",
         "laravel-shift/blueprint": "^2.10",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
