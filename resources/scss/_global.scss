@@ -25,10 +25,29 @@ h6 {
 }
 
 
+
+
+
+
+//content
 .description h3{
-    @apply text-2xl font-bold mt-8 mb-2
+    @apply text-3xl font-bold mt-8 mb-2
 }
 
 .description p{
     @apply text
 }
+
+.description strong{
+    @apply font-bold
+}
+
+.description ul{
+    list-style-type: square;
+    @apply text
+}
+
+.description ul li {
+    @apply mt-2
+}
+

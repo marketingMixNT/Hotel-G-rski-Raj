@@ -10,14 +10,7 @@
         <div class="max-w-screen-2xl mx-auto">
             @foreach ($apartments as $apartment)
             <x-ApartmentCard 
-            name="{{ $apartment['name'] }}" 
-            img="{{ asset('/storage/' . $apartment['gallery'][0]) }}"
-            shortDesc="{!! $apartment['short_desc']!!}" 
-            surface="{{ $apartment['surface'] }}"
-            person="{{ $apartment['person'] }}" 
-            beds="{{ $apartment['beds'] }}" 
-            link="{{ route('apartment', $apartment['slug']) }}"
-            reservationLink="{{ $apartment['reservationLink'] }}"
+            :apartment='$apartment'
             />
         @endforeach
         </div>

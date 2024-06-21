@@ -6,8 +6,8 @@
         <ul class="text-heading text-fontLight-400 flex justify-center items-center flex-col gap-4 xs:gap-8">
 
             <x-nav.MenuItem href="{{route('apartments')}}">Apartamenty</x-nav.MenuItem>
+            <x-nav.MenuItem href="{{route('offers')}}">Oferty Specjalne</x-nav.MenuItem>
             <x-nav.MenuItem href="{{route('localAttractions')}}">Lokalne Atrakcje</x-nav.MenuItem>
-            <x-nav.MenuItem href="#">Menu</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Galeria</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Kontakt</x-nav.MenuItem>
         </ul>

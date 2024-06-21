@@ -21,10 +21,10 @@
                 text="Nasze pokoje to więcej niż miejsce noclegowe; to przestrzeń, gdzie każdy detal odzwierciedla piękno i spokój otaczających nas Tatr. Wybierając nocleg u nas, wybierasz komfort, wygodę i niezapomniane widoki, które sprawią, że Twój wypoczynek będzie wyjątkowy. Czy to romantyczny weekend, rodzinne wakacje, czy wypad ze znajomymi - znajdziesz u nas pokój idealnie dopasowany do Twoich potrzeb i oczekiwań." />
         </div>
 
-        @foreach ($apartments as $apartment)
-            <x-ApartmentCard 
-            :apartment='$apartment'
-            />
+        @foreach ($offers as $offer)
+        
+        <x-OfferCard :offer='$offer' />
+      
         @endforeach
 
     </main>

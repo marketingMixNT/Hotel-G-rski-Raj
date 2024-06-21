@@ -1,0 +1,59 @@
+<x-layouts.Main>
+
+    {{-- META --}}
+    @section('title', $offer->meta_title)
+    @section('description', $offer->meta_desc)
+
+    {{-- HEADER --}}
+    <x-slot name='header'>
+        <x-Header title="{{ $offer->title }}" bgi="{{ asset('/storage' . $offer->banner_img) }}">
+            <x-shared.BookingPanel />
+        </x-Header>
+    </x-slot>
+
+    {{-- MAIN --}}
+    <section class="section px-6 md:px-12 max-w-screen-2xl">
+
+        {{-- top --}}
+        <div class="flex">
+
+            <div class="flex flex-col justify-center items-center gap-4 w-[60%]">
+                <p class="text">Oferta ważna od <span
+                        class="font-semibold">{{ $offer->start_date->format('d-m-Y') }}</span>
+                    do <span class="font-semibold">{{ $offer->end_date->format('d-m-Y') }} </span></p>
+                <div class="flex gap-12">
+                    <div class="border border-gray-400 px-8 py-2 flex gap-2 justify-start items-center"><img
+                            src="{{ asset('assets/icons/moon.svg') }}" alt="" class="w-7"><span
+                            class="text-sm mt-1">min. {{ $offer->nights }} noce</span></div>
+                    <div class="border border-gray-400 px-8 py-2 flex gap-2 justify-start items-center"><img
+                            src="{{ asset('assets/icons/dish.svg') }}" alt="" class="w-7"><span
+                            class="text-sm mt-1">{{ $offer->food }}</span></div>
+                </div>
+            </div>
+            <div class="w-[40%]">
+                {!! $offer->short_desc !!}
+            </div>
+        </div>
+        {{-- content --}}
+        <div class="flex mt-32">
+
+            <div class="w-[60%] pr-20 description">{!! $offer->description !!} </div>
+
+
+            <div class="w-[40%] relative "><img src="{{ asset('/storage' . $offer->thumbnail) }}" alt=""
+                    class="sticky top-32"></div>
+        </div>
+    </section>
+
+    {{-- OTHER OFFERS --}}
+    <section class="max-w-screen-2xl section px-6 md:px-12">
+
+        <x-OffersCarousel>
+            @foreach ($otherOffers as $offer)
+                <x-OffersCarouselCard :offer="$offer" />
+            @endforeach
+        </x-OffersCarousel>
+
+    </section>
+
+</x-layouts.Main>
