@@ -3,7 +3,7 @@
     <a href="{{ $offer['slug'] }}"class="flex flex-col relative group h-full">
         {{-- FRONT --}}
         {{-- img --}}
-        <x-ImagePhoto class="h-[350px] sm:min-w-[400px]">
+        <x-ImagePhoto class="h-[350px] sm:w-[375px]">
             <img src="{{ asset('/storage' . $offer->thumbnail) }}" alt="{{ $offer['title'] }}"
                 width="548" height="368" loading="lazy" class="w-full h-full object-cover ">
         </x-ImagePhoto>

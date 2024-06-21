@@ -44,7 +44,7 @@ h6 {
 
 .description ul{
     list-style-type: square;
-    @apply text
+    @apply text mt-4 list-inside lg:list-outside
 }
 
 .description ul li {

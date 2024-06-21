@@ -15,13 +15,13 @@
     <section class="section px-6 md:px-12 max-w-screen-2xl">
 
         {{-- top --}}
-        <div class="flex">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-0">
 
-            <div class="flex flex-col justify-center items-center gap-4 w-[60%]">
+            <div class="flex flex-col  justify-center items-center  gap-4 w-full lg:w-[60%]">
                 <p class="text">Oferta ważna od <span
                         class="font-semibold">{{ $offer->start_date->format('d-m-Y') }}</span>
                     do <span class="font-semibold">{{ $offer->end_date->format('d-m-Y') }} </span></p>
-                <div class="flex gap-12">
+                <div class="flex flex-wrap justify-center items-center gap-12">
                     <div class="border border-gray-400 px-8 py-2 flex gap-2 justify-start items-center"><img
                             src="{{ asset('assets/icons/moon.svg') }}" alt="" class="w-7"><span
                             class="text-sm mt-1">min. {{ $offer->nights }} noce</span></div>
@@ -30,23 +30,23 @@
                             class="text-sm mt-1">{{ $offer->food }}</span></div>
                 </div>
             </div>
-            <div class="w-[40%]">
+            <div class="w-full lg:w-[40%] text-center lg:text-left">
                 {!! $offer->short_desc !!}
             </div>
         </div>
         {{-- content --}}
-        <div class="flex mt-32">
+        <div class="flex flex-col lg:flex-row mt-16 lg:mt-32">
 
-            <div class="w-[60%] pr-20 description">{!! $offer->description !!} </div>
+            <div class="w-full lg:w-[60%] lg:pr-20 description order-1 lg:order-none">{!! $offer->description !!} </div>
 
 
-            <div class="w-[40%] relative "><img src="{{ asset('/storage' . $offer->thumbnail) }}" alt=""
+            <div class="w-full lg:w-[40%] relative "><img src="{{ asset('/storage' . $offer->thumbnail) }}" alt=""
                     class="sticky top-32"></div>
         </div>
     </section>
 
     {{-- OTHER OFFERS --}}
-    <section class="max-w-screen-2xl section px-6 md:px-12">
+    <section class="section max-w-screen-2xl px-6 md:px-12 mb-16">
 
         <x-OffersCarousel>
             @foreach ($otherOffers as $offer)
