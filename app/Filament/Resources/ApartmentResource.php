@@ -18,12 +18,10 @@ use App\Filament\Resources\ApartmentResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ApartmentResource\RelationManagers;
 
-use Awcodes\Shout\Components\Shout;
+
 use Filament\Resources\Concerns\Translatable;
 
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
-use Schmeits\FilamentCharacterCounter\Forms\Components\Textarea;
-
 use Filament\Forms\Set;
 
 class ApartmentResource extends Resource
@@ -46,6 +44,8 @@ class ApartmentResource extends Resource
         return $form
             ->schema([
                 Section::make('SEO')
+                    ->icon('heroicon-o-globe-alt')
+
                     ->collapsible()
                     ->collapsed()
                     ->description('Wprowadź meta title (krótki, opisowy tytuł strony) oraz meta description (krótki opis strony widoczny w wynikach wyszukiwarek), które informują użytkowników o treści strony.')
@@ -55,7 +55,7 @@ class ApartmentResource extends Resource
                             ->helperText('Meta title to tytuł strony internetowej wyświetlany w wynikach wyszukiwarek i na kartach przeglądarki.')
                             ->characterLimit(60)
                             ->minLength(10)
-                            ->maxLength(60)
+                            ->maxLength(75)
                             ->required()
                             ->columnSpanFull(),
 
@@ -64,37 +64,39 @@ class ApartmentResource extends Resource
                             ->helperText('Meta description to krótki opis strony internetowej wyświetlany w wynikach wyszukiwarek, który informuje użytkowników o jej treści.')
                             ->characterLimit(160)
                             ->minLength(10)
-                            ->maxLength(160)
+                            ->maxLength(170)
                             ->required()
                             ->columnSpanFull(),
-                            
+
 
 
                     ]),
                 Section::make('Opis Apartamentu')
+                    ->icon('heroicon-o-pencil-square')
+                    ->columns(2)
                     ->collapsible()
                     ->collapsed()
                     ->description('Opisz tutaj apartament, podając jego nazwę, krótki opis oraz długi opis, aby potencjalni goście mogli poznać wszystkie jego zalety i szczegóły.')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('Nazwa apartamentu')
+
                             ->minLength(3)
                             ->maxLength(255)
                             ->required()
-                            ->columnSpanFull()
-                            ->live(onBlur: true)
+
+                            ->live(debounce: 1000)
 
 
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
                         Forms\Components\TextInput::make('slug')
                             ->label('Slug')
-                            ->minLength(3)
-                            ->maxLength(255)
-                            ->disabled()
-                            ->columnSpanFull(),
-                          
-                            
+                            ->helperText('Przyjazny adres url który wygeneruje się automatycznie na podstawie nazwy apartamentu.')
+
+                            ->disabled(),
+
+
 
 
 
@@ -115,9 +117,10 @@ class ApartmentResource extends Resource
                     ]),
 
                 Section::make('Zdjęcia')
+                    ->icon('heroicon-o-photo')
                     ->collapsible()
                     ->collapsed()
-                    ->description('info')
+                    ->description('Wybierz zdjęcia do galerii, w tym baner, miniaturkę oraz inne zdjęcia, które najlepiej zaprezentują apartament i jego unikalne cechy.')
                     ->schema([
 
                         Forms\Components\FileUpload::make('banner_img')
@@ -139,11 +142,11 @@ class ApartmentResource extends Resource
                         Forms\Components\FileUpload::make('gallery')
 
                             ->label('Galeria')
-                            
+
                             ->reorderable()
                             ->multiple()
                             ->appendFiles()
-                            ->helperText('Pierwsze zdjęcie będzie zdjęciem głównym')
+                            ->helperText('Pierwsze zdjęcie będzie zdjęciem głównym oraz miniaturką. Dla najlepszego efektu wgraj minium 5 zdjęć.')
                             ->image()
                             ->maxSize(2048)
                             ->optimize('webp')
@@ -160,9 +163,11 @@ class ApartmentResource extends Resource
                     ]),
 
                 Section::make('Informacje Dodatkowe')
+                    ->icon('heroicon-o-plus-circle')
+
                     ->collapsible()
                     ->collapsed()
-                    ->description('info')
+                    ->description('Podaj dodatkowe informacje o apartamencie, takie jak powierzchnia, maksymalna liczba osób oraz liczba łóżek, aby goście mogli dokładnie poznać jego możliwości.')
                     ->columns(2)
                     ->schema([
                         Forms\Components\TextInput::make('surface')
@@ -181,9 +186,10 @@ class ApartmentResource extends Resource
                     ]),
 
                 Section::make('Udogodnienia')
+                ->icon('heroicon-o-face-smile')
                     ->collapsible()
                     ->collapsed()
-                    ->description('info')
+                    ->description('Wybierz udogodnienia dostępne w apartamencie, aby goście wiedzieli, jakie komforty i usługi są oferowane podczas ich pobytu.')
                     ->schema([
 
 
@@ -201,15 +207,16 @@ class ApartmentResource extends Resource
 
 
 
-                Forms\Components\Textarea::make('reservation_link')
+                Forms\Components\TextInput::make('reservation_link')
+                    ->url()
                     ->label('Link do rezerwacji pokoju')
                     ->required()
+                    ->helperText('Podaj bezpośredni link do rezerwacji pokoju')
                     ->columnSpanFull(),
 
 
 
-            ])
-            ;
+            ]);
     }
 
     public static function table(Table $table): Table

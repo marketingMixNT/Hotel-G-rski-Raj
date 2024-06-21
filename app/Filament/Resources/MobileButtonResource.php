@@ -4,20 +4,23 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use App\Models\MobileButton;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
-
 use Filament\Resources\Concerns\Translatable;
+
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MobileButtonResource\Pages;
 use App\Filament\Resources\MobileButtonResource\RelationManagers;
-
 
 class MobileButtonResource extends Resource
 
@@ -50,26 +53,24 @@ class MobileButtonResource extends Resource
 
                 Select::make('link_type')
                     ->options([
-                        'external' => 'Link zewnętrzny',
-                        'internal' => 'Link lokalny',
-                        'phone' => 'Numer telefonu',
-                        'email' => 'Adres e-mail',
+                        'https://' => 'Link zewnętrzny',
+                        'https://localhost:8000/' => 'Link lokalny',
+                        'tel:' => 'Numer telefonu',
+                        'mailto:' => 'Adres e-mail',
                     ])
                     ->label('Typ linku')
                     ->live()
+                    ->afterStateUpdated(function ($set,$state,$operation){
+                        $set('link', $state);
+                    })
+                   
                     ->required(),
 
                 Forms\Components\TextInput::make('link')
-                
-                    ->prefix(function ($get) {
-                        return match ($get('link_type')) {
-                            'external' => 'https://',
-                            'internal' => 'https://localhost:8000/',
-                            'phone' => 'tel:',
-                            'email' => 'mailto:',
-                            default => null
-                        };
-                    }),
+                ->required(),
+               
+                   
+                    
 
                 FileUpload::make('image')
                     ->label('Ikonka')

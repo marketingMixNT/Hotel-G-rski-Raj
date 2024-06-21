@@ -12,10 +12,11 @@ models:
 
   Offer:
     title: json
-    slug: json
+    slug: json unique
     short_desc: json
     description: json
     thumbnail: text
+    banner_img: text
     price: integer
     nights: integer
     food: string
@@ -39,7 +40,7 @@ models:
 
   Apartment:
     name: json
-    slug: json
+    slug: json unique
     surface: integer
     person: integer
     beds: json

@@ -14,7 +14,16 @@ class Apartment extends Model
     use HasFactory;
     use HasTranslations;
     
-  
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($apartment) {
+            if (!empty($apartment->name)) {
+                $apartment->slug = Str::slug($apartment->name);
+            }
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
