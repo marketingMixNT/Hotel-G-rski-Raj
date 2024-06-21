@@ -10,6 +10,7 @@
             <x-nav.MenuItem href="{{route('localAttractions')}}">Lokalne Atrakcje</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Galeria</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Kontakt</x-nav.MenuItem>
+            <x-nav.MenuItem href="/blogs">Aktualności</x-nav.MenuItem>
         </ul>
 
         {{-- <img src="/assets/decor--light.png" alt="" class="w-16 md:w-18 2xl:w-20 2xl:my-6" /> --}}

@@ -37,6 +37,7 @@ use Outerweb\FilamentImageLibrary\Filament\Plugins\FilamentImageLibraryPlugin;
 
 use Awcodes\LightSwitch\LightSwitchPlugin;
 use Awcodes\LightSwitch\Enums\Alignment;
+use Firefly\FilamentBlog\Blog;
 
 
 class AdminPanelProvider extends PanelProvider
@@ -121,7 +122,10 @@ class AdminPanelProvider extends PanelProvider
             )
             ->plugins([
                 LightSwitchPlugin::make()
-                   
-            ]);
+            ])
+            ->plugin(
+                Blog::make()
+            )
+            ;
     }
 }

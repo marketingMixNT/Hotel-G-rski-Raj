@@ -39,4 +39,7 @@ class Attraction extends Model
 
     public $translatable = ['title', 'description'];
 
+
+    
+
 }

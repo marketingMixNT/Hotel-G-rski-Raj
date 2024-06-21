@@ -44,4 +44,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function canComment(): bool
+    {
+        // your conditional logic here
+        return true;
+    }
 }

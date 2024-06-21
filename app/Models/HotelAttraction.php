@@ -8,18 +8,20 @@ use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
-class Offer extends Model
+class HotelAttraction extends Model
 {
     use HasFactory;
+
+   
     use HasTranslations;
 
     protected static function boot()
     {
         parent::boot();
 
-        static::saving(function ($offer) {
-            if (!empty($offer->title)) {
-                $offer->slug = Str::slug($offer->title);
+        static::saving(function ($hotelAttraction) {
+            if (!empty($hotelAttraction->title)) {
+                $hotelAttraction->slug = Str::slug($hotelAttraction->title);
             }
         });
     }
@@ -30,20 +32,15 @@ class Offer extends Model
      */
     protected $fillable = [
         'title',
+        'short_desc',
         'description',
         'thumbnail',
-        'price',
-        'nights',
-        'food',
-        'start_date',
-        'end_date',
-        'sort',
         'banner_img',
+        'gallery',
         'meta_title',
         'meta_desc',
-        'short_desc',
-        'offer_link',
         'slug',
+        'sort',
 
     ];
 
@@ -58,8 +55,8 @@ class Offer extends Model
         'description' => 'array',
         'start_date' => 'datetime',
         'end_date' => 'datetime',
+        'gallery' => 'array'
     ];
 
-    public $translatable = ['title', 'description'];
-
+    public $translatable = ['title', 'short_desc','description'];
 }

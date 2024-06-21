@@ -38,6 +38,18 @@ models:
     images: text
     sort: integer nullable
 
+  HotelAttraction:
+    title: json
+    slug: json unique
+    short_desc: json
+    description: json
+    thumbnail: text
+    gallery: text
+    banner_img: text
+    meta_title: json
+    meta_desc: json
+    sort: integer nullable
+
   Apartment:
     name: json
     slug: json unique
