@@ -4,11 +4,14 @@ namespace App\Models;
 
 use App\Models\Apartment;
 
+use Awcodes\Shout\Components\Shout;
+use Filament\Forms\Components\Fieldset;
 use Illuminate\Database\Eloquent\Model;
+
 use Filament\Forms\Components\TextInput;
 use Spatie\Translatable\HasTranslations;
-
-use TomatoPHP\FilamentIcons\Components\IconPicker;
+use Filament\Forms\Components\FileUpload;
+use Guava\FilamentIconPicker\Forms\IconPicker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -45,14 +48,22 @@ class Amenity extends Model
         return $this->belongsToMany(Apartment::class);
     }
 
-    public static function getForm():array{
+    public static function getForm(): array
+    {
         return [
             TextInput::make('name')
-            ->required(),
-            IconPicker::make('icons')
-            ->required(),];
+                ->label('Nazwa')
+                ->minLength(3)
+                ->maxLength(255)
+               
+                ->required(),
+                IconPicker::make('icons')
+                ->label('Ikonka')
+                ->required(),
+
+            
+        ];
     }
 
     public $translatable = ['title', 'description'];
-
 }

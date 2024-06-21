@@ -57,7 +57,7 @@ models:
 
   Amenity:
     name: json
-    icons: text
+    icon: text
     apartment_id: unsignedInteger nullable
     relationships:
       belongsToMany: Apartment

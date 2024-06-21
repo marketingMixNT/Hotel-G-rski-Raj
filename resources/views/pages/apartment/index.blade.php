@@ -72,34 +72,16 @@
                 <h2 class='mb-12 font-semibold text-4xl '>Wyposażenie Pokoju</h2>
 
                 <ul class="grid grid-cols-2 gap-10">
-                    <li class='flex justify-start items-center gap-3'><img {{-- src="{{asset('/storage' . $apartment['amenities'][0]['icons'])}}" class="w-5" />{{ $apartment['amenities'][0]['name']}} --}}
-                            src="{{ asset('assets/icons/bed.svg') }}" class="w-7" /> <span
-                            class="mt-2">Łózko</span>
-                    </li>
-                    <li class='flex justify-start items-center gap-3'><img {{-- src="{{asset('/storage' . $apartment['amenities'][0]['icons'])}}" class="w-5" />{{ $apartment['amenities'][0]['name']}} --}}
-                            src="{{ asset('assets/icons/bed.svg') }}" class="w-7" /> <span
-                            class="mt-2">Łózko</span>
-                    </li>
-                    <li class='flex justify-start items-center gap-3'><img {{-- src="{{asset('/storage' . $apartment['amenities'][0]['icons'])}}" class="w-5" />{{ $apartment['amenities'][0]['name']}} --}}
-                            src="{{ asset('assets/icons/bed.svg') }}" class="w-7" /> <span
-                            class="mt-2">Łózko</span>
-                    </li>
-                    <li class='flex justify-start items-center gap-3'><img {{-- src="{{asset('/storage' . $apartment['amenities'][0]['icons'])}}" class="w-5" />{{ $apartment['amenities'][0]['name']}} --}}
-                            src="{{ asset('assets/icons/bed.svg') }}" class="w-7" /> <span
-                            class="mt-2">Łózko</span>
-                    </li>
-                    <li class='flex justify-start items-center gap-3'><img {{-- src="{{asset('/storage' . $apartment['amenities'][0]['icons'])}}" class="w-5" />{{ $apartment['amenities'][0]['name']}} --}}
-                            src="{{ asset('assets/icons/bed.svg') }}" class="w-7" /> <span
-                            class="mt-2">Łózko</span>
-                    </li>
-                    <li class='flex justify-start items-center gap-3'><img {{-- src="{{asset('/storage' . $apartment['amenities'][0]['icons'])}}" class="w-5" />{{ $apartment['amenities'][0]['name']}} --}}
-                            src="{{ asset('assets/icons/bed.svg') }}" class="w-7" /> <span
-                            class="mt-2">Łózko</span>
-                    </li>
-                    <li class='flex justify-start items-center gap-3'><img {{-- src="{{asset('/storage' . $apartment['amenities'][0]['icons'])}}" class="w-5" />{{ $apartment['amenities'][0]['name']}} --}}
-                            src="{{ asset('assets/icons/bed.svg') }}" class="w-7" /> <span
-                            class="mt-2">Łózko</span>
-                    </li>
+                    @foreach ($apartment->amenities as $item)
+                        <li class='flex justify-start items-center gap-3'>
+
+                            <x-icon name="{{$item->icons}}" class="w-9"/>
+                            <span class="mt-1">{{ $item->name }}</span>
+                          
+
+                              
+                        </li>
+                    @endforeach
 
                 </ul>
             </div>
@@ -154,7 +136,7 @@
                     Tatr. Nasz zespół z pasją dba o każdy detal, aby zapewnić Ci niezapomniane wrażenia i pełne
                     zadowolenie. </p>
             </div>
-                {{-- btns --}}
+            {{-- btns --}}
             <div class="be-panel hidden md:block  mx-32 2xl:mx-0 px-12 bg-white"></div>
             <x-ui.LinkBtn type='primary' class="md:hidden">Zarezerwuj</x-ui.LinkBtn>
 
@@ -172,20 +154,15 @@
         </div>
         <!--carousel-->
         <div class=" xs:mt-12 w-full relative">
-       
+
             <div class="swiper other-rooms-carousel">
                 <div class="swiper-wrapper ">
                     @foreach ($otherApartments as $apartment)
-
-                      <x-OtherApartmentCard
-                      link="{{ route('apartment', $apartment['slug']) }}"
-                      thumbnail="{{ asset('/storage' . $apartment['thumbnail']) }}"
-                      name=" {{ $apartment['name'] }}"
-                      shortDesc="{!! $apartment['short_desc'] !!}"
-                      surface="  {{ $apartment['surface'] }}"
-                      person=" {{ $apartment['person'] }}"
-                      beds=" {{ $apartment['beds'] }}"
-                      />
+                        <x-OtherApartmentCard link="{{ route('apartment', $apartment['slug']) }}"
+                            thumbnail="{{ asset('/storage' . $apartment['thumbnail']) }}"
+                            name=" {{ $apartment['name'] }}" shortDesc="{!! $apartment['short_desc'] !!}"
+                            surface="  {{ $apartment['surface'] }}" person=" {{ $apartment['person'] }}"
+                            beds=" {{ $apartment['beds'] }}" />
                     @endforeach
                 </div>
             </div>

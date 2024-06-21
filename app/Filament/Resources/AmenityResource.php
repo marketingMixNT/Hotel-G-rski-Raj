@@ -2,20 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AmenityResource\Pages;
-use App\Filament\Resources\AmenityResource\RelationManagers;
-use App\Models\Amenity;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Amenity;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Awcodes\Shout\Components\Shout;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-
-use TomatoPHP\FilamentIcons\Components\IconPicker;
 
 use Filament\Resources\Concerns\Translatable;
+
+
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use App\Filament\Resources\AmenityResource\Pages;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\AmenityResource\RelationManagers;
 
 
 
@@ -37,33 +41,34 @@ class AmenityResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
 
-                Amenity::getForm()
-            
-            ]
+                [
+                    TextInput::make('name')
+                        ->label('Nazwa')
+                        ->minLength(3)
+                        ->maxLength(255)
+
+                        ->required(),
+                    IconPicker::make('icons')
+                        ->label('Ikonka')
+                        ->required(),
+                ]
+
+
+
+
             );
-           
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('icon')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('apartment_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nazwa')
+                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                    
             ])
             ->filters([
                 //
