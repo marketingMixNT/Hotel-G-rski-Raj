@@ -12,6 +12,8 @@ use Filament\Resources\Resource;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\AdvantagesResource\Pages;
 use Awcodes\Shout\Components\Shout;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
 
 class AdvantagesResource extends Resource
 {
@@ -41,10 +43,16 @@ class AdvantagesResource extends Resource
                     ->label('Tytuł')
                     ->minLength(3)
                     ->maxLength(255)
+                    ->helperText('Najlepszy wygląd uzyskasz nie przekraczając podanej liczby znaków')
+                    ->hint(fn ($state, $component) => 'pozostało: ' . $component->getMaxLength() - strlen($state) . ' znaków') ->maxlength(25) ->live()
                     ->required(),
 
                 Forms\Components\FileUpload::make('thumbnail')
                     ->label('Zdjęcie')
+                    ->directory('features')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-zalety-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                    )
                     ->image()
                     ->maxSize(4096)
                     ->optimize('webp')
@@ -59,7 +67,9 @@ class AdvantagesResource extends Resource
 
                 Forms\Components\RichEditor::make('description')
                     ->label('Opis')
+                    ->hint(fn ($state, $component) => 'pozostało: ' . $component->getMaxLength() - strlen($state) . ' znaków') ->maxlength(290) ->live()
                     ->required()
+                    ->helperText('Najlepszy wygląd uzyskasz nie przekraczając podanej liczby znaków')
                     ->toolbarButtons([
                         'bold', 'italic',
                     ])
