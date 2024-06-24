@@ -19,11 +19,12 @@ class PageController extends Controller
 
         $slides = Slide::orderBy('sort')->get();
         $advantages = Advantage::orderBy('sort')->get();
-        $offers = Offer::orderBy('sort')->get();
+
+        $offers = Offer::published()->orderBy('sort')->get();
+
         $attractions = Attraction::orderBy('sort')->get();
         $testimonials = Testimonial::orderBy('sort')->get();
         $apartments = Apartment::orderBy('sort')->get();
-
 
 
 

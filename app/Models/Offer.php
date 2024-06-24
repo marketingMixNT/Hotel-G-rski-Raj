@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -61,5 +62,13 @@ class Offer extends Model
     ];
 
     public $translatable = ['title', 'description'];
+
+
+    public function scopePublished($query)
+    {
+        $now = Carbon::now();
+        $query->where('start_date', '<=', $now)
+              ->where('end_date', '>=', $now);
+    }
 
 }
