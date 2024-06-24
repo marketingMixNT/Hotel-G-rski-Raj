@@ -7,11 +7,11 @@
 
     <div class="max-w-screen-xl mx-auto relative px-4 sm:px-32 md:px-12 xl:px-0">
 
-        <x-OffersCarousel>
+        <x-offers-carousel>
             @foreach ($offers as $offer)
-                <x-OffersCarouselCard :offer="$offer" />
+                <x-offer-carousel-card :offer="$offer" />
             @endforeach
-        </x-OffersCarousel>
+        </x-offers-carousel>
 
 
     </div>

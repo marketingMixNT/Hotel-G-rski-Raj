@@ -1,6 +1,6 @@
 {{-- CONTAINER --}}
 <div class="flex flex-col justify-between items-center swiper-slide group h-full">
-    <a href="{{ $offer['slug'] }}"class="flex flex-col relative group h-full">
+    <a href="{{ route('offer', $offer['slug']) }}"class="flex flex-col relative group h-full">
         {{-- FRONT --}}
         {{-- img --}}
         <x-ImagePhoto class="h-[350px] sm:w-[375px]">
@@ -28,7 +28,7 @@
                         class="text-3xl mx-2 text-fontPrimary font-bold">{{ $offer['price'] }}zł</span>
                     za noc</span>
                 <h2 class="font-semibold text-2xl font-heading">{{ $offer['title'] }}</h2>
-                <p>{!! $offer['description'] !!}</p>
+                <p>{!! $offer['short_desc'] !!}</p>
                 <hr class="border border-primary-600 w-1/2 ">
                 <div class="flex flex-col self-start gap-4">
 

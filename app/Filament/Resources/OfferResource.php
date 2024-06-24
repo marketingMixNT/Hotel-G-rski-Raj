@@ -13,12 +13,13 @@ use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 
+use Filament\Tables\Columns\BadgeColumn;
+
 use Illuminate\Database\Eloquent\Builder;
-
 use Filament\Resources\Concerns\Translatable;
+
+
 use App\Filament\Resources\OfferResource\Pages;
-
-
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\OfferResource\RelationManagers;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
@@ -185,10 +186,10 @@ class OfferResource extends Resource
                     ]),
 
 
-                    Forms\Components\TextInput::make('offer_link')
+                Forms\Components\TextInput::make('offer_link')
                     ->url()
                     ->label('Link do rezerwacji pokoju')
-                    
+
                     ->helperText('Jeżeli posiadasz, podaj bezpośredni link do oferty w panelu rezerwacyjnym')
                     ->columnSpanFull(),
 
@@ -226,7 +227,19 @@ class OfferResource extends Resource
                     ->suffix(' zł')
                     ->sortable(),
 
+
+
+
+
                 Tables\Columns\TextColumn::make('start_date')
+                    ->badge()
+                    ->color(function ($state) {
+                        if ($state <= Carbon::now()) {
+                            return 'success';
+                        } else {
+                            return 'danger';
+                        }
+                    })
                     ->label('Data rozpoczęcia')
                     ->dateTime()
                     ->formatStateUsing(function ($state) {
@@ -235,6 +248,14 @@ class OfferResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('end_date')
+                    ->badge()
+                    ->color(function ($state) {
+                        if ($state >= Carbon::now()) {
+                            return 'success';
+                        } else {
+                            return 'danger';
+                        }
+                    })
                     ->label('Data zakończenia')
                     ->dateTime()
                     ->formatStateUsing(function ($state) {
