@@ -2,13 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class HotelAttraction extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($hotelAttraction) {
+            if (!empty($hotelAttraction->title)) {
+                $hotelAttraction->slug = Str::slug($hotelAttraction->title);
+            }
+        });
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -40,5 +54,8 @@ class HotelAttraction extends Model
         'description' => 'array',
         'meta_title' => 'array',
         'meta_desc' => 'array',
+        'gallery' => 'array'
     ];
+
+    public $translatable = ['title','slug', 'short_desc','description','meta_title','meta_desc'];
 }

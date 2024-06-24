@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HotelAttractionResource\Pages;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
 use App\Filament\Resources\HotelAttractionResource\RelationManagers;
 
@@ -93,7 +94,7 @@ class HotelAttractionResource extends Resource
 
                     Forms\Components\TextInput::make('slug')
                         ->label('Slug')
-                        ->helperText('Przyjazny adres url który wygeneruje się automatycznie na podstawie nazwy oferty.')
+                        ->helperText('Przyjazny adres url który wygeneruje się automatycznie na podstawie nazwy atrakcji.')
                         ->disabled(),
 
                     Forms\Components\RichEditor::make('short_desc')
@@ -124,6 +125,10 @@ class HotelAttractionResource extends Resource
                     Forms\Components\FileUpload::make('banner_img')
                         ->label('Banner')
                         ->helperText('Banner będzie pojawiał się na stronie oferty ')
+                        ->directory('attractions-banners')
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-atrakcje-hotelowe-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                        )
                         ->image()
                         ->maxSize(2048)
                         ->optimize('webp')
@@ -140,6 +145,10 @@ class HotelAttractionResource extends Resource
                     Forms\Components\FileUpload::make('thumbnail')
                         ->label('Miniaturka')
                         ->helperText('Miniaturka będzie pojawiać się  na stronie głównej oraz na liście ofert')
+                        ->directory('attractions-thumbnails')
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-atrakcje-hotelowe-miniaturki-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                        )
                         ->image()
                         ->maxSize(2048)
                         ->optimize('webp')
@@ -155,6 +164,10 @@ class HotelAttractionResource extends Resource
                         Forms\Components\FileUpload::make('gallery')
                         ->label('Galeria')
                         ->reorderable()
+                        ->directory('attractions-galleries')
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-atrakcje-hotelowe-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                        )
                         ->multiple()
                         ->appendFiles()
                         ->image()
