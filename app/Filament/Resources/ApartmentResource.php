@@ -37,19 +37,21 @@ class ApartmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
-    protected static ?string $navigationGroup = 'Elementy Główne';
+    protected static ?string $navigationGroup = 'Informacje o Hotelu';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+
+                //SEO
                 Section::make('SEO')
                     ->icon('heroicon-o-globe-alt')
-
                     ->collapsible()
                     ->collapsed()
                     ->description('Wprowadź meta title (krótki, opisowy tytuł strony) oraz meta description (krótki opis strony widoczny w wynikach wyszukiwarek), które informują użytkowników o treści strony.')
                     ->schema([
+
                         TextInput::make('meta_title')
                             ->label('Tytuł Meta')
                             ->helperText('Meta title to tytuł strony internetowej wyświetlany w wynikach wyszukiwarek i na kartach przeglądarki.')
@@ -67,10 +69,9 @@ class ApartmentResource extends Resource
                             ->maxLength(170)
                             ->required()
                             ->columnSpanFull(),
-
-
-
                     ]),
+
+                //DESCRIPTION
                 Section::make('Opis Apartamentu')
                     ->icon('heroicon-o-pencil-square')
                     ->columns(2)
@@ -78,27 +79,19 @@ class ApartmentResource extends Resource
                     ->collapsed()
                     ->description('Opisz tutaj apartament, podając jego nazwę, krótki opis oraz długi opis, aby potencjalni goście mogli poznać wszystkie jego zalety i szczegóły.')
                     ->schema([
+
                         Forms\Components\TextInput::make('name')
                             ->label('Nazwa apartamentu')
-
                             ->minLength(3)
                             ->maxLength(255)
                             ->required()
-
                             ->live(debounce: 1000)
-
-
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
                         Forms\Components\TextInput::make('slug')
                             ->label('Slug')
                             ->helperText('Przyjazny adres url który wygeneruje się automatycznie na podstawie nazwy apartamentu.')
-
                             ->disabled(),
-
-
-
-
 
                         Forms\Components\RichEditor::make('short_desc')
                             ->label('Krótki opis')
@@ -116,6 +109,7 @@ class ApartmentResource extends Resource
                             ->columnSpanFull(),
                     ]),
 
+                //IMAGES
                 Section::make('Zdjęcia')
                     ->icon('heroicon-o-photo')
                     ->collapsible()
@@ -140,9 +134,7 @@ class ApartmentResource extends Resource
                             ->columnSpanFull(),
 
                         Forms\Components\FileUpload::make('gallery')
-
                             ->label('Galeria')
-
                             ->reorderable()
                             ->multiple()
                             ->appendFiles()
@@ -162,36 +154,38 @@ class ApartmentResource extends Resource
 
                     ]),
 
+                //ADDITIONAL INFORMATION
                 Section::make('Informacje Dodatkowe')
                     ->icon('heroicon-o-plus-circle')
-
                     ->collapsible()
                     ->collapsed()
                     ->description('Podaj dodatkowe informacje o apartamencie, takie jak powierzchnia, maksymalna liczba osób oraz liczba łóżek, aby goście mogli dokładnie poznać jego możliwości.')
                     ->columns(2)
                     ->schema([
+
                         Forms\Components\TextInput::make('surface')
                             ->label('Powierzchnia')
                             ->required()
                             ->numeric(),
+
                         Forms\Components\TextInput::make('person')
                             ->label('Maksymalna ilość osób')
                             ->required()
                             ->numeric(),
+
                         Forms\Components\Textarea::make('beds')
                             ->label('Liczba Łózek')
                             ->required()
                             ->columnSpanFull()
-
                     ]),
 
+                //AMENITIES
                 Section::make('Udogodnienia')
-                ->icon('heroicon-o-face-smile')
+                    ->icon('heroicon-o-face-smile')
                     ->collapsible()
                     ->collapsed()
                     ->description('Wybierz udogodnienia dostępne w apartamencie, aby goście wiedzieli, jakie komforty i usługi są oferowane podczas ich pobytu.')
                     ->schema([
-
 
                         Forms\Components\Select::make('amenities')
                             ->searchable()
@@ -205,17 +199,13 @@ class ApartmentResource extends Resource
                             )
                     ]),
 
-
-
+                //Reservation Link
                 Forms\Components\TextInput::make('reservation_link')
                     ->url()
                     ->label('Link do rezerwacji pokoju')
                     ->required()
                     ->helperText('Podaj bezpośredni link do rezerwacji pokoju')
                     ->columnSpanFull(),
-
-
-
             ]);
     }
 
@@ -225,15 +215,18 @@ class ApartmentResource extends Resource
             ->reorderable('sort')
             ->defaultSort('sort', 'asc')
             ->columns([
+
                 Tables\Columns\TextColumn::make('sort')
                     ->label('#')
                     ->numeric()
                     ->sortable(),
+
                 Tables\Columns\ImageColumn::make('images')
                     ->label('Miniaturka')
                     ->getStateUsing(function (Apartment $record) {
                         return $record->gallery[0] ?? null;
                     }),
+
                 Tables\Columns\TextColumn::make('name')
                     ->label('Apartament')
                     ->description(function (Apartment $record) {
@@ -253,10 +246,6 @@ class ApartmentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->numeric()
                     ->sortable(),
-
-
-
-
             ])
             ->filters([
                 //
@@ -294,7 +283,7 @@ class ApartmentResource extends Resource
     }
     public static function getPluralLabel(): string
     {
-        return __('Apartament');
+        return __('Apartamenty');
     }
 
     public static function getLabel(): string

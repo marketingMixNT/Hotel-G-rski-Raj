@@ -36,7 +36,7 @@ class AmenityResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-face-smile';
 
-    protected static ?string $navigationGroup = 'Informacje o hotelu';
+    protected static ?string $navigationGroup = 'Informacje o Hotelu';
 
     public static function form(Form $form): Form
     {
