@@ -8,6 +8,7 @@
             <x-nav.MenuItem href="{{route('apartments')}}">Apartamenty</x-nav.MenuItem>
             <x-nav.MenuItem href="{{route('offers')}}">Oferty Specjalne</x-nav.MenuItem>
             <x-nav.MenuItem href="{{route('localAttractions')}}">Lokalne Atrakcje</x-nav.MenuItem>
+            <x-nav.MenuItem href="{{route('hotelAttractions')}}">Udogodnienia Hotelowe</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Galeria</x-nav.MenuItem>
             <x-nav.MenuItem href="#">Kontakt</x-nav.MenuItem>
             <x-nav.MenuItem href="/blogs">Aktualności</x-nav.MenuItem>

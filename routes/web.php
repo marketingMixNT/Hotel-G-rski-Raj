@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\HotelAttractionController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -14,6 +15,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('/oferty-specjalne', [OfferController::class, 'offers'])->name('offers');
     Route::get('/oferta-specjalna/{slug}', [OfferController::class, 'offert'])->name('offer');
+
+    Route::get('/atrakcje-hotelowe', [HotelAttractionController::class, 'hotelAttractions'])->name('hotelAttractions');
+    Route::get('/atrakcja-hotelowa/{slug}', [HotelAttractionController::class, 'hotelAttraction'])->name('hotelAttraction');
 
 
 

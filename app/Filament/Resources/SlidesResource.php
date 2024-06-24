@@ -8,12 +8,8 @@ use App\Models\Slide;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\SlidesResource\Pages;
-use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\SlidesResource\RelationManagers;
-
+use Awcodes\Shout\Components\Shout;
 use Filament\Resources\Concerns\Translatable;
 
 
@@ -35,11 +31,14 @@ class SlidesResource extends Resource
     {
         return $form
             ->schema([
-                // CuratorPicker::make('image'),
+                Shout::make('info')
+                ->content('Slajdy pojawią się na stronie głównej. Jeżeli masz stronę wielojęzyczną pamiętaj o zlokalizowaniu tekstu alternatywnego.')
+                ->type('info')
+                ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
                 ->label('Zdjęcie')
                     ->image()
-                    ->maxSize(2048)
+                    ->maxSize(4096)
                     ->optimize('webp')
                     ->imageEditor()
                     ->imageEditorAspectRatios([
@@ -113,7 +112,7 @@ class SlidesResource extends Resource
     }
     public static function getPluralLabel(): string
     {
-        return __('Slajd');
+        return __('Slajdy');
     }
 
     public static function getLabel(): string
