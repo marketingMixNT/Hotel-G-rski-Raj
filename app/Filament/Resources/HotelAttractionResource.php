@@ -11,8 +11,9 @@ use Illuminate\Support\Str;
 use App\Models\HotelAttraction;
 
 use Filament\Resources\Resource;
-use Filament\Forms\Components\Section;
+use Awcodes\Shout\Components\Shout;
 
+use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -34,18 +35,26 @@ class HotelAttractionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-heart';
 
-    protected static ?string $navigationGroup = 'Elementy Główne';
+    protected static ?string $navigationGroup = 'Informacje o Hotelu';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+
+                Shout::make('info')
+                ->content('Atrakcje hotelowe pojawią się na stronie głównej jako zajawka oraz na własnej dedykowanej podstronie.')
+                ->type('info')
+                ->columnSpanFull(),
+
+                //SEO
                 Section::make('SEO')
                 ->icon('heroicon-o-globe-alt')
                 ->collapsible()
                 ->collapsed()
                 ->description('Wprowadź meta title (krótki, opisowy tytuł strony) oraz meta description (krótki opis strony widoczny w wynikach wyszukiwarek), które informują użytkowników o treści strony.')
                 ->schema([
+
                     TextInput::make('meta_title')
                         ->label('Tytuł Meta')
                         ->helperText('Meta title to tytuł strony internetowej wyświetlany w wynikach wyszukiwarek i na kartach przeglądarki.')
@@ -65,6 +74,7 @@ class HotelAttractionResource extends Resource
                         ->columnSpanFull(),
                 ]),
 
+                //DESCRIPTION
                 Section::make('Opis Atrakcji Hotelowej')
                 ->icon('heroicon-o-pencil-square')
                 ->columns(2)
@@ -72,6 +82,7 @@ class HotelAttractionResource extends Resource
                 ->collapsed()
                 ->description('Opisz swoją atrakcję hotelową, podając jej nazwę, krótki opis oraz długi opis, aby zachęcić potencjalnych klientów do skorzystania z niej.')
                 ->schema([
+
                     Forms\Components\TextInput::make('title')
                         ->label('Nazwa atrakcji')
                         ->minLength(3)
@@ -101,6 +112,7 @@ class HotelAttractionResource extends Resource
                         ->columnSpanFull(),
                 ]),
 
+                //IMAGES
                 Section::make('Zdjęcia')
                 ->columns(2)
                 ->icon('heroicon-o-photo')
@@ -139,10 +151,9 @@ class HotelAttractionResource extends Resource
                             '1:1',
                         ])
                         ->required(),
+
                         Forms\Components\FileUpload::make('gallery')
-
                         ->label('Galeria')
-
                         ->reorderable()
                         ->multiple()
                         ->appendFiles()
@@ -222,7 +233,7 @@ class HotelAttractionResource extends Resource
     }
     public static function getPluralLabel(): string
     {
-        return __('Atrakcja Hotelowa');
+        return __('Atrakcje Hotelowe');
     }
 
     public static function getLabel(): string
