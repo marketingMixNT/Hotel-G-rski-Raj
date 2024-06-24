@@ -9,14 +9,9 @@ use Filament\Tables\Table;
 use App\Models\Testimonial;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
-
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TestimonialResource\Pages;
-use App\Filament\Resources\TestimonialResource\RelationManagers;
-
 use Filament\Resources\Concerns\Translatable;
-
+use Awcodes\Shout\Components\Shout;
 
 class TestimonialResource extends Resource
 {
@@ -35,12 +30,22 @@ class TestimonialResource extends Resource
     {
         return $form
             ->schema([
+
+                Shout::make('info')
+                ->content('Opinie pojawią się na stronie głównej.')
+                ->type('info')
+                ->columnSpanFull(),
+
                 Forms\Components\TextInput::make('name')
                     ->label('Imię i nazwisko/pseudonim')
+                    ->minLength(3)
+                    ->maxLength(255)
                     ->required(),
 
                 Forms\Components\TextInput::make('source')
                     ->label('Źródło opini')
+                    ->minLength(3)
+                    ->maxLength(255)
                     ->required(),
 
                 Forms\Components\Textarea::make('content')
@@ -57,10 +62,12 @@ class TestimonialResource extends Resource
         ->reorderable('sort')
         ->defaultSort('sort', 'asc')
             ->columns([
+
                 Tables\Columns\TextColumn::make('sort')
                 ->label('#')
                 ->numeric()
                 ->sortable(),
+
                 Tables\Columns\TextColumn::make('name')
                 ->label('Imię i nazwisko')
                    ->description(function (Testimonial $record) {
@@ -68,6 +75,7 @@ class TestimonialResource extends Resource
                  })
                 ->sortable()
                 ->searchable(),
+
                 Tables\Columns\TextColumn::make('source')
                 ->label('Źródło opini'),
               
@@ -108,7 +116,7 @@ class TestimonialResource extends Resource
     }
     public static function getPluralLabel(): string
     {
-        return __('Opinia');
+        return __('Opinie');
     }
 
     public static function getLabel(): string

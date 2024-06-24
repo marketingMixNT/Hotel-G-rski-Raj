@@ -31,12 +31,14 @@ class SlidesResource extends Resource
     {
         return $form
             ->schema([
+
                 Shout::make('info')
-                ->content('Slajdy pojawią się na stronie głównej. Jeżeli masz stronę wielojęzyczną pamiętaj o zlokalizowaniu tekstu alternatywnego.')
-                ->type('info')
-                ->columnSpanFull(),
+                    ->content('Slajdy pojawią się na stronie głównej. Jeżeli masz stronę wielojęzyczną pamiętaj o zlokalizowaniu tekstu alternatywnego.')
+                    ->type('info')
+                    ->columnSpanFull(),
+
                 Forms\Components\FileUpload::make('image')
-                ->label('Zdjęcie')
+                    ->label('Zdjęcie')
                     ->image()
                     ->maxSize(4096)
                     ->optimize('webp')
@@ -48,32 +50,36 @@ class SlidesResource extends Resource
                         '1:1',
                     ])
                     ->required(),
+
                 Forms\Components\TextInput::make('alt')
-                ->label('Tekst alternatywny')
+                    ->label('Tekst alternatywny')
                     ->required()
                     ->minLength(3)
                     ->maxLength(255)
                     ->helperText('Opisz w jednym zdaniu co znajduje się na obrazku aby poprawić SEO'),
-               
+
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-        ->reorderable('sort')
-        ->defaultSort('sort', 'asc')
+            ->reorderable('sort')
+            ->defaultSort('sort', 'asc')
             ->columns([
+
                 Tables\Columns\TextColumn::make('sort')
-                ->label('#')
-                ->numeric()
-                ->sortable(),
+                    ->label('#')
+                    ->numeric()
+                    ->sortable(),
+
                 Tables\Columns\ImageColumn::make('image')
-                ->label('Miniaturka'),
+                    ->label('Miniaturka'),
+                    
                 Tables\Columns\TextColumn::make('alt')
-                ->label('Tekst alternatywny')
+                    ->label('Tekst alternatywny')
                     ->searchable(),
-            
+
             ])
             ->filters([
                 //

@@ -9,13 +9,9 @@ use App\Models\Advantage;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-
 use App\Filament\Resources\AdvantagesResource\Pages;
-use App\Filament\Resources\AdvantagesResource\RelationManagers;
-
+use Awcodes\Shout\Components\Shout;
 
 class AdvantagesResource extends Resource
 {
@@ -36,6 +32,11 @@ class AdvantagesResource extends Resource
         return $form
             ->schema([
 
+                Shout::make('info')
+                    ->content('Zalety pojawią się na stronie głównej.')
+                    ->type('info')
+                    ->columnSpanFull(),
+
                 Forms\Components\TextInput::make('title')
                     ->label('Tytuł')
                     ->minLength(3)
@@ -43,9 +44,9 @@ class AdvantagesResource extends Resource
                     ->required(),
 
                 Forms\Components\FileUpload::make('thumbnail')
-                    ->label('Miniaturka')
+                    ->label('Zdjęcie')
                     ->image()
-                    ->maxSize(2048)
+                    ->maxSize(4096)
                     ->optimize('webp')
                     ->imageEditor()
                     ->imageEditorAspectRatios([
@@ -56,10 +57,11 @@ class AdvantagesResource extends Resource
                     ])
                     ->required(),
 
-                    Forms\Components\RichEditor::make('description')
+                Forms\Components\RichEditor::make('description')
                     ->label('Opis')
                     ->required()
-                    ->toolbarButtons(['bold', 'italic',
+                    ->toolbarButtons([
+                        'bold', 'italic',
                     ])
                     ->columnSpanFull(),
 
@@ -72,20 +74,22 @@ class AdvantagesResource extends Resource
             ->reorderable('sort')
             ->defaultSort('sort', 'asc')
             ->columns([
+
                 Tables\Columns\TextColumn::make('sort')
                     ->label('#')
                     ->numeric()
                     ->sortable(),
+
                 Tables\Columns\ImageColumn::make('thumbnail')
-                ->label('Miniaturka'),
-                
+                    ->label('Miniaturka'),
+
                 Tables\Columns\TextColumn::make('title')
-                ->label('Tytuł')
-                ->description(function (Advantage $record) {
-                    return Str::limit(strip_tags($record->description), 40);
-              })
+                    ->label('Tytuł')
+                    ->description(function (Advantage $record) {
+                        return Str::limit(strip_tags($record->description), 40);
+                    })
                     ->searchable(),
-              
+
             ])
             ->filters([
                 //
@@ -123,7 +127,7 @@ class AdvantagesResource extends Resource
     }
     public static function getPluralLabel(): string
     {
-        return __('Zaleta');
+        return __('Zalety');
     }
 
     public static function getLabel(): string
