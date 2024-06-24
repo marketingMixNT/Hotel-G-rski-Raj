@@ -36,28 +36,28 @@ class AmenityResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-face-smile';
 
-    protected static ?string $navigationGroup = 'Elementy Główne';
+    protected static ?string $navigationGroup = 'Informacje o hotelu';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema(
-
                 [
+                    Shout::make('info')
+                    ->content('Udogodnienia pojawią się na stronie pojedyńczego apartamentu')
+                    ->type('info')
+                    ->columnSpanFull(),
+
                     TextInput::make('name')
                         ->label('Nazwa')
                         ->minLength(3)
                         ->maxLength(255)
-
                         ->required(),
+
                     IconPicker::make('icons')
                         ->label('Ikonka')
                         ->required(),
                 ]
-
-
-
-
             );
     }
 
@@ -65,6 +65,7 @@ class AmenityResource extends Resource
     {
         return $table
             ->columns([
+
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nazwa')
                     ->searchable()
@@ -106,7 +107,7 @@ class AmenityResource extends Resource
     }
     public static function getPluralLabel(): string
     {
-        return __('Udogodnienie');
+        return __('Udogodnienia');
     }
 
     public static function getLabel(): string

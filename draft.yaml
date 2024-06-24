@@ -70,7 +70,6 @@ models:
   Amenity:
     name: json
     icon: text
-    apartment_id: unsignedInteger nullable
     relationships:
       belongsToMany: Apartment
 
