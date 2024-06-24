@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HotelAttraction extends Model
+class HomeGallery extends Model
 {
     use HasFactory;
 
@@ -15,15 +15,8 @@ class HotelAttraction extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'slug',
-        'short_desc',
-        'description',
-        'thumbnail',
-        'gallery',
-        'banner_img',
-        'meta_title',
-        'meta_desc',
+        'image',
+        'alt',
         'sort',
     ];
 
@@ -34,11 +27,6 @@ class HotelAttraction extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'title' => 'array',
-        'slug' => 'array',
-        'short_desc' => 'array',
-        'description' => 'array',
-        'meta_title' => 'array',
-        'meta_desc' => 'array',
+        'alt' => 'array',
     ];
 }

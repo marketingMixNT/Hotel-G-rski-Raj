@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('amenities', function (Blueprint $table) {
+        Schema::create('mobile_buttons', function (Blueprint $table) {
             $table->id();
-            $table->json('name');
-            $table->text('icons');
-            $table->unsignedInteger('apartment_id')->nullable();
+            $table->json('title');
+            $table->text('icon');
+            $table->text('link');
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('amenities');
+        Schema::dropIfExists('mobile_buttons');
     }
 };

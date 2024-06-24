@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Amenity;
+use App\Models\HomeGallery;
 
-class AmenityFactory extends Factory
+class HomeGalleryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Amenity::class;
+    protected $model = HomeGallery::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +21,9 @@ class AmenityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => '{}',
-            'icon' => $this->faker->text(),
+            'image' => $this->faker->text(),
+            'alt' => '{}',
+            'sort' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }

@@ -79,6 +79,12 @@ models:
     link: text
     sort: integer nullable
 
+  HomeGallery:
+    image: text
+    alt: json
+    sort: integer nullable
+
+
   CustomScript:
     content: text
     position: text

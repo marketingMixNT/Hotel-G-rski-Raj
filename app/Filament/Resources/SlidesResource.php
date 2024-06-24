@@ -11,6 +11,8 @@ use Filament\Resources\Resource;
 use App\Filament\Resources\SlidesResource\Pages;
 use Awcodes\Shout\Components\Shout;
 use Filament\Resources\Concerns\Translatable;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+
 
 
 class SlidesResource extends Resource
@@ -39,6 +41,10 @@ class SlidesResource extends Resource
 
                 Forms\Components\FileUpload::make('image')
                     ->label('Zdjęcie')
+                    ->directory('slides')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                    )
                     ->image()
                     ->maxSize(4096)
                     ->optimize('webp')

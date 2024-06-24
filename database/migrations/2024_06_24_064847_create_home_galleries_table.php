@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mobile_buttons', function (Blueprint $table) {
+        Schema::create('home_galleries', function (Blueprint $table) {
             $table->id();
-            $table->json('title');
             $table->text('image');
-            $table->text('link');
+            $table->json('alt');
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mobile_buttons');
+        Schema::dropIfExists('home_galleries');
     }
 };

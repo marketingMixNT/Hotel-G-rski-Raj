@@ -12,6 +12,7 @@ class Slide extends Model
     use HasFactory;
     use HasTranslations;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -34,5 +35,4 @@ class Slide extends Model
     ];
 
     public $translatable = ['alt', 'description'];
-
 }

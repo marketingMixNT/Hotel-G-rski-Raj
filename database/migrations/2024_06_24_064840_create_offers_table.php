@@ -14,13 +14,18 @@ return new class extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->json('title');
+            $table->json('slug')->unique();
+            $table->json('short_desc');
             $table->json('description');
             $table->text('thumbnail');
+            $table->text('banner_img');
             $table->integer('price');
             $table->integer('nights');
             $table->string('food');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->json('meta_title');
+            $table->json('meta_desc');
             $table->integer('sort')->nullable();
             $table->timestamps();
         });

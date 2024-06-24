@@ -2,28 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Support\Carbon;
+use Spatie\Translatable\HasTranslations;
 
 
 class Offer extends Model
 {
     use HasFactory;
-    use HasTranslations;
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($offer) {
-            if (!empty($offer->title)) {
-                $offer->slug = Str::slug($offer->title);
-            }
-        });
-    }
     /**
      * The attributes that are mass assignable.
      *
@@ -31,21 +20,19 @@ class Offer extends Model
      */
     protected $fillable = [
         'title',
+        'slug',
+        'short_desc',
         'description',
         'thumbnail',
+        'banner_img',
         'price',
         'nights',
         'food',
         'start_date',
         'end_date',
-        'sort',
-        'banner_img',
         'meta_title',
         'meta_desc',
-        'short_desc',
-        'offer_link',
-        'slug',
-
+        'sort',
     ];
 
     /**
@@ -56,9 +43,13 @@ class Offer extends Model
     protected $casts = [
         'id' => 'integer',
         'title' => 'array',
+        'slug' => 'array',
+        'short_desc' => 'array',
         'description' => 'array',
         'start_date' => 'datetime',
         'end_date' => 'datetime',
+        'meta_title' => 'array',
+        'meta_desc' => 'array',
     ];
 
     public $translatable = ['title', 'description'];
@@ -70,5 +61,4 @@ class Offer extends Model
         $query->where('start_date', '<=', $now)
               ->where('end_date', '>=', $now);
     }
-
 }

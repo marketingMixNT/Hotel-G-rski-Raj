@@ -9,6 +9,7 @@ use App\Models\Offer;
 use App\Models\Apartment;
 use App\Models\Advantage;
 use App\Models\Attraction;
+use App\Models\LocalAttraction;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class PageController extends Controller
 
         $offers = Offer::published()->orderBy('sort')->get();
 
-        $attractions = Attraction::orderBy('sort')->get();
+        $attractions = LocalAttraction::orderBy('sort')->get();
         $testimonials = Testimonial::orderBy('sort')->get();
         $apartments = Apartment::orderBy('sort')->get();
 
