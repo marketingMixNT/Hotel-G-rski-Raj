@@ -69,9 +69,12 @@ class AdminPanelProvider extends PanelProvider
             ])
 
             ->navigationGroups([
-                NavigationGroup::make('Strona Główna'),
-                NavigationGroup::make('Informacje o hotelu'),
-                NavigationGroup::make('Funkcjonalności'),
+                'Strona Główna',
+                "Informacje o Hotelu",
+                'Oferty Specjalne',
+                'Lokalne Atrakcje',
+                'Funkcjonalności'
+              
 
             ])
 
