@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Filament\Resources\AmenityResource\Pages;
+namespace App\Filament\Resources\PictogramResource\Pages;
 
-use App\Filament\Resources\AmenityResource;
+use App\Filament\Resources\PictogramResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditAmenity extends EditRecord
+class EditPictogram extends EditRecord
 {
     use EditRecord\Concerns\Translatable;
 
-    protected static string $resource = AmenityResource::class;
+    protected static string $resource = PictogramResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),
             Actions\LocaleSwitcher::make(),
-
         ];
     }
 }

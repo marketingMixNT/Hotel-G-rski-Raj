@@ -1,38 +1,8 @@
 created:
-    - database/factories/SlideFactory.php
-    - database/factories/AdvantageFactory.php
-    - database/factories/OfferFactory.php
-    - database/factories/TestimonialFactory.php
-    - database/factories/LocalAttractionFactory.php
-    - database/factories/HotelAttractionFactory.php
-    - database/factories/ApartmentFactory.php
-    - database/factories/AmenityFactory.php
-    - database/factories/MobileButtonFactory.php
-    - database/factories/HomeGalleryFactory.php
-    - database/factories/CustomScriptFactory.php
-    - database/migrations/2024_06_24_064838_create_slides_table.php
-    - database/migrations/2024_06_24_064839_create_advantages_table.php
-    - database/migrations/2024_06_24_064840_create_offers_table.php
-    - database/migrations/2024_06_24_064841_create_testimonials_table.php
-    - database/migrations/2024_06_24_064842_create_local_attractions_table.php
-    - database/migrations/2024_06_24_064843_create_hotel_attractions_table.php
-    - database/migrations/2024_06_24_064844_create_apartments_table.php
-    - database/migrations/2024_06_24_064845_create_amenities_table.php
-    - database/migrations/2024_06_24_064846_create_mobile_buttons_table.php
-    - database/migrations/2024_06_24_064847_create_home_galleries_table.php
-    - database/migrations/2024_06_24_064848_create_custom_scripts_table.php
-    - database/migrations/2024_06_24_064849_create_amenity_apartment_table.php
-    - app/Models/Slide.php
-    - app/Models/Advantage.php
-    - app/Models/Offer.php
-    - app/Models/Testimonial.php
-    - app/Models/LocalAttraction.php
-    - app/Models/HotelAttraction.php
-    - app/Models/Apartment.php
-    - app/Models/Amenity.php
-    - app/Models/MobileButton.php
-    - app/Models/HomeGallery.php
-    - app/Models/CustomScript.php
+    - database/factories/PictogramFactory.php
+    - database/migrations/2024_06_25_083710_create_pictograms_table.php
+    - database/migrations/2024_06_25_083711_create_apartment_pictogram_table.php
+    - app/Models/Pictogram.php
 models:
     Attraction: { title: longtext, description: longtext, images: text, sort: 'integer nullable default:NULL' }
     HotelAttraction: { title: json, slug: 'json unique', short_desc: json, description: json, thumbnail: text, gallery: text, banner_img: text, meta_title: json, meta_desc: json, sort: 'integer nullable' }
@@ -45,5 +15,7 @@ models:
     Apartment: { name: json, slug: 'json unique', surface: integer, person: integer, beds: json, banner_img: text, gallery: text, reservation_link: text, short_desc: json, description: json, sort: 'integer nullable', meta_title: json, meta_desc: json, relationships: { belongsToMany: Amenity } }
     Amenity: { name: json, icon: text, relationships: { belongsToMany: Apartment } }
     MobileButton: { title: json, icon: text, link: text, sort: 'integer nullable' }
-    HomeGallery: { image: text, alt: json, sort: 'integer nullable' }
+    HomeGallery: { gallery: array }
     CustomScript: { content: text, position: text }
+    Pictograms: { name: json, icon: text, relationships: { belongsToMany: Apartment } }
+    Pictogram: { title: json, icon: text, relationships: { belongsToMany: Apartment } }

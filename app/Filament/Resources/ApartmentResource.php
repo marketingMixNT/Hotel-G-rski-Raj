@@ -8,6 +8,7 @@ use App\Models\Amenity;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use App\Models\Apartment;
+use App\Models\Pictogram;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
@@ -16,11 +17,11 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Repeater;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
+
+
 use App\Filament\Resources\ApartmentResource\Pages;
 
-
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
 use App\Filament\Resources\ApartmentResource\RelationManagers;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
@@ -182,7 +183,7 @@ class ApartmentResource extends Resource
                         Forms\Components\TextInput::make('person')
                             ->label('Maksymalna ilość osób')
                             ->prefix('max')
-                            
+                            ->prefix('max')
                             ->required()
                             ->numeric(),
 
@@ -200,15 +201,15 @@ class ApartmentResource extends Resource
                     ->description('Wybierz udogodnienia dostępne w apartamencie, aby goście wiedzieli, jakie komforty i usługi są oferowane podczas ich pobytu.')
                     ->schema([
 
-                        Forms\Components\Select::make('amenities')
+                            Forms\Components\Select::make('pictograms')
                             ->searchable()
                             ->multiple()
                             ->preload()
-                            ->editOptionForm(Amenity::getForm())
-                            ->createOptionForm(Amenity::getForm())
-                            ->relationship('amenities', 'id')
+                         
+                            ->createOptionForm(Pictogram::getForm())
+                            ->relationship('pictogram', 'id')
                             ->options(
-                                Amenity::all()->pluck('name', 'id')
+                                Pictogram::all()->pluck('title', 'id')
                             )
                     ]),
 

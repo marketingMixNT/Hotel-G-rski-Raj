@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\AmenityResource\Pages;
+namespace App\Filament\Resources\PictogramResource\Pages;
 
-use App\Filament\Resources\AmenityResource;
+use App\Filament\Resources\PictogramResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateAmenity extends CreateRecord
+class CreatePictogram extends CreateRecord
 {
-
     use CreateRecord\Concerns\Translatable;
 
-    protected static string $resource = AmenityResource::class;
+    protected static string $resource = PictogramResource::class;
 
     protected function getHeaderActions(): array
     {

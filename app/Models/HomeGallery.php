@@ -15,9 +15,7 @@ class HomeGallery extends Model
      * @var array
      */
     protected $fillable = [
-        'image',
-        'alt',
-        'sort',
+        'gallery',
     ];
 
     /**
@@ -27,6 +25,5 @@ class HomeGallery extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'alt' => 'array',
     ];
 }

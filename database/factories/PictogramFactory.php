@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\HomeGallery;
+use App\Models\Pictogram;
 
-class HomeGalleryFactory extends Factory
+class PictogramFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = HomeGallery::class;
+    protected $model = Pictogram::class;
 
     /**
      * Define the model's default state.
@@ -21,7 +21,8 @@ class HomeGalleryFactory extends Factory
     public function definition(): array
     {
         return [
-            'gallery' => $this->faker->word(),
+            'title' => '{}',
+            'icon' => $this->faker->text(),
         ];
     }
 }
