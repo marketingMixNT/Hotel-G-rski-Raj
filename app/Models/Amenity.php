@@ -9,10 +9,12 @@ use Guava\FilamentIconPicker\Forms\IconPicker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Pictogram extends Model
+
+class Amenity extends Model
 {
     use HasFactory;
     use HasTranslations;
+
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +22,9 @@ class Pictogram extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'name',
         'icon',
+        'apartment_id',
     ];
 
     /**
@@ -31,7 +34,8 @@ class Pictogram extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'title' => 'array',
+        'apartment_id' => 'integer',
+        'name' => 'array',
     ];
 
     public function apartments(): BelongsToMany
@@ -39,17 +43,18 @@ class Pictogram extends Model
         return $this->belongsToMany(Apartment::class);
     }
 
-    public $translatable = ['title'];
+    public $translatable = ['name'];
 
     public static function getForm()
     {
         return [
-            TextInput::make('title')
+
+            TextInput::make('name')
                 ->label('Nazwa')
                 ->minLength(3)
                 ->maxLength(255)
-
                 ->required(),
+                
             IconPicker::make('icon')
                 ->label('Ikonka')
                 ->required(),

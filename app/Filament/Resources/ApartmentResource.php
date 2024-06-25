@@ -143,9 +143,10 @@ class ApartmentResource extends Resource
                             ->label('Galeria')
                              ->directory('apartments')
                              
-                            ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-apartamenty-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                             ->getUploadedFileNameForStorageUsing(
+                                fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-apartamenty-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                             )
+                                                      
                             ->reorderable()
                             ->multiple()
                             ->appendFiles()
@@ -201,16 +202,18 @@ class ApartmentResource extends Resource
                     ->description('Wybierz udogodnienia dostępne w apartamencie, aby goście wiedzieli, jakie komforty i usługi są oferowane podczas ich pobytu.')
                     ->schema([
 
-                            Forms\Components\Select::make('pictograms')
-                            ->searchable()
-                            ->multiple()
-                            ->preload()
+                        Forms\Components\Select::make('amenities')
+                        ->searchable()
+                        ->multiple()
+                        ->preload()
+                     
+                        // ->createOptionForm(Amenity::getForm())
+                        ->relationship('amenities', 'id')
+                        ->options(
+                            Amenity::all()->pluck('name', 'id')
+                        )
+                    
                          
-                            ->createOptionForm(Pictogram::getForm())
-                            ->relationship('pictogram', 'id')
-                            ->options(
-                                Pictogram::all()->pluck('title', 'id')
-                            )
                     ]),
 
                 //Reservation Link

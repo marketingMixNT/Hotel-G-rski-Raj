@@ -21,7 +21,7 @@ class AmenityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => '{}',
+            'title' => '{}',
             'icon' => $this->faker->text(),
         ];
     }

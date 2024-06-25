@@ -1,5 +1,5 @@
 models:
-  Pictogram:
+  Amenity:
     title: json
     icon: text
     relationships:

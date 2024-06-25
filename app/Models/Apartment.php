@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Amenity;
 use App\Models\Pictogram;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
@@ -64,13 +65,10 @@ class Apartment extends Model
         'gallery' =>'array'
     ];
 
+   
     public function amenities(): BelongsToMany
     {
         return $this->belongsToMany(Amenity::class);
-    }
-    public function pictograms(): BelongsToMany
-    {
-        return $this->belongsToMany(Pictogram::class);
     }
 
     public $translatable = ['meta_title', 'meta_desc','name','slug','short_desc','description','beds'];

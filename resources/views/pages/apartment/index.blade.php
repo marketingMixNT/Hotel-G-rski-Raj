@@ -1,13 +1,13 @@
 <x-layouts.Main>
 
     {{-- META --}}
-    @section('title', $apartment['meta_title'])
-    @section('description', $apartment['meta_desc'])
+    @section('title', $apartment->meta_title)
+    @section('description', $apartment->meta_desc)
 
     {{-- HEADER --}}
     <x-slot name='header'>
-        <x-Header title="{{ $apartment['name'] }}" bgi="{{ asset('/storage' . $apartment['banner_img']) }}">
-            <x-shared.BookingPanel />
+        <x-Header title="{{ $apartment->name }}" bgi="{{ asset('/storage/' . $apartment->banner_img) }}">
+            <x-shared.booking-panel />
         </x-Header>
     </x-slot>
 
@@ -19,20 +19,20 @@
         <div class="flex flex-col gap-20">
 
             <div>
-                <h2 class="text-6xl font-handwritting">{{ $apartment['name'] }}</h2>
+                <h2 class="text-6xl font-handwritting">{{ $apartment->name }}</h2>
             </div>
 
 
 
             <x-ImagePhoto class="h-[700px] max-h-[500px]">
-                <img src="{{ asset('/storage' . $apartment['gallery'][0]) }}"
-                    alt="Wnętrze {{ $apartment['name'] }} w Hotelu Góralski Raj" width="600" height="700"
+                <img src="{{ asset('/storage/' . $apartment->gallery[0]) }}"
+                    alt="Wnętrze {{ $apartment->name }} w Hotelu Góralski Raj" width="600" height="700"
                     loading="lazy" class="w-full h-full object-cover " />
             </x-ImagePhoto>
 
 
             <div>
-                <p>{!! $apartment['short_desc'] !!}</p>
+                <p>{!! $apartment->short_desc !!}</p>
             </div>
         </div>
 
@@ -45,24 +45,24 @@
                     <li class="flex flex-col lg:flex-row justify-center items-center gap-3">
                         <img src="{{ asset('assets/icons/surface.svg') }}" alt="" class="w-7">
                         <span class="text-lg font-text pt-2">Powierzchnia: <span
-                                class="font-semibold">{{ $apartment['surface'] }} m²</span></span>
+                                class="font-semibold">{{ $apartment->surface }} m²</span></span>
                     </li>
                     <li class="flex flex-col lg:flex-row items-center gap-3">
                         <img src="{{ asset('assets/icons/users.svg') }}" alt="" class="w-7"> <span
                             class="text-lg font-text pt-2">Maksymalna ilość osób:
-                            <span class="font-semibold">{{ $apartment['person'] }}</span> </span>
+                            <span class="font-semibold">{{ $apartment->person }}</span> </span>
                     </li>
                     <li class="flex flex-col lg:flex-row items-center gap-3">
                         <img src="{{ asset('assets/icons/bed.svg') }}" alt="" class="w-7">
                         <span class="text-lg font-text pt-2">Ilość łózek: <span
-                                class="font-semibold">{{ $apartment['beds'] }}</span> </span>
+                                class="font-semibold">{{ $apartment->beds }}</span> </span>
                     </li>
                 </ul>
             </div>
 
 
             <x-ImagePhoto class="h-[400px]">
-                <img src="{{ asset('/storage' . $apartment['gallery'][1]) }}"alt="Wnętrze {{ $apartment['name'] }} w Hotelu Góralski Raj"
+                <img src="{{ asset('/storage/' . $apartment->gallery[1]) }}"alt="Wnętrze {{ $apartment->name }} w Hotelu Góralski Raj"
                     width="465" height="405" loading="lazy" class='h-full w-full  object-cover ' />
             </x-ImagePhoto>
 
@@ -75,7 +75,7 @@
                     @foreach ($apartment->amenities as $item)
                         <li class='flex justify-start items-center gap-3'>
 
-                            <x-icon name="{{$item->icons}}" class="w-9"/>
+                            <x-icon name="{{$item->icon}}" class="w-9"/>
                             <span class="mt-1">{{ $item->name }}</span>
                           
 
@@ -93,10 +93,10 @@
     <section class="section  px-6 md:px-12">
         <div class="swiper apartment-gallery-carousel">
             <div class="swiper-wrapper ">
-                @foreach ($apartment['gallery'] as $img)
+                @foreach ($apartment->gallery as $img)
                     <x-ImagePhoto class=" h-[550px] p-4 swiper-slide">
-                        <a href="{{ asset('/storage' . $img) }}" class="glightbox">
-                            <img src="{{ asset('/storage' . $img) }}" alt="sda"
+                        <a href="{{ asset('/storage/' . $img) }}" class="glightbox">
+                            <img src="{{ asset('/storage/' . $img) }}" alt="Wnętrze apartamentu {{$apartment->name}} w Hotelu Górski Raj"
                                 class="w-full h-full object-cover">
                         </a>
                     </x-ImagePhoto>
@@ -116,7 +116,7 @@
             <h2 class='font-semibold text-4xl'>Opis Pokoju</h2>
             <div class="description">
 
-                {!! $apartment['description'] !!}
+                {!! $apartment->description !!}
             </div>
         </div>
 
@@ -138,7 +138,7 @@
             </div>
             {{-- btns --}}
             <div class="be-panel hidden md:block  mx-32 2xl:mx-0 px-12 bg-white"></div>
-            <x-ui.LinkBtn type='primary' class="md:hidden">Zarezerwuj</x-ui.LinkBtn>
+            <x-ui.link-button type='primary' class="md:hidden">Zarezerwuj</x-ui.link-button>
 
         </div>
     </section>
@@ -158,11 +158,11 @@
             <div class="swiper other-rooms-carousel">
                 <div class="swiper-wrapper ">
                     @foreach ($otherApartments as $apartment)
-                        <x-OtherApartmentCard link="{{ route('apartment', $apartment['slug']) }}"
-                            thumbnail="{{ asset('/storage' . $apartment['thumbnail']) }}"
-                            name=" {{ $apartment['name'] }}" shortDesc="{!! $apartment['short_desc'] !!}"
-                            surface="  {{ $apartment['surface'] }}" person=" {{ $apartment['person'] }}"
-                            beds=" {{ $apartment['beds'] }}" />
+                        <x-OtherApartmentCard link="{{ route('apartment', $apartment->slug) }}"
+                            thumbnail="{{ asset('/storage/' . $apartment->thumbnail) }}"
+                            name=" {{ $apartment->name }}" shortDesc="{!! $apartment->short_desc !!}"
+                            surface="  {{ $apartment->surface }}" person=" {{ $apartment->person }}"
+                            beds=" {{ $apartment->beds }}" />
                     @endforeach
                 </div>
             </div>

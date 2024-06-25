@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pictograms', function (Blueprint $table) {
+        Schema::create('amenities', function (Blueprint $table) {
             $table->id();
             $table->json('title');
             $table->text('icon');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pictograms');
+        Schema::dropIfExists('amenities');
     }
 };

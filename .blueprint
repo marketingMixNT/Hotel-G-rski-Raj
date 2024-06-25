@@ -1,8 +1,8 @@
 created:
-    - database/factories/PictogramFactory.php
-    - database/migrations/2024_06_25_083710_create_pictograms_table.php
-    - database/migrations/2024_06_25_083711_create_apartment_pictogram_table.php
-    - app/Models/Pictogram.php
+    - database/factories/AmenityFactory.php
+    - database/migrations/2024_06_25_093156_create_amenities_table.php
+    - database/migrations/2024_06_25_093157_create_amenity_apartment_table.php
+    - app/Models/Amenity.php
 models:
     Attraction: { title: longtext, description: longtext, images: text, sort: 'integer nullable default:NULL' }
     HotelAttraction: { title: json, slug: 'json unique', short_desc: json, description: json, thumbnail: text, gallery: text, banner_img: text, meta_title: json, meta_desc: json, sort: 'integer nullable' }
@@ -13,7 +13,7 @@ models:
     Testimonial: { name: json, source: json, content: json, sort: 'integer nullable' }
     LocalAttraction: { title: json, description: json, images: text, sort: 'integer nullable' }
     Apartment: { name: json, slug: 'json unique', surface: integer, person: integer, beds: json, banner_img: text, gallery: text, reservation_link: text, short_desc: json, description: json, sort: 'integer nullable', meta_title: json, meta_desc: json, relationships: { belongsToMany: Amenity } }
-    Amenity: { name: json, icon: text, relationships: { belongsToMany: Apartment } }
+    Amenity: { title: json, icon: text, relationships: { belongsToMany: Apartment } }
     MobileButton: { title: json, icon: text, link: text, sort: 'integer nullable' }
     HomeGallery: { gallery: array }
     CustomScript: { content: text, position: text }
