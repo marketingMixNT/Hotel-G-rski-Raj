@@ -42,22 +42,15 @@ class AmenityResource extends Resource
     {
         return $form
             ->schema(
-                [
-                    Shout::make('info')
-                    ->content('Udogodnienia pojawią się na stronie pojedyńczego apartamentu')
-                    ->type('info')
-                    ->columnSpanFull(),
-
-                    TextInput::make('name')
-                        ->label('Nazwa')
-                        ->minLength(3)
-                        ->maxLength(255)
-                        ->required(),
-
-                    IconPicker::make('icons')
-                        ->label('Ikonka')
-                        ->required(),
-                ]
+               [ TextInput::make('name')
+               ->label('Nazwa')
+               ->minLength(3)
+               ->maxLength(255)
+              
+               ->required(),
+               IconPicker::make('icon')
+               ->label('Ikonka')
+               ->required(),]
             );
     }
 

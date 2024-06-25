@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Amenity;
+use Filament\Forms\Set;
 use Filament\Forms\Form;
 use App\Models\Apartment;
 use Filament\Tables\Table;
@@ -14,15 +15,15 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Repeater;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\ApartmentResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ApartmentResource\RelationManagers;
-
-
 use Filament\Resources\Concerns\Translatable;
+use App\Filament\Resources\ApartmentResource\Pages;
 
+
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+use App\Filament\Resources\ApartmentResource\RelationManagers;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
-use Filament\Forms\Set;
 
 class ApartmentResource extends Resource
 {
@@ -119,9 +120,13 @@ class ApartmentResource extends Resource
 
                         Forms\Components\FileUpload::make('banner_img')
                             ->label('Baner')
+                            ->directory('apartments-banners')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-apartamenty-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                            )
                             ->helperText('Banner będzie pojawiał się na stronie apartamentu ')
                             ->image()
-                            ->maxSize(2048)
+                            ->maxSize(4096)
                             ->optimize('webp')
                             ->imageEditor()
                             ->imageEditorAspectRatios([
@@ -135,12 +140,17 @@ class ApartmentResource extends Resource
 
                         Forms\Components\FileUpload::make('gallery')
                             ->label('Galeria')
+                             ->directory('apartments')
+                             
+                            ->getUploadedFileNameForStorageUsing(
+                                fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-apartamenty-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                            )
                             ->reorderable()
                             ->multiple()
                             ->appendFiles()
                             ->helperText('Pierwsze zdjęcie będzie zdjęciem głównym oraz miniaturką. Dla najlepszego efektu wgraj minium 5 zdjęć.')
                             ->image()
-                            ->maxSize(2048)
+                            ->maxSize(4096)
                             ->optimize('webp')
                             ->imageEditor()
                             ->imageEditorAspectRatios([
@@ -166,10 +176,13 @@ class ApartmentResource extends Resource
                         Forms\Components\TextInput::make('surface')
                             ->label('Powierzchnia')
                             ->required()
-                            ->numeric(),
+                            ->numeric()
+                            ->suffix('m²'),
 
                         Forms\Components\TextInput::make('person')
                             ->label('Maksymalna ilość osób')
+                            ->prefix('max')
+                            
                             ->required()
                             ->numeric(),
 
