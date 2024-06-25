@@ -1,4 +1,4 @@
-<x-layouts.Main>
+<x-layouts.app>
 
     {{-- META --}}
     @section('title', 'Lokale Atrakcje – Odkryj Najlepsze Miejsca na Podhalu | Hotel Góralski Raj')
@@ -8,7 +8,7 @@
 
         {{-- HEADER --}}
         <x-slot name='header'>
-            <x-Header title="Lokalne atrakcje" bgi="{{ asset('assets/img/view.jpeg') }}" />
+            <x-shared.header title="Lokalne atrakcje" bgi="{{ asset('assets/img/view.jpeg') }}" />
         </x-slot>
 
         {{-- MAIN --}}
@@ -27,9 +27,10 @@
                         </div>
                         @foreach ($attraction['images'] as $img)
                             <div class=" w-full md:w-3/4 lg:w-full max-h-[500px] mx-auto overflow-hidden ">
-                                <img src=" {{ asset('/storage' . $img) }}" alt="{{ $attraction['title'] }}" loading="lazy"
+                                <a href="{{ asset('/storage/' . $img) }}" class="glightbox">
+                                <img src=" {{ asset('/storage/' . $img) }}" alt="{{ $attraction['title'] }}" loading="lazy"
                                     width="630" height="500"
-                                    class="w-full h-full object-cover hover:scale-110 duration-500">
+                                    class="w-full h-full object-cover hover:scale-110 duration-500 min-h-[450px]"></a>
                             </div>
                         @endforeach
                     </div>
@@ -38,4 +39,4 @@
         </section>
 
 
-    </x-layouts.Main>
+    </x-layouts.app>

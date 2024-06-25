@@ -1,12 +1,12 @@
 {{-- CONTAINER --}}
 <div class="flex flex-col justify-between items-center swiper-slide group h-full">
-    <a href="{{ route('offer', $offer['slug']) }}"class="flex flex-col relative group h-full">
+    <a href="{{ route('offer', $offer['slug']) }}"class="flex flex-col justif-center items-center relative group h-full">
         {{-- FRONT --}}
         {{-- img --}}
-        <x-ImagePhoto class="h-[350px] sm:w-[375px]">
+        <x-image-photo class="h-[350px] sm:w-[375px] ">
             <img src="{{ asset('/storage' . $offer->thumbnail) }}" alt="{{ $offer['title'] }}"
                 width="548" height="368" loading="lazy" class="w-full h-full object-cover ">
-        </x-ImagePhoto>
+        </x-image-photo>
         {{-- title --}}
         <div class="flex flex-col justify-between items-center gap-4 py-8 flex-grow">
             <span class="font-light">od <span

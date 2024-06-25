@@ -3,10 +3,10 @@
     <a href="{{ $link }}" class=" relative flex flex-col  h-full group">
         {{-- FRONT --}}
         {{-- img --}}
-        <x-ImagePhoto class='h-[400px] p-4'>
+        <x-image-photo class='h-[400px] p-4'>
             <img src="{{ $thumbnail }}" alt="{{ $name }}" width="548" height="368" loading="lazy"
                 class="w-full h-full object-cover">
-        </x-ImagePhoto>
+        </x-image-photo>
         {{-- title --}}
         <div class="flex flex-grow flex-col justify-between items-center gap-4   py-8">
 

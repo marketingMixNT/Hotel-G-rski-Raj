@@ -19,8 +19,8 @@ class HotelAttractionController extends Controller
     {
 
 
-        // $offer = Offer::where('slug->pl', $slug)->first();
-        $hotelAttraction = HotelAttraction::where('slug', $slug)->first();
+        
+        $hotelAttraction = HotelAttraction::where('slug->pl', $slug)->first();
 
 
 

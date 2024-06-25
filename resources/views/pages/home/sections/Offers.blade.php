@@ -2,7 +2,7 @@
 
     <div class="text-center pb-24">
 
-        <x-Heading subtitle="Poznaj nasze propozycje na pobyt" title="Doświadcz Niezapomnianej Przygody"  />
+        <x-heading subtitle="Poznaj nasze propozycje na pobyt" title="Doświadcz Niezapomnianej Przygody"  />
     </div>
 
     <div class="max-w-screen-xl mx-auto relative px-4 sm:px-32 md:px-12 xl:px-0">

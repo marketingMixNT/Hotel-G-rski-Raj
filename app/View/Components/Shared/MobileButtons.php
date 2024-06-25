@@ -21,6 +21,6 @@ class MobileButtons extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.shared.MobileButtons');
+        return view('components.shared.mobile-buttons');
     }
 }

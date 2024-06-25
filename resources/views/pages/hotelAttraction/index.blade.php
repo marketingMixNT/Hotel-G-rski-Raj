@@ -1,4 +1,4 @@
-<x-layouts.Main>
+<x-layouts.app>
 
     {{-- META --}}
     @section('title', $hotelAttraction['meta_title'])
@@ -6,11 +6,11 @@
 
         {{-- HEADER --}}
         <x-slot name='header'>
-            <x-Header title="{{$hotelAttraction->title}}" bgi="{{ asset('/storage' . $hotelAttraction['banner_img']) }}" >
+            <x-shared.header title="{{$hotelAttraction->title}}" bgi="{{ asset('/storage/' . $hotelAttraction['banner_img']) }}" >
             
-                <x-shared.BookingPanel/>
+                <x-shared.booking-panel/>
 
-            </x-Header>
+            </x-shared.header>
         </x-slot>
 
         {{-- MAIN --}}
@@ -20,7 +20,7 @@
     {{-- top --}}
     <div class="flex justify-center items-center">
 
-        <x-Heading title="{{$hotelAttraction->title}}" subtitle="Poznaj nasze propozycje na pobyt" />
+        <x-heading title="{{$hotelAttraction->title}}" subtitle="Poznaj nasze propozycje na pobyt" />
     </div>
     {{-- content --}}
     <div class="flex flex-col lg:flex-row mt-16 lg:mt-32">
@@ -28,7 +28,7 @@
         <div class="w-full lg:w-[60%] lg:pr-20 description order-1 lg:order-none">{!! $hotelAttraction->description !!} </div>
 
 
-        <div class="w-full lg:w-[40%] relative "><img src="{{ asset('/storage' . $hotelAttraction->thumbnail) }}" alt=""
+        <div class="w-full lg:w-[40%] relative "><img src="{{ asset('/storage/' . $hotelAttraction->thumbnail) }}" alt=""
                 class="sticky top-32 h-[500px] w-full"></div>
     </div>
 </section>
@@ -38,12 +38,12 @@
     <div class="swiper apartment-gallery-carousel">
         <div class="swiper-wrapper ">
             @foreach ($hotelAttraction['gallery'] as $img)
-                <x-ImagePhoto class=" h-[550px] p-4 swiper-slide">
+                <x-image-photo class=" h-[550px] p-4 swiper-slide">
                     <a href="{{ asset('/storage' . $img) }}" class="glightbox">
-                        <img src="{{ asset('/storage' . $img) }}" alt="sda"
-                            class="w-full h-full object-cover">
+                        <img src="{{ asset('/storage/' . $img) }}" alt="sda"
+                            class="w-full h-[540px] object-cover">
                     </a>
-                </x-ImagePhoto>
+                </x-image-photo>
             @endforeach
         </div>
 </section>
@@ -53,7 +53,7 @@
 
     <!--heading-->
     <div class="w-full mx-auto flex justify-center items-center">
-        <x-Heading-Horizontal subheading="Hotel Góralski Raj" heading="Pokoje Pełne Górskiego Uroku"
+        <x-heading-horizontal subheading="Hotel Góralski Raj" heading="Pokoje Pełne Górskiego Uroku"
             decor="Komfort i spokój na każdą porę roku"
             text="Nasze pokoje to więcej niż miejsce noclegowe; to przestrzeń, gdzie każdy detal odzwierciedla piękno i spokój otaczających nas Tatr. Wybierając nocleg u nas, wybierasz komfort, wygodę i niezapomniane widoki, które sprawią, że Twój wypoczynek będzie wyjątkowy. Czy to romantyczny weekend, rodzinne wakacje, czy wypad ze znajomymi - znajdziesz u nas pokój idealnie dopasowany do Twoich potrzeb i oczekiwań." />
     </div>

@@ -1,23 +1,23 @@
 <div id="menu"
     class=" menu-close bg-secondary-200 fixed  top-[10px] sm:top-[58px] bottom-0 right-0 left-0 xs
         :overflow-hidden z-40 " >
-    <div class="modal">
+    <div class="modal gap-24">
         <!--NAV ITEMS-->
         <ul class="text-heading text-fontLight-400 flex justify-center items-center flex-col gap-4 xs:gap-8">
 
-            <x-nav.MenuItem href="{{route('apartments')}}">Apartamenty</x-nav.MenuItem>
-            <x-nav.MenuItem href="{{route('offers')}}">Oferty Specjalne</x-nav.MenuItem>
-            <x-nav.MenuItem href="{{route('localAttractions')}}">Lokalne Atrakcje</x-nav.MenuItem>
-            <x-nav.MenuItem href="{{route('hotelAttractions')}}">Udogodnienia Hotelowe</x-nav.MenuItem>
-            <x-nav.MenuItem href="#">Galeria</x-nav.MenuItem>
-            <x-nav.MenuItem href="#">Kontakt</x-nav.MenuItem>
-            <x-nav.MenuItem href="/blogs">Aktualności</x-nav.MenuItem>
+            <x-shared.nav.menu-item href="{{route('apartments')}}">Apartamenty</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('offers')}}">Oferty Specjalne</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('localAttractions')}}">Lokalne Atrakcje</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('hotelAttractions')}}">Udogodnienia Hotelowe</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="#">Galeria</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="#">Kontakt</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="/blogs">Aktualności</x-shared.nav.menu-item>
         </ul>
 
         {{-- <img src="/assets/decor--light.png" alt="" class="w-16 md:w-18 2xl:w-20 2xl:my-6" /> --}}
         <!--MOBILE LANGUAGE SWITCHER-->
         <div class=" mt-6 absolute right-5 bottom-5 opacity-100">
-           <x-nav.LanguageSwitcher/>
+           <x-shared.nav.language-switcher/>
         </div>
           <!--SOCIAL-->
         <div class="flex justify-center items-center gap-6 absolute left-5 bottom-5 lg:static">

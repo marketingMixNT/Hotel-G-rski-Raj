@@ -1,4 +1,4 @@
-<x-layouts.Main>
+<x-layouts.app>
 
     <x-slot name='header'>
         @include('pages.home.sections.HeroSlider')
@@ -12,10 +12,10 @@
     @include('pages.home.sections.Gallery')
     @include('pages.home.sections.Attractions')
    
-    <x-Map/>
+    <x-shared.map/>
 
 
    
     
 
-</x-layouts.Main>
+</x-layouts.app>

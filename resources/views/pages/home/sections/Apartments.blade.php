@@ -9,7 +9,7 @@
 
         <div class="max-w-screen-2xl mx-auto">
             @foreach ($apartments as $apartment)
-            <x-ApartmentCard 
+            <x-apartment-card 
             :apartment='$apartment'
             />
         @endforeach

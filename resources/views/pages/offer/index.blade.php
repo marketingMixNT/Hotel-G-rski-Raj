@@ -1,4 +1,4 @@
-<x-layouts.Main>
+<x-layouts.app>
 
     {{-- META --}}
     @section('title', $offer->meta_title)
@@ -6,9 +6,9 @@
 
     {{-- HEADER --}}
     <x-slot name='header'>
-        <x-Header title="{{ $offer->title }}" bgi="{{ asset('/storage' . $offer->banner_img) }}">
-            <x-shared.BookingPanel />
-        </x-Header>
+        <x-shared.header title="{{ $offer->title }}" bgi="{{ asset('/storage' . $offer->banner_img) }}">
+            <x-shared.booking-panel />
+        </x-shared.header>
     </x-slot>
 
     {{-- MAIN --}}
@@ -48,12 +48,12 @@
     {{-- OTHER OFFERS --}}
     <section class="section max-w-screen-2xl px-6 md:px-12 mb-16">
 
-        <x-OffersCarousel>
+        <x-offers-carousel>
             @foreach ($otherOffers as $offer)
-                <x-OffersCarouselCard :offer="$offer" />
+                <x-offer-carousel-card :offer="$offer" />
             @endforeach
-        </x-OffersCarousel>
+        </x-offers-carousel>
 
     </section>
 
-</x-layouts.Main>
+</x-layouts.app>

@@ -20,7 +20,7 @@ class OfferController extends Controller
 
 
         // $offer = Offer::where('slug->pl', $slug)->first();
-        $offer = Offer::where('slug', $slug)->first();
+        $offer = Offer::where('slug->pl', $slug)->first();
 
         // dd($offer);
 

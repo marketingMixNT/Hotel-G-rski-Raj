@@ -149,6 +149,7 @@ class HotelAttractionResource extends Resource
                         ->getUploadedFileNameForStorageUsing(
                             fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-atrakcje-hotelowe-miniaturki-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                         )
+                        
                         ->image()
                         ->maxSize(2048)
                         ->optimize('webp')
@@ -165,8 +166,9 @@ class HotelAttractionResource extends Resource
                         ->label('Galeria')
                         ->reorderable()
                         ->directory('attractions-galleries')
+                       
                         ->getUploadedFileNameForStorageUsing(
-                            fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-atrakcje-hotelowe-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                            fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-atrakcje-hotelowe-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                         )
                         ->multiple()
                         ->appendFiles()

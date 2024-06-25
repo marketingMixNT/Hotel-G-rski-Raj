@@ -4,7 +4,7 @@
         <!--left side-->
         <div class="flex justify-center items-center gap-12 ">
             <div>
-                <x-nav.Hamburger />
+                <x-shared.nav.hamburger />
             </div>
             <a href="tel:+48453400244" class="text-sm mb-1 hidden lg:inline-block duration-300 link-hover">+48 453 400 244 </a>
         </div>
@@ -19,9 +19,9 @@
         <div class="flex justify-center items-center gap-12 ">
 
             <div class="hidden lg:block">
-                <x-nav.LanguageSwitcher />
+                <x-shared.nav.language-switcher />
             </div>
-            <x-ui.LinkBtn href="#" class="hidden sm:inline-block" aria-label="Rezerwuj">Rezerwuj</x-ui.LinkBtn>
+            <x-ui.link-button href="#" class="hidden sm:inline-block" aria-label="Rezerwuj">Rezerwuj</x-ui.link-button>
 
         </div>
     </div>

@@ -36,8 +36,8 @@
  @endforeach
 <x-shared.Preloader/>
     <header>
-        <x-nav.Navbar />
-        <x-nav.Menu />
+        <x-shared.nav.navbar />
+        <x-shared.nav.menu />
         {{ $header }}
 
       
@@ -47,8 +47,8 @@
         {{ $slot }}
     </main>
 
-    <x-Footer/>
-    <x-shared.MobileButtons/>
+    <x-shared.footer/>
+    <x-shared.mobile-buttons/>
     
 
     @filamentScripts

@@ -1,4 +1,4 @@
-<x-layouts.Main>
+<x-layouts.app>
 
     {{-- META --}}
     @section('title', $apartment->meta_title)
@@ -6,9 +6,9 @@
 
     {{-- HEADER --}}
     <x-slot name='header'>
-        <x-Header title="{{ $apartment->name }}" bgi="{{ asset('/storage/' . $apartment->banner_img) }}">
+        <x-shared.header title="{{ $apartment->name }}" bgi="{{ asset('/storage/' . $apartment->banner_img) }}">
             <x-shared.booking-panel />
-        </x-Header>
+        </x-shared.header>
     </x-slot>
 
     {{-- MAIN --}}
@@ -24,11 +24,11 @@
 
 
 
-            <x-ImagePhoto class="h-[700px] max-h-[500px]">
+            <x-image-photo class="h-[700px] max-h-[500px]">
                 <img src="{{ asset('/storage/' . $apartment->gallery[0]) }}"
                     alt="Wnętrze {{ $apartment->name }} w Hotelu Góralski Raj" width="600" height="700"
                     loading="lazy" class="w-full h-full object-cover " />
-            </x-ImagePhoto>
+            </x-image-photo>
 
 
             <div>
@@ -61,10 +61,10 @@
             </div>
 
 
-            <x-ImagePhoto class="h-[400px]">
+            <x-image-photo class="h-[400px]">
                 <img src="{{ asset('/storage/' . $apartment->gallery[1]) }}"alt="Wnętrze {{ $apartment->name }} w Hotelu Góralski Raj"
                     width="465" height="405" loading="lazy" class='h-full w-full  object-cover ' />
-            </x-ImagePhoto>
+            </x-image-photo>
 
             <!--amenities -->
 
@@ -94,12 +94,12 @@
         <div class="swiper apartment-gallery-carousel">
             <div class="swiper-wrapper ">
                 @foreach ($apartment->gallery as $img)
-                    <x-ImagePhoto class=" h-[550px] p-4 swiper-slide">
+                    <x-image-photo class=" h-[550px] p-4 swiper-slide">
                         <a href="{{ asset('/storage/' . $img) }}" class="glightbox">
                             <img src="{{ asset('/storage/' . $img) }}" alt="Wnętrze apartamentu {{$apartment->name}} w Hotelu Górski Raj"
-                                class="w-full h-full object-cover">
+                                class="w-full h-[540px]  object-cover">
                         </a>
-                    </x-ImagePhoto>
+                    </x-image-photo>
                 @endforeach
             </div>
 
@@ -148,7 +148,7 @@
 
         <!--heading-->
         <div class="w-full mx-auto flex justify-center items-center">
-            <x-Heading-Horizontal subheading="Hotel Góralski Raj" heading="Pokoje Pełne Górskiego Uroku"
+            <x-heading-horizontal subheading="Hotel Góralski Raj" heading="Pokoje Pełne Górskiego Uroku"
                 decor="Komfort i spokój na każdą porę roku"
                 text="Nasze pokoje to więcej niż miejsce noclegowe; to przestrzeń, gdzie każdy detal odzwierciedla piękno i spokój otaczających nas Tatr. Wybierając nocleg u nas, wybierasz komfort, wygodę i niezapomniane widoki, które sprawią, że Twój wypoczynek będzie wyjątkowy. Czy to romantyczny weekend, rodzinne wakacje, czy wypad ze znajomymi - znajdziesz u nas pokój idealnie dopasowany do Twoich potrzeb i oczekiwań." />
         </div>
@@ -158,7 +158,7 @@
             <div class="swiper other-rooms-carousel">
                 <div class="swiper-wrapper ">
                     @foreach ($otherApartments as $apartment)
-                        <x-OtherApartmentCard link="{{ route('apartment', $apartment->slug) }}"
+                        <x-other-apartment-card link="{{ route('apartment', $apartment->slug) }}"
                             thumbnail="{{ asset('/storage/' . $apartment->thumbnail) }}"
                             name=" {{ $apartment->name }}" shortDesc="{!! $apartment->short_desc !!}"
                             surface="  {{ $apartment->surface }}" person=" {{ $apartment->person }}"
