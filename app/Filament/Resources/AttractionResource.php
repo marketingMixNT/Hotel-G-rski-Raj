@@ -8,6 +8,7 @@ use Filament\Forms\Form;
 use App\Models\Attraction;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use App\Models\LocalAttraction;
 use Filament\Resources\Resource;
 use Awcodes\Shout\Components\Shout;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,6 +16,7 @@ use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AttractionResource\Pages;
 use App\Filament\Resources\AttractionResource\RelationManagers;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class AttractionResource extends Resource
 {
@@ -24,7 +26,7 @@ class AttractionResource extends Resource
     {
         return ['pl', 'en'];
     }
-    protected static ?string $model = Attraction::class;
+    protected static ?string $model = LocalAttraction::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
 
@@ -57,10 +59,14 @@ class AttractionResource extends Resource
                 Forms\Components\FileUpload::make('images')
                     ->reorderable()
                     ->multiple()
+                    ->directory('localAttractions')   
+                    ->getUploadedFileNameForStorageUsing(
+                       fn (TemporaryUploadedFile $file): string => 'hotel-gorski-raj-lokalne-atrakcje-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
+                   )
                     ->appendFiles()
                     ->helperText('Wstaw 3 zdjęcia, pierwsze będzie miniaturką')
                     ->image()
-                    ->maxSize(2048)
+                    ->maxSize(4092)
                     ->optimize('webp')
                     ->imageEditor()
                     ->imageEditorAspectRatios([
@@ -89,13 +95,13 @@ class AttractionResource extends Resource
 
                 Tables\Columns\ImageColumn::make('images')
                     ->label('Miniaturka')
-                    ->getStateUsing(function (Attraction $record) {
+                    ->getStateUsing(function (LocalAttraction $record) {
                         return $record->images[0] ?? null;
                     }),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')
-                    ->description(function (Attraction $record) {
+                    ->description(function (LocalAttraction $record) {
                         return Str::limit(strip_tags($record->description), 40);
                     })
                     ->searchable()

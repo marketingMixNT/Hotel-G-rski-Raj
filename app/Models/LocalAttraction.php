@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
+
 
 class LocalAttraction extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -30,5 +33,9 @@ class LocalAttraction extends Model
         'id' => 'integer',
         'title' => 'array',
         'description' => 'array',
+        'images'=>'array'
+
     ];
+
+    public $translatable = ['title','description'];
 }

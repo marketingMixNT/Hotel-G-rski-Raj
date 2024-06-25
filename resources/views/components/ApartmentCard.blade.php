@@ -7,7 +7,7 @@
         <div class="w-full lg:w-[30%]">
             <div class="overflow-hidden">
 
-                <img src=" {{asset('/storage/' . $apartment->gallery[0] ) }}"
+                <img src=" {{asset('/storage/' . $apartment->thumbnail ) }}"
                     alt="Zdjęcie apartamentu {{ $apartment->name }} w hotelu Góralski Raj w Nowym Targu" width="460"
                     height="380" class="w-full h-[350px] object-cover group-hover:scale-105 duration-500">
             </div>

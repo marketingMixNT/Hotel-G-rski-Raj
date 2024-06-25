@@ -3,14 +3,14 @@
 {{-- MAIN --}}
 
     <x-recommended-page class="col-span-2  bg-[url('/public/assets/img/restaurant.jpeg')] bg-bottom" link="{{route('hotelAttraction','restauracja')}}" text="Poznaj naszą restaurację">
-        <x-Heading subtitle="Smak, Styl, i Sztuka" title="Kuchnia Pełna Inspiracji" 
+        <x-Heading subtitle="Smak, styl, i sztuka" title="Kuchnia Pełna Inspiracji" 
             colorTitle="text-white" colorSubtitle='textwhite group-hover:text-fontPrimary duration-500' />
     </x-recommended-page>
 
     {{-- SECOND and THIRD --}}
 
     <x-recommended-page class="col-span-2 lg:col-span-1 bg-[url('/public/assets/img/spa.jpeg')] bg-center" link="{{route('hotelAttraction','spa')}}" text="Poznaj nasze SPA">
-        <x-Heading subtitle="Renowacja i Relaks w Naszym SPA" title="Odkryj Pełnię Spokoju" 
+        <x-Heading subtitle="Renowacja i relaks w naszym SPA" title="Odkryj Pełnię Spokoju" 
             colorTitle="text-white" colorSubtitle='textwhite group-hover:text-fontPrimary duration-500' />
     </x-recommended-page>
 

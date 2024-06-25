@@ -2,8 +2,8 @@
 
     <div class="text-center pb-24">
 
-        <x-Heading title="Apartamenty" subtitle="Lista Apartamentów"
-            colorSubtitle='text-fontPrimary' />
+        <x-heading subtitle="Komfort i luksus w każdym szczególe" title="Idealne Miejsce na Pobyt w Tatrach" 
+             />
     </div>
 
 

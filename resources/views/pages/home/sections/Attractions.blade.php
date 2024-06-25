@@ -15,7 +15,7 @@
            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
                {{-- image --}}
                <div class="{{ $index % 2 === 0 ? 'lg:order-1' : '' }} w-full lg:w-1/2 flex justify-center items-center">
-                   <img src="{{ asset('/storage' .$attraction['images'][0]) }}" alt="{{ $attraction['title'] }}" class=" object-cover w-full h-[500px]">
+                   <img src="{{ asset('/storage/' .$attraction['thumbnail']) }}" alt="{{ $attraction['title'] }}" class=" object-cover w-full h-[400px]">
                </div>
                {{-- text --}}
                <div class="w-full lg:w-1/2 flex flex-col justify-evenly items-start gap-4 lg:gap-0">
@@ -30,6 +30,6 @@
    </div>
    <div class="flex justify-center items-center mt-12 lg:mt-24">
 
-       <x-ui.LinkBtn type='secondary' href=''>Zobacz wszystkie</x-ui.LinkBtn>
+       <x-ui.link-button type='secondary' href=''>Zobacz wszystkie</x-ui.link-button>
    </div>
 </section>

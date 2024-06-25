@@ -3,7 +3,7 @@
     {{-- HEADING --}}
     <div class="text-center pb-12 sm:pb-24">
 
-        <x-heading title="Atrybuty Naszego Hotelu" subtitle="Przyjazd Tutaj to Początek Wyjątkowej Podróży" />
+        <x-heading title="Atrybuty Naszego Hotelu" subtitle="Przyjazd tutaj to początek wyjątkowej podróży" />
     </div>
 
     {{-- CONTENT --}}

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class HomeGallery extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,7 @@ class HomeGallery extends Model
      * @var array
      */
     protected $fillable = [
-        'gallery',
+        'image',
     ];
 
     /**
@@ -25,5 +27,8 @@ class HomeGallery extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'image' => 'array'
     ];
+
+    public $translatable = ['alt'];
 }

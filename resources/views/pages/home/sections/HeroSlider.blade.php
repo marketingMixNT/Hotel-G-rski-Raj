@@ -3,8 +3,8 @@
           {{-- heading --}}
         <h1
             class="absolute top-1/2 left-0 right-0 -translate-y-1/2 px-6 md:px-12 text-center text-5xl md:text-8xl 2xl:text-9xl font-semibold  font-heading  text-fontWhite leading-tight sm:leading-3 tracking-wide z-50">
-            Villa Górski Raj <br> <span class=" text-xl sm:text-3xl 2xl:text-4xl font-handwritting">Odkryj Luksus w Sercu
-                Gór </span>
+            Villa Górski Raj <br> <span class=" text-xl sm:text-3xl 2xl:text-4xl font-handwritting">Odkryj luksus w sercu
+                gór </span>
         </h1>
 
         @foreach ($slides as $slide)
