@@ -17,6 +17,7 @@ class CustomScript extends Model
     protected $fillable = [
         'content',
         'position',
+        'title',
     ];
 
     /**

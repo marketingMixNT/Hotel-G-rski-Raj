@@ -49,7 +49,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-
+            ->passwordReset()
             ->login()
             ->brandLogo(asset('assets/logo/logo.png'))
             ->darkModeBrandLogo(asset('assets/logo/logo--white.png'))
@@ -75,7 +75,7 @@ class AdminPanelProvider extends PanelProvider
                 'Lokalne Atrakcje',
                 'Strony Informacyjne',
                 'Funkcjonalności'
-              
+
 
             ])
 

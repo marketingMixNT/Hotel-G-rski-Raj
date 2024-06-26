@@ -22,7 +22,7 @@ class CustomScriptsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-cpu-chip';
 
-    protected static ?string $navigationGroup = 'Elementy Dodatkowe';
+    protected static ?string $navigationGroup = 'Funkcjonalności';
 
     public static function form(Form $form): Form
     {
@@ -31,7 +31,7 @@ class CustomScriptsResource extends Resource
                 Forms\Components\TextInput::make('content')
                     ->label('Zawartość')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('title')
                     ->label('Nazwa'),
                 Forms\Components\Select::make('position')
                     ->label('Pozycja')
@@ -42,7 +42,7 @@ class CustomScriptsResource extends Resource
                     ]),
                 Shout::make('so-important')
                     ->content('Zachowaj ostrozność przy dodawaniu własnych skryptów!')
-                    ->color('warning')
+                    ->color('danger')
                     ->columnSpanFull()
             ]);
     }
@@ -51,14 +51,13 @@ class CustomScriptsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('content')
+                Tables\Columns\TextColumn::make('title')
+                    ->label('Nazwa')
                     ->sortable()
-                    ->searchable()
-                    ->description(function (CustomScript $record) {
-                        return Str::limit(strip_tags($record->content), 40);
-                    }),
-                Tables\Columns\TextColumn::make('position')
-                    ->label('Pozycja')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('content')
+                   ,
+               
 
             ])
 
