@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApartmentsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfferController;
@@ -26,6 +27,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/atrakcja-hotelowa/{slug}', [HotelAttractionController::class, 'hotelAttraction'])->name('hotelAttraction');
 
     Route::get('/lokalne-atrakcje', LocalAttractionController::class)->name('localAttractions');
+
+    Route::get('/kontakt',[ContactController::class, 'index'])->name('contact.index');
+    Route::post('/kontakt',[ContactController::class, 'form'])->name('contact.form');
 
     Route::get('/polityka-prywatnosci', PrivacyPolicyController::class)->name('privacyPolicy');
     Route::get('/regulamin', RegulationsController::class)->name('regulations');

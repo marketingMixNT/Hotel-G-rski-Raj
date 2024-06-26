@@ -10,7 +10,7 @@
             <x-shared.nav.menu-item href="{{route('localAttractions')}}">Lokalne Atrakcje</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="{{route('hotelAttractions')}}">Udogodnienia Hotelowe</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="#">Galeria</x-shared.nav.menu-item>
-            <x-shared.nav.menu-item href="#">Kontakt</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('contact.index')}}">Kontakt</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="/blogs">Aktualności</x-shared.nav.menu-item>
         </ul>
 
