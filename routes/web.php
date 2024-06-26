@@ -7,6 +7,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\HotelAttractionController;
 use App\Http\Controllers\LocalAttractionController;
 use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\RegulationsController;
 use App\Models\PrivacyPolicy;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -27,6 +28,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/lokalne-atrakcje', LocalAttractionController::class)->name('localAttractions');
 
     Route::get('/polityka-prywatnosci', PrivacyPolicyController::class)->name('privacyPolicy');
+    Route::get('/regulamin', RegulationsController::class)->name('regulations');
 
 
 });

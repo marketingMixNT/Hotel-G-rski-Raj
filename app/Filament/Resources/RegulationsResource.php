@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PrivacyPolicyResource\Pages;
-use App\Filament\Resources\PrivacyPolicyResource\RelationManagers;
-use App\Models\PrivacyPolicy;
+use App\Filament\Resources\RegulationsResource\Pages;
+use App\Filament\Resources\RegulationsResource\RelationManagers;
+use App\Models\Regulations;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\Concerns\Translatable;
 
 
-class PrivacyPolicyResource extends Resource
+class RegulationsResource extends Resource
 {
     use Translatable;
 
@@ -24,7 +24,7 @@ class PrivacyPolicyResource extends Resource
     {
         return ['pl', 'en'];
     }
-    protected static ?string $model = PrivacyPolicy::class;
+    protected static ?string $model = Regulations::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
@@ -59,7 +59,6 @@ class PrivacyPolicyResource extends Resource
     {
         return $table
             ->columns([
-                
                 Tables\Columns\TextColumn::make('created_at')
                 ->label('')
                 ->formatStateUsing(fn (string $state): string => __("Treść"))
@@ -69,13 +68,11 @@ class PrivacyPolicyResource extends Resource
                 //
             ])
             ->actions([
-                // Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-               
-            ])
-            ->paginated(false);
+                
+            ])->paginated(false);
     }
 
     public static function getRelations(): array
@@ -88,23 +85,23 @@ class PrivacyPolicyResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPrivacyPolicies::route('/'),
-            // 'create' => Pages\CreatePrivacyPolicy::route('/create'),
-            'edit' => Pages\EditPrivacyPolicy::route('/{record}/edit'),
+            'index' => Pages\ListRegulations::route('/'),
+            // 'create' => Pages\CreateRegulations::route('/create'),
+            'edit' => Pages\EditRegulations::route('/{record}/edit'),
         ];
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('Polityka Prywatności');
+        return __('Regulamin');
     }
     public static function getPluralLabel(): string
     {
-        return __('Polityka Prywatności');
+        return __('Regulamin');
     }
 
     public static function getLabel(): string
     {
-        return __('Polityka Prywatności');
+        return __('Regulamin');
     }
 }

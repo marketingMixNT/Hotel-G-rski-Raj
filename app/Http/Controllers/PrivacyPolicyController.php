@@ -13,8 +13,6 @@ class PrivacyPolicyController extends Controller
     public function __invoke(Request $request)
     {
         $privacyPolicy = PrivacyPolicy::select('content')->first();
-
-        // dd($privacyPolicy);
     
         return view('pages.privacy-policy', ['privacyPolicy' => $privacyPolicy]);
     }

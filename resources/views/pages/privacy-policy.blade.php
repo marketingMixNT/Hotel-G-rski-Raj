@@ -1,13 +1,12 @@
 <x-layouts.app>
 
     {{-- META --}}
-    @section('title', 'dsa')
-    @section('description', 'asd')
+    @section('title', 'Polityka Prywatności | Hotel Góralski Raj')
+    @section('description', 'Zapoznaj się z Polityką Prywatności Hotelu Góralski Raj i dowiedz się, jak chronimy Twoje dane osobowe. Twoja prywatność jest dla nas priorytetem.')
 
     {{-- HEADER --}}
     <x-slot name='header'>
         <x-shared.header title="Polityka Prywatności" bgi="{{ asset('assets/img/view.jpeg') }}">
-            <x-shared.booking-panel />
         </x-shared.header>
     </x-slot>
 

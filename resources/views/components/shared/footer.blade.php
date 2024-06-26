@@ -58,7 +58,7 @@
                 <li>
                     <a href="{{route('privacyPolicy')}}" class="link-hover">Polityka Prywatności</a>
                 </li>
-                <li><a href="" class="link-hover"> Regulamin</a></li>
+                <li><a href="{{route('regulations')}}" class="link-hover"> Regulamin</a></li>
             </ul>
             <hr class="opacity-40" />
         </div>
