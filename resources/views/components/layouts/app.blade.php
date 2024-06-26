@@ -53,7 +53,6 @@
 
     @filamentScripts
     @vite('resources/js/app.js')
-    <script src="https://wis.upperbooking.com/owcedwie/be-panel?locale=pl" async></script>
     {{-- CUSTOM SCRPITS FROM ADMIN PANEL --}}
     @foreach(\App\Models\CustomScript::where('position', 'third_place')->get() as $script)
         {!! $script->content !!}

@@ -1,5 +1,5 @@
 <div>
-    <h2 class=" text-5xl">Hotel Górski Raj</h2>
+    <h2 class="text-start text-5xl">Hotel Górski Raj</h2>
     <div class="grid sm:grid-cols-2 sm:grid-rows-2 gap-x-24 h-[80%]">
 
         <x-contact-box title="E-mail">

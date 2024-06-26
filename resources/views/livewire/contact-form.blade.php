@@ -1,6 +1,6 @@
 <div>
     <form method="post" wire:submit.prevent="submitForm" action="{{ route('contact.form') }}" id="contactForm"
-        class="max-w-md mx-auto flex flex-col justify-start items-start">
+        class="max-w-lg mx-auto flex flex-col justify-start items-start">
         @csrf
         {{-- @if ($successMessage) --}}
         @if ($successMessage)
