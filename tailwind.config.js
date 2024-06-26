@@ -30,7 +30,7 @@ export default {
                 },
                 third: {
                     400: "#d4b67d",
-                    // 600:'#8c6842'
+                    600:'#b59a69'
                 },
 
                 bgPrimary: "#eae7e3",

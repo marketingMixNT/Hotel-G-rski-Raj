@@ -37,7 +37,7 @@ class MobileButtonResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
 
-    protected static ?string $navigationGroup = 'Elementy Dodatkowe';
+    protected static ?string $navigationGroup = 'Funkcjonalności';
 
    
 
@@ -72,10 +72,10 @@ class MobileButtonResource extends Resource
                    
                     
 
-                FileUpload::make('image')
+                FileUpload::make('icon')
                     ->label('Ikonka')
 
-                    ->image()
+                    // ->image()
                     ->maxSize(1024),
             ]);
     }
@@ -90,7 +90,7 @@ class MobileButtonResource extends Resource
                 // ->label('#')
                 // ->numeric()
                 // ->sortable(),
-                Tables\Columns\ImageColumn::make('image')
+                Tables\Columns\ImageColumn::make('icon')
                     ->label('Ikonka'),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Tytuł'),

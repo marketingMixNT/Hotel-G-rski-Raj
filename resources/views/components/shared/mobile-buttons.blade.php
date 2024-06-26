@@ -4,9 +4,9 @@
 
     @foreach ($mobileButtons as $item)
         <a href="{{ $item['link'] }}"
-            class="border-r border-fontBlack bg-bgDark-400 first-of-type:bg-third-400 first-of-type:hover:bg-third-600 hover:bg-primary-600 transition-colors duration-500 text-fontBlack first-of-type:text-fontDark">
+            class="border-r border-fontBlack bg-secondary-200 first-of-type:bg-third-400 first-of-type:hover:bg-third-600 hover:bg-secondary-400 transition-colors duration-500 first-of-type:text-fontBlack text-fontWhite">
             <div class="flex flex-col justify-center items-center py-2 gap-1">
-                <img src="{{ asset('/storage/' . $item['image']) }}" alt="" width="25px" class="w-6 xs:w-7">
+                <img src="{{ asset('/storage/' . $item['icon']) }}" alt="" width="25px" class="w-6 xs:w-7">
                 <span class="text-xs uppercase font-semibold ">{{ $item['title'] }}</span></div>
         </a>
     @endforeach
