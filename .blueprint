@@ -1,8 +1,10 @@
 created:
-    - database/factories/AmenityFactory.php
-    - database/migrations/2024_06_25_093156_create_amenities_table.php
-    - database/migrations/2024_06_25_093157_create_amenity_apartment_table.php
-    - app/Models/Amenity.php
+    - database/factories/PrivacyPolicyFactory.php
+    - database/factories/RegulationsFactory.php
+    - database/migrations/2024_06_26_075209_create_privacy_policies_table.php
+    - database/migrations/2024_06_26_075210_create_regulations_table.php
+    - app/Models/PrivacyPolicy.php
+    - app/Models/Regulations.php
 models:
     Attraction: { title: longtext, description: longtext, images: text, sort: 'integer nullable default:NULL' }
     HotelAttraction: { title: json, slug: 'json unique', short_desc: json, description: json, thumbnail: text, gallery: text, banner_img: text, meta_title: json, meta_desc: json, sort: 'integer nullable' }
@@ -19,3 +21,5 @@ models:
     CustomScript: { content: text, position: text }
     Pictograms: { name: json, icon: text, relationships: { belongsToMany: Apartment } }
     Pictogram: { title: json, icon: text, relationships: { belongsToMany: Apartment } }
+    PrivacyPolicy: { content: json }
+    Regulations: { content: json }

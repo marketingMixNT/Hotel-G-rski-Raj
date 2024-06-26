@@ -1,8 +1,9 @@
 models:
-  Amenity:
-    title: json
-    icon: text
-    relationships:
-      belongsToMany: Apartment
+  PrivacyPolicy:
+    content: json
+  
+  Regulations:
+    content: json
+    
 
   

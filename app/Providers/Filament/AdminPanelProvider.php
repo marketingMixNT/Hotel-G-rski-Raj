@@ -73,6 +73,7 @@ class AdminPanelProvider extends PanelProvider
                 "Informacje o Hotelu",
                 'Oferty Specjalne',
                 'Lokalne Atrakcje',
+                'Strony Informacyjne',
                 'Funkcjonalności'
               
 

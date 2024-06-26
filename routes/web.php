@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\HotelAttractionController;
 use App\Http\Controllers\LocalAttractionController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Models\PrivacyPolicy;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -23,6 +25,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/atrakcja-hotelowa/{slug}', [HotelAttractionController::class, 'hotelAttraction'])->name('hotelAttraction');
 
     Route::get('/lokalne-atrakcje', LocalAttractionController::class)->name('localAttractions');
+
+    Route::get('/polityka-prywatnosci', PrivacyPolicyController::class)->name('privacyPolicy');
 
 
 });

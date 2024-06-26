@@ -31,15 +31,19 @@ h6 {
 
 
 //content
-.description h3{
+.description h2, .content h2{
+    @apply text-5xl font-bold mt-8 mb-2
+}
+
+.description h3, .content h3{
     @apply text-3xl font-bold mt-8 mb-2
 }
 
-.description p{
+.description p, .content p {
     @apply text
 }
 
-.description strong{
+.description strong,.content strong{
     @apply font-bold
 }
 
@@ -47,8 +51,12 @@ h6 {
     list-style-type: square;
     @apply text mt-4 list-inside lg:list-outside
 }
+.content ul{
+    list-style-type: square;
+    @apply text mt-4 list-inside mb-6
+}
 
-.description ul li {
+.description ul li, .content ul li {
     @apply mt-2
 }
 
