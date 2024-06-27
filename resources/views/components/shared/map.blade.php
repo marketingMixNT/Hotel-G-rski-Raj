@@ -9,6 +9,7 @@
         loading="lazy" 
         referrerpolicy="no-referrer-when-downgrade" 
         class="grayscale hover:grayscale-0 transition duration-300 ease-in-out w-full"
+        title="Lokalizacja Hotelu Górski Raj na mapach google"
       ></iframe>
     </div>
   </div>

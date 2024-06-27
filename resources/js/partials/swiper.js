@@ -4,7 +4,7 @@ import {
     EffectFade,
     Navigation,
     Pagination,
-    EffectCoverflow
+    EffectCoverflow,
 } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 
@@ -86,7 +86,7 @@ new Swiper(".testimonial-carousel", {
         disableOnInteraction: true,
         pauseOnMouseEnter: true,
     },
-   
+
     modules: [Autoplay, Navigation, Pagination],
 });
 
@@ -127,11 +127,11 @@ new Swiper(".apartment-gallery-carousel", {
     modules: [Autoplay],
 });
 
-//OFFER CAROUSEL
+//OTHER ROOMS CAROUSEL
 new Swiper(".other-rooms-carousel", {
     loop: true,
     effect: "fade",
-
+    grabCursor: "true",
     slidesPerView: 1,
 
     breakpoints: {
@@ -153,7 +153,7 @@ new Swiper(".other-rooms-carousel", {
 //CONTACT CAROUSEL
 new Swiper(".contact-carousel", {
     loop: true,
-    effect: "coverflow",  // Poprawiono "overflow" na "coverflow"
+    effect: "coverflow", // Poprawiono "overflow" na "coverflow"
     coverflowEffect: {
         rotate: 50,
         stretch: 0,
@@ -170,5 +170,5 @@ new Swiper(".contact-carousel", {
             spaceBetween: 30,
         },
     },
-    modules: [Autoplay, EffectCoverflow],  // Poprawiono "EffectOverflow" na "EffectCoverflow"
+    modules: [Autoplay, EffectCoverflow], // Poprawiono "EffectOverflow" na "EffectCoverflow"
 });

@@ -1,6 +1,6 @@
 {{-- CONTAINER --}}
 <div class="flex flex-col justify-between items-center h-full group swiper-slide " >
-    <div class="relative flex flex-col justif-center items-center h-full group "onclick="void(0)">
+    <div class="relative flex flex-col justif-center items-center h-full group " onclick="void(0)">
         {{-- FRONT --}}
         {{-- img --}}
         <x-image-photo class="h-[350px] sm:w-[375px] ">

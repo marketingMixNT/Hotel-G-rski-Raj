@@ -13,7 +13,7 @@
 
     {{-- MAIN --}}
     <!--ABOUT ROOM -->
-    <section class='section max-w-screen-xl  px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24  '>
+    <x-section class='max-w-screen-xl  grid grid-cols-1 lg:grid-cols-2 gap-24  '>
 
         <!--left -->
         <div class="flex flex-col gap-20">
@@ -87,7 +87,7 @@
             </div>
 
         </div>
-    </section>
+    </x-section>
 
     <!--GALLERY -->
     <section class="section  px-6 md:px-12">
@@ -113,7 +113,7 @@
 
 
         <div class="flex flex-col gap-10  col-span-2">
-            <h2 class='font-semibold text-4xl'>Opis Pokoju</h2>
+            <h2 class='font-semibold text-4xl'>Opis Apartamentu</h2>
             <div class="description">
 
                 {!! $apartment->description !!}
@@ -124,13 +124,13 @@
     </section>
 
     <!--CTA -->
-    <section class="section">
+    <x-section fullWidth="true" >
         <div class="relative  flex flex-col justify-evenly items-center gap-12 w-full min-h-[600px] md:gap-20  px-6 md:px-12 py-20   bg-no-repeat bg-cover bg-center bg-blend-multiply bg-gray-500 "
-            style="background-image: url('{{ asset('assets/img/view.jpeg') }}')">
+            style="background-image: url('{{ asset('assets/img/view.webp') }}')">
             {{-- text --}}
             <div class="max-w-screen-xl text-center  space-y-12">
 
-                <h2 class="text-5xl md:text-7xl text-fontWhite">Zarezerwuj Swój Wymarzony Pobyt Już Dziś!</h2>
+                <h2 class="text-5xl md:text-7xl text-fontWhite">Zarezerwuj Swój Pobyt!</h2>
                 <p class="text px-12 text-white ">Przyjdź i odkryj wyjątkowy komfort oraz luksus w naszym hotelu. Od
                     relaksu w eleganckich pokojach po zachwycające widoki z okien – wszystko to czeka na Ciebie w sercu
                     Tatr. Nasz zespół z pasją dba o każdy detal, aby zapewnić Ci niezapomniane wrażenia i pełne
@@ -141,16 +141,16 @@
             <x-ui.link-button type='primary' class="md:hidden">Zarezerwuj</x-ui.link-button>
 
         </div>
-    </section>
+    </x-section>
 
     <!--OTHER ROOMS -->
     <section class="section px-6 md:px-12 max-w-screen-2xl">
 
         <!--heading-->
         <div class="w-full mx-auto flex justify-center items-center">
-            <x-heading-horizontal subheading="Hotel Góralski Raj" heading="Pokoje Pełne Górskiego Uroku"
-                decor="Komfort i spokój na każdą porę roku"
-                text="Nasze pokoje to więcej niż miejsce noclegowe; to przestrzeń, gdzie każdy detal odzwierciedla piękno i spokój otaczających nas Tatr. Wybierając nocleg u nas, wybierasz komfort, wygodę i niezapomniane widoki, które sprawią, że Twój wypoczynek będzie wyjątkowy. Czy to romantyczny weekend, rodzinne wakacje, czy wypad ze znajomymi - znajdziesz u nas pokój idealnie dopasowany do Twoich potrzeb i oczekiwań." />
+            <x-heading-horizontal subtitle="Hotel Góralski Raj" title="Znajdź Apartament dla Siebie"
+                decor="KWybierz Luksus na Swój Własny Sposób"
+                text="Zapraszamy do zapoznania się z naszą ofertą apartamentów, gdzie każdy znajdzie coś dla siebie. Nasze apartamenty zapewniają komfort i wygodę, eleganckie wnętrza, nowoczesne udogodnienia i widoki na Tatry. Niezależnie od tego, czy szukasz miejsca na romantyczny wyjazd, przestronnego apartamentu dla rodziny, czy luksusowej suity na specjalną okazję, mamy coś dla Ciebie. Zarezerwuj wyjątkowy pobyt w sercu gór już dziś!" />
         </div>
         <!--carousel-->
         <div class=" xs:mt-12 w-full relative">
@@ -158,11 +158,8 @@
             <div class="swiper other-rooms-carousel">
                 <div class="swiper-wrapper ">
                     @foreach ($otherApartments as $apartment)
-                        <x-other-apartment-card link="{{ route('apartment', $apartment->slug) }}"
-                            thumbnail="{{ asset('/storage/' . $apartment->thumbnail) }}"
-                            name=" {{ $apartment->name }}" shortDesc="{!! $apartment->short_desc !!}"
-                            surface="  {{ $apartment->surface }}" person=" {{ $apartment->person }}"
-                            beds=" {{ $apartment->beds }}" />
+                    <x-other-apartment-card :apartment="$apartment" />
+
                     @endforeach
                 </div>
             </div>
