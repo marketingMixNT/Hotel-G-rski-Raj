@@ -56,7 +56,7 @@
             <hr class="opacity-40" />
             <ul class="flex justify-center items-center gap-8 text-xs py-4">
                 <li>
-                    <a href="{{route('privacyPolicy')}}" class="link-hover">Polityka Prywatności</a>
+                    <a href="{{route('privacy-policy')}}" class="link-hover">Polityka Prywatności</a>
                 </li>
                 <li><a href="{{route('regulations')}}" class="link-hover"> Regulamin</a></li>
             </ul>

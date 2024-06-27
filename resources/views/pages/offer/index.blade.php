@@ -12,7 +12,7 @@
     </x-slot>
 
     {{-- MAIN --}}
-    <section class="section px-6 md:px-12 max-w-screen-2xl">
+    <x-section class="section  max-w-screen-2xl">
 
         {{-- top --}}
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-0">
@@ -23,10 +23,10 @@
                     do <span class="font-semibold">{{ $offer->end_date->format('d-m-Y') }} </span></p>
                 <div class="flex flex-wrap justify-center items-center gap-12">
                     <div class="border border-gray-400 px-8 py-2 flex gap-2 justify-start items-center"><img
-                            src="{{ asset('assets/icons/moon.svg') }}" alt="" class="w-7"><span
+                            src="{{ asset('assets/icons/moon.svg') }}" alt="" width="28" height="28" class="w-7"><span
                             class="text-sm mt-1">min. {{ $offer->nights }} noce</span></div>
                     <div class="border border-gray-400 px-8 py-2 flex gap-2 justify-start items-center"><img
-                            src="{{ asset('assets/icons/dish.svg') }}" alt="" class="w-7"><span
+                            src="{{ asset('assets/icons/dish.svg') }}" alt="" width="28" height="28" class="w-7" ><span
                             class="text-sm mt-1">{{ $offer->food }}</span></div>
                 </div>
             </div>
@@ -40,10 +40,10 @@
             <div class="w-full lg:w-[60%] lg:pr-20 description order-1 lg:order-none">{!! $offer->description !!} </div>
 
 
-            <div class="w-full lg:w-[40%] relative "><img src="{{ asset('/storage' . $offer->thumbnail) }}" alt=""
+            <div class="w-full lg:w-[40%] relative "><img src="{{ asset('/storage' . $offer->thumbnail) }}" alt="{{ $offer->title}}" width="576" height="384"
                     class="sticky top-32"></div>
         </div>
-    </section>
+    </x-section>
 
     {{-- OTHER OFFERS --}}
     <section class="section max-w-screen-2xl px-6 md:px-12 mb-16">

@@ -24,7 +24,7 @@ class HotelAttractionController extends Controller
 
 
 
-        $otherAttractions = HotelAttraction::select('id','title','short_desc','thumbnail')
+        $otherAttractions = HotelAttraction::select('id','title','short_desc','thumbnail','slug')
             ->where('id', '!=', $hotelAttraction->id)
             ->orderBy('sort')
             ->get();

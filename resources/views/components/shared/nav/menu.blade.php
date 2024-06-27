@@ -7,8 +7,8 @@
 
             <x-shared.nav.menu-item href="{{route('apartments.index')}}">Apartamenty</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="{{route('offers.index')}}">Oferty Specjalne</x-shared.nav.menu-item>
-            <x-shared.nav.menu-item href="{{route('local-attractions.index')}}">Lokalne Atrakcje</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="{{route('hotel-attractions.index')}}">Udogodnienia Hotelowe</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('local-attractions.index')}}">Lokalne Atrakcje</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="{{route('gallery.index')}}">Galeria</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="{{route('contact.index')}}">Kontakt</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="/blogs">Aktualności</x-shared.nav.menu-item>
@@ -21,12 +21,11 @@
         </div>
           <!--SOCIAL-->
         <div class="flex justify-center items-center gap-6 absolute left-5 bottom-5 lg:static">
-            <a href="https://www.facebook.com/zajazdsleboda/?locale=pl_PL" target="_blank"><img src="{{ asset('/assets/icons/facebook--white.svg') }}" alt="facebook Zajazd Śleboda"
+            <a href="https://www.facebook.com/marketingmixnowytarg" target="_blank"><img src="{{ asset('/assets/icons/facebook--white.svg') }}" alt="facebook Hotel Górski Raj"
                     class="w-6 2xl:w-9 hover:scale-90 duration-300 opacity-70" /></a>
-            <a href="https://www.facebook.com/zajazdsleboda/?locale=pl_PL" target="_blank"><img src="{{ asset('/assets/icons/instagram--white.svg') }}" alt="facebook Zajazd Śleboda"
+            <a href="https://www.instagram.com/marketingmix_pl/" target="_blank"><img src="{{ asset('/assets/icons/instagram--white.svg') }}" alt="instagram Hotel Górski Raj"
                     class="w-6 2xl:w-9 hover:scale-90 duration-300 opacity-70" /></a>
-            <a href="https://www.tripadvisor.com/Restaurant_Review-g2712643-d14183598-Reviews-Zajazd_Sleboda-Zab_Lesser_Poland_Province_Southern_Poland.html" target="_blank"><img src="{{ asset('/assets/icons/tripadvisor--white.svg') }}"
-                    alt="TripAdvisor Zajazd Śleboda" class="w-7 2xl:w-10 hover:scale-90 duration-300 opacity-70" /></a>
+           
         </div>
     </div>
 </div>

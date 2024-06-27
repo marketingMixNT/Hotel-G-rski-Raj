@@ -25,7 +25,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/oferta-specjalna/{slug}', [OfferController::class, 'offert'])->name('offers.show');
 
     Route::get('/atrakcje-hotelowe', [HotelAttractionController::class, 'hotelAttractions'])->name('hotel-attractions.index');
-    Route::get('/atrakcja-hotelowa/{slug}', [HotelAttractionController::class, 'hotelAttraction'])->name('hotel-attraction.show');
+    Route::get('/atrakcja-hotelowa/{slug}', [HotelAttractionController::class, 'hotelAttraction'])->name('hotel-attractions.show');
 
     Route::get('/lokalne-atrakcje', LocalAttractionController::class)->name('local-attractions.index');
 
@@ -34,7 +34,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/kontakt',[ContactController::class, 'index'])->name('contact.index');
     Route::post('/kontakt',[ContactController::class, 'form'])->name('contact.form');
 
-    Route::get('/polityka-prywatnosci', PrivacyPolicyController::class)->name('privacyPolicy');
+    Route::get('/polityka-prywatnosci', PrivacyPolicyController::class)->name('privacy-policy');
     Route::get('/regulamin', RegulationsController::class)->name('regulations');
 
 

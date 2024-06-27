@@ -5,7 +5,7 @@
         'Skontaktuj się z nami! Znajdź dane kontaktowe Hotelu Góralski Raj, w tym numer telefonu, adres e-mail oraz formularz kontaktowy. Jesteśmy tu, aby odpowiedzieć na Twoje pytania.')
 
 <x-slot name='header'>
-    <x-shared.header title="Kontakt" bgi="{{ asset('assets/img/view.jpeg') }}">
+    <x-shared.header title="Kontakt" bgi="{{ asset('assets/img/view.webp') }}">
 
         <x-shared.booking-panel/>
     </x-shared.header>

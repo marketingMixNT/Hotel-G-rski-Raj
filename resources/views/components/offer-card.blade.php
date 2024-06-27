@@ -38,7 +38,7 @@
    {{-- actions --}}
    <div class="w-full lg:w-[15%] flex justify-center items-start gap-6 flex-col">
 
-       <x-ui.link-arrow href="{{route('offer', $offer->slug)}}">Zobacz</x-ui.link-arrow>
+       <x-ui.link-arrow href="{{route('offers.show', $offer->slug)}}">Zobacz</x-ui.link-arrow>
        <x-ui.link-button type='secondary' href='{{$offer->offer_link}}'>Zarezerwuj</x-ui.link-button>
 
 

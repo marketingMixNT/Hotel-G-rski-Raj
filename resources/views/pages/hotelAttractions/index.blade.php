@@ -1,14 +1,13 @@
 <x-layouts.app>
 
     {{-- META --}}
-    @section('title', 'Lokale Atrakcje – Odkryj Najlepsze Miejsca na Podhalu | Hotel Góralski Raj')
+    @section('title', 'Atrakcje Hotelowe | Hotel Góralski Raj - Rozrywka i Relaks')
     @section('description',
-        'Poznaj lokalne atrakcje na Podhalu i odkryj najlepsze miejsca do odwiedzenia podczas pobytu
-        w Hotelu Góralski Raj. Czekają na Ciebie niezapomniane wrażenia.')
+        'Odkryj atrakcje hotelowe w Hotelu Góralski Raj. Skorzystaj z luksusowego SPA, basenu, restauracji i wielu innych udogodnień, które umilą Twój pobyt.')
 
         {{-- HEADER --}}
         <x-slot name='header'>
-            <x-shared.header title="Udogodnienia hotelowe" bgi="{{ asset('assets/img/view.jpeg') }}" >
+            <x-shared.header title="Atrakcje Hotelowe" bgi="{{ asset('assets/img/spa.webp') }}" >
             
                 <x-shared.booking-panel/>
 
@@ -17,38 +16,38 @@
 
         {{-- MAIN --}}
 
-        <section class="section max-w-screen-2xl px-6 md:px-12">
+        <x-section class=" max-w-screen-xl ">
 
              <!--heading-->
     <div class="w-full mx-auto flex justify-center items-center">
-        <x-heading-horizontal subheading="Hotel Góralski Raj" heading="Pokoje Pełne Górskiego Uroku"
+        <x-heading-horizontal subtitle="Hotel Góralski Raj" title="Wyjątkowe Atrakcje Dla Gości"
             decor="Komfort i spokój na każdą porę roku"
-            text="Nasze pokoje to więcej niż miejsce noclegowe; to przestrzeń, gdzie każdy detal odzwierciedla piękno i spokój otaczających nas Tatr. Wybierając nocleg u nas, wybierasz komfort, wygodę i niezapomniane widoki, które sprawią, że Twój wypoczynek będzie wyjątkowy. Czy to romantyczny weekend, rodzinne wakacje, czy wypad ze znajomymi - znajdziesz u nas pokój idealnie dopasowany do Twoich potrzeb i oczekiwań." />
+            text="Zapraszamy do odkrycia naszych wyjątkowych atrakcji hotelowych, które zostały przygotowane z myślą o Twoim komforcie i rozrywce. Od luksusowego SPA, przez basen z widokiem na Tatry, po wspaniałą restaurację i bar - każdy znajdzie coś dla siebie. Spędź niezapomniane chwile i zrelaksuj się w Hotelu Góralski Raj, korzystając z naszych licznych atrakcji. Rezerwuj teraz i ciesz się pełnią możliwości, jakie oferuje nasz hotel!" />
     </div>
 
-            <div class="flex flex-col gap-40">
+            <div class="flex flex-col gap-20">
 
 
                 @foreach ($hotelAttractions as $index => $attraction)
-                <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 group">
                     {{-- image --}}
-                    <div class="{{ $index % 2 === 0 ? 'lg:order-1' : '' }} w-full lg:w-1/2 flex justify-center items-center">
-                        <img src="{{ asset('/storage/' .$attraction['thumbnail']) }}" alt="{{ $attraction['title'] }}" class=" object-cover w-full h-[450px]">
+                    <div class="{{ $index % 2 === 0 ? 'lg:order-1' : '' }} w-full lg:w-1/2 flex justify-center items-center overflow-hidden">
+                        <img src="{{ asset('/storage/' .$attraction['thumbnail']) }}" alt="{{ $attraction['title'] }}" class=" object-cover w-full h-[450px] group-hover:scale-110 duration-500">
                     </div>
                     {{-- text --}}
-                    <div class="w-full lg:w-1/2 flex flex-col justify-evenly items-start gap-4 lg:gap-0">
+                    <div class="w-full lg:w-1/2 flex flex-col justify-center items-start gap-4 lg:gap-5">
                         <h2 class="text-4xl font-bold">{{ $attraction['title'] }}</h2>
                         <p>{!! $attraction['short_desc'] !!}</p>
                     
                        
-                        <x-ui.link-button type='secondary' href="{{route('hotelAttraction',$attraction['slug'])}}">Zobacz</x-ui.link-button>
+                        <x-ui.link-button type='secondary' href="{{route('hotel-attractions.show',$attraction['slug'])}}">Zobacz</x-ui.link-button>
 
                     </div>
 
                 </div>
                 @endforeach
             </div>
-        </section>
+        </x-section>
 
 
     </x-layouts.app>
