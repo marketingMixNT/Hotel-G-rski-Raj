@@ -1,4 +1,4 @@
-<section class="section px-6 md:px-12">
+<x-section ">
 
     <div class="grid grid-cols-1 md:grid-cols-12  gap-6">
 
@@ -19,13 +19,10 @@
             </x-image-photo>
         @endfor
 
-
-
-
     </div>
 
     <div class="flex justify-center items-center mt-12">
 
-        <x-ui.link-button type='secondary' href=''>Zobacz galerię</x-ui.link-button>
+        <x-ui.link-button--large href="{{ route('gallery.index') }}">Sprawdź galerię</x-ui.link-button--large>
     </div>
 </section>

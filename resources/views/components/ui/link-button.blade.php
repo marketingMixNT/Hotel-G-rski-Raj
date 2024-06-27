@@ -7,7 +7,7 @@
 
 
 
-<a href="{{ $href }}"
+<a wire:navigate href="{{ $href }}"
     class="border   px-8 py-3 uppercase text-xs duration-300  
         {{ $type === 'primary' ? ' border-black bg-primary-400 hover:text-fontWhite  close' : '' }} 
         {{ $type === 'secondary' ? 'border-black bg-black close text-fontWhite ' : '' }} 

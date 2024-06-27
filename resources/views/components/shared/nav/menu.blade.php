@@ -5,11 +5,11 @@
         <!--NAV ITEMS-->
         <ul class="text-heading text-fontLight-400 flex justify-center items-center flex-col gap-4 xs:gap-8">
 
-            <x-shared.nav.menu-item href="{{route('apartments')}}">Apartamenty</x-shared.nav.menu-item>
-            <x-shared.nav.menu-item href="{{route('offers')}}">Oferty Specjalne</x-shared.nav.menu-item>
-            <x-shared.nav.menu-item href="{{route('localAttractions')}}">Lokalne Atrakcje</x-shared.nav.menu-item>
-            <x-shared.nav.menu-item href="{{route('hotelAttractions')}}">Udogodnienia Hotelowe</x-shared.nav.menu-item>
-            <x-shared.nav.menu-item href="#">Galeria</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('apartments.index')}}">Apartamenty</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('offers.index')}}">Oferty Specjalne</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('local-attractions.index')}}">Lokalne Atrakcje</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('hotel-attractions.index')}}">Udogodnienia Hotelowe</x-shared.nav.menu-item>
+            <x-shared.nav.menu-item href="{{route('gallery.index')}}">Galeria</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="{{route('contact.index')}}">Kontakt</x-shared.nav.menu-item>
             <x-shared.nav.menu-item href="/blogs">Aktualności</x-shared.nav.menu-item>
         </ul>

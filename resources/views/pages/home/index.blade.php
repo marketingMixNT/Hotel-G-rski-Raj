@@ -1,16 +1,20 @@
 <x-layouts.app>
 
+ {{-- META --}}
+ @section('title', 'Hotel Góralski Raj - Luksusowe Zakwaterowanie w Sercu Tatr')
+ @section('description', 'Hotel Góralski Raj oferuje luksusowe apartamenty, wyśmienitą kuchnię i relaks w ekskluzywnym SPA. Odkryj wyjątkowy komfort i piękno Tatr.')
+
     <x-slot name='header'>
-        @include('pages.home.sections.HeroSlider')
+        @include('pages.home.partials.hero-slider')
     </x-slot>
 
-    @include('pages.home.sections.About')
-    @include('pages.home.sections.RecomendedPages')
-    @include('pages.home.sections.Offers')
-    @include('pages.home.sections.Apartments')
-    @include('pages.home.sections.Testimonials')
-    @include('pages.home.sections.Gallery')
-    @include('pages.home.sections.Attractions')
+    @include('pages.home.partials.about')
+    @include('pages.home.partials.hotel-attractions')
+    @include('pages.home.partials.offers')
+    @include('pages.home.partials.apartments')
+    @include('pages.home.partials.testimonials')
+    @include('pages.home.partials.gallery')
+    @include('pages.home.partials.local-attractions')
    
     <x-shared.map/>
 

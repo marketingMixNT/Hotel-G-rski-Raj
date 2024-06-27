@@ -1,10 +1,10 @@
-<section  class="section px-6 md:px-12">
+<x-section >
 
     <!--heading-->
     <div class="w-full mx-auto flex justify-center items-center">
-       <x-heading-horizontal subheading="Hotel Góralski Raj" heading="Pokoje Pełne Górskiego Uroku"
-           decor="Komfort i spokój na każdą porę roku"
-           text="Nasze pokoje to więcej niż miejsce noclegowe; to przestrzeń, gdzie każdy detal odzwierciedla piękno i spokój otaczających nas Tatr. Wybierając nocleg u nas, wybierasz komfort, wygodę i niezapomniane widoki, które sprawią, że Twój wypoczynek będzie wyjątkowy. Czy to romantyczny weekend, rodzinne wakacje, czy wypad ze znajomymi - znajdziesz u nas pokój idealnie dopasowany do Twoich potrzeb i oczekiwań." />
+       <x-heading-horizontal subtitle="Magiczne Miejsca Blisko Nas" title="Atrakcje, Które Musisz Zobaczyć"
+           decor="Przeżyj Niezapomniane Chwile Blisko Naszego Hotelu"
+           text="Zapraszamy do odkrycia okolicznych atrakcji, które czekają na Ciebie w sercu Tatr. Niezależnie od tego, czy jesteś miłośnikiem przyrody, kultury czy aktywnego wypoczynku, znajdziesz tu coś dla siebie. Malownicze szlaki, historyczne miejsca i lokalne skarby czekają na Twoje odkrycie. Przeżyj niezapomniane chwile i doświadcz piękna okolicznych krajobrazów podczas pobytu w Hotelu Góralski Raj!" />
    </div>
 
 
@@ -30,6 +30,6 @@
    </div>
    <div class="flex justify-center items-center mt-12 lg:mt-24">
 
-       <x-ui.link-button type='secondary' href="{{route('localAttractions')}}">Zobacz wszystkie</x-ui.link-button>
-   </div>
-</section>
+    <x-ui.link-button--large href="{{ route('local-attractions.index') }}">Zobacz wszystkie</x-ui.link-button--large>
+</div>
+</x-section>

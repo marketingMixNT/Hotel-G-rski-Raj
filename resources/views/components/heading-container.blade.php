@@ -1,0 +1,1 @@
+<div class="text-center pb-12 2xl:pb-24">{{$slot}}</div>

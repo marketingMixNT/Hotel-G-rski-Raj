@@ -12,7 +12,6 @@ import "swiper/swiper-bundle.css";
 new Swiper(".hero-carousel", {
     loop: true,
     effect: "fade",
-    // grabCursor: true,
     slidesPerView: 1,
 
     spaceBetween: 30,
@@ -46,15 +45,15 @@ new Swiper(".advantages-carousel", {
 new Swiper(".offer-carousel", {
     loop: true,
     effect: "fade",
-    // grabCursor: true,
+    grabCursor: true,
     slidesPerView: 1,
 
     breakpoints: {
-        768: {
+        1000: {
             slidesPerView: 2,
-            spaceBetween: 40,
+            spaceBetween: 50,
         },
-        1024: {
+        1250: {
             slidesPerView: 3,
             spaceBetween: 50,
         },
@@ -79,29 +78,20 @@ new Swiper(".offer-carousel", {
 //TESTIMONIALS CAROUSEL
 new Swiper(".testimonial-carousel", {
     loop: true,
-    // effect: "fade",
     grabCursor: true,
     slidesPerView: 1,
 
     autoplay: {
-        delay: 3500,
+        delay: 5000,
         disableOnInteraction: true,
         pauseOnMouseEnter: true,
     },
-    // navigation: {
-    //     nextEl: ".testimonial-next",
-    //     prevEl: ".testimonial-prev",
-    // },
-    // pagination: {
-    //     el: ".swiper-pagination",
-    //     clickable: true,
-    // },
+   
     modules: [Autoplay, Navigation, Pagination],
 });
 
 //ALL APARTMENTS CAROUSEL
 new Swiper(".apartments-carousel", {
-    // loop: true,
     effect: "fade",
     grabCursor: true,
     centeredSlides: true,
