@@ -1,10 +1,7 @@
 created:
-    - database/factories/PrivacyPolicyFactory.php
-    - database/factories/RegulationsFactory.php
-    - database/migrations/2024_06_26_075209_create_privacy_policies_table.php
-    - database/migrations/2024_06_26_075210_create_regulations_table.php
-    - app/Models/PrivacyPolicy.php
-    - app/Models/Regulations.php
+    - database/factories/GalleryFactory.php
+    - database/migrations/2024_06_28_080455_create_galleries_table.php
+    - app/Models/Gallery.php
 models:
     Attraction: { title: longtext, description: longtext, images: text, sort: 'integer nullable default:NULL' }
     HotelAttraction: { title: json, slug: 'json unique', short_desc: json, description: json, thumbnail: text, gallery: text, banner_img: text, meta_title: json, meta_desc: json, sort: 'integer nullable' }
@@ -23,3 +20,4 @@ models:
     Pictogram: { title: json, icon: text, relationships: { belongsToMany: Apartment } }
     PrivacyPolicy: { content: json }
     Regulations: { content: json }
+    Gallery: { category: json, images: text }

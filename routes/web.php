@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\PrivacyPolicy;
+
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfferController;
@@ -15,6 +16,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+
+    Livewire::setUpdateRoute(function ($handle) {
+        return Route::post('/livewire/update', $handle);
+    });
 
     Route::get('/', HomeController::class)->name('home');
 
@@ -31,14 +36,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('/galeria', GalleryController::class)->name('gallery.index');
 
+   
+    // Route::get(LaravelLocalization::transRoute('routes.gallery'), GalleryController::class)->name('gallery.index');
+
     Route::get('/kontakt',[ContactController::class, 'index'])->name('contact.index');
     Route::post('/kontakt',[ContactController::class, 'form'])->name('contact.form');
 
     Route::get('/polityka-prywatnosci', PrivacyPolicyController::class)->name('privacy-policy');
     Route::get('/regulamin', RegulationsController::class)->name('regulations');
 
-
+ 
 });
+
 
 
 

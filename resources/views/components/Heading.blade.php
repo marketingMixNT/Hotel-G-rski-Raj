@@ -5,7 +5,7 @@
         {{ $subtitle }}
     </span>
     <h2
-        class="text-center text-4xl xs:text-5xl sm:text-6xl  {{ $smaller ? 'max:text-8xl' : 'md:text-7xl 2xl:text-8xl' }} tracking-wider font-heading font-bold  ">
+        class="text-center text-3xl xs:text-4xl sm:text-6xl  {{ $smaller ? 'max:text-8xl' : 'md:text-7xl 2xl:text-8xl' }} tracking-wider font-heading font-bold  ">
         {{ $title }}
     </h2>
 

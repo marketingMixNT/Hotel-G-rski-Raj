@@ -3,3 +3,4 @@ Contact from enquery from: {{ $name }}
 <p> Email: {{ $email }} </p>
 <p> Tel: {{ $tel }} </p>
 <p> Message: {{ $content }} </p>
+

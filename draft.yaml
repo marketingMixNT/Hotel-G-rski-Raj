@@ -1,9 +1,8 @@
 models:
-  PrivacyPolicy:
-    content: json
+  Gallery:
+    category: json
+    images: text
   
-  Regulations:
-    content: json
     
 
   

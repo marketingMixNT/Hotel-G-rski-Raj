@@ -60,7 +60,7 @@
         @enderror
 
 
-        <x-ui.button-submit extraClasses='mt-6'>
+        <x-ui.button-submit  extraClasses='mt-6'>
             Wyślij</x-ui.button-submit>
 
     </form>

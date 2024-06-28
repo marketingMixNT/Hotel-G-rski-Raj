@@ -3,7 +3,7 @@
 
 
 
-<button type="submit" {{$attributes}}
+<button wire.loading.attr="disabled" type="submit" {{$attributes}}
     class="flex  justify-center items-center gap-2 border border-black bg-bgDark-400 px-8 py-3 uppercase text-xs duration-300 text-fontLight close--white hover:text-fontDark {{ $extraClasses }}">
     <svg wire:loading  wire:target="submitForm" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="#000000"
     viewBox="0 0 24 24">

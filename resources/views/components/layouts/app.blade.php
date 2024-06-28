@@ -11,6 +11,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+{{-- No Follow --}}
+    @isset($noFollow)
+    <meta name="robots" content="noindex, nofollow">
+    @endisset
 
     <!--Title-->
     <title>@yield('title', 'Hotel Góralski Raj')</title>
@@ -41,7 +45,7 @@
     @foreach (\App\Models\CustomScript::where('position', 'second_place')->get() as $script)
         {!! $script->content !!}
     @endforeach
-    <x-shared.Preloader />
+    <x-shared.preloader />
     <header>
         <x-shared.nav.navbar />
         <x-shared.nav.menu />

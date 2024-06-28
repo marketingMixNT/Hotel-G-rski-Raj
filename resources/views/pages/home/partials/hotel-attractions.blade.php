@@ -1,5 +1,5 @@
 {{-- <section class="section h-[90vh] grid grid-cols-2 gap-6 "> --}}
-<x-section fullWidth='true' class="h-[90vh] grid grid-cols-2 gap-4">
+<x-section fullWidth='true' class="lg:h-[90vh] grid grid-cols-2 gap-4">
 {{-- MAIN --}}
 
     <x-recommended-page class="col-span-2  bg-[url('/public/assets/img/restaurant.webp')] bg-bottom" link="{{route('hotel-attractions.show','restauracja')}}" text="Poznaj naszą restaurację">
