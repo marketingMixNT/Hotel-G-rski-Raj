@@ -64,7 +64,7 @@ class AdminPanelProvider extends PanelProvider
 
             ->navigationItems([
                 NavigationItem::make('Strona Główna')
-                    ->url('http://localhost:8000', shouldOpenInNewTab: true)
+                    ->url('https://gorskiraj.mmhub.pl', shouldOpenInNewTab: true)
                     ->icon('heroicon-o-globe-alt')
             ])
 
@@ -109,26 +109,17 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugin(SpatieLaravelTranslatablePlugin::make()->defaultLocales(['pl', 'en']),)
-            ->plugins([
-                \Awcodes\Curator\CuratorPlugin::make()
-                    ->defaultListView('grid')
-            ])
+
             ->plugins([
                 FilamentEditProfilePlugin::make()
                     ->setIcon('heroicon-o-user')
             ])
-            ->plugins([
-                FilamentGeneralSettingsPlugin::make()
-                    ->setIcon('heroicon-o-wrench-screwdriver')
-            ])
+
             ->plugin(
                 \Hasnayeen\Themes\ThemesPlugin::make()
             )
             ->plugins([
                 LightSwitchPlugin::make()
-            ])
-            ->plugin(
-                Blog::make()
-            );
+            ]);
     }
 }
